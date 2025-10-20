@@ -1,0 +1,96 @@
+{
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Double Shift triggers multiple key presses",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "shift_double_press",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "left_shift",
+                                    "modifiers": {
+                                        "mandatory": ["any"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to_after_key_up": [
+                                    {
+                                        "key_code": "a",
+                                        "modifiers": []
+                                    },
+                                    {
+                                        "key_code": "r",
+                                        "modifiers": []
+                                    },
+                                    {
+                                        "key_code": "r",
+                                        "modifiers": []
+                                    },
+                                    {
+                                        "key_code": "r",
+                                        "modifiers": []
+                                    },
+                                    {
+                                        "key_code": "o",
+                                        "modifiers": []
+                                    },
+                                    {
+                                        "key_code": "w",
+                                        "modifiers": []
+                                    },
+                                    {
+                                        "key_code": "down_arrow",
+                                        "modifiers": []
+                                    },
+                                    {
+                                        "key_code": "down_arrow",
+                                        "modifiers": []
+                                    },
+                                    {
+                                        "key_code": "down_arrow",
+                                        "modifiers": []
+                                    },
+                                    {
+                                        "key_code": "down_arrow",
+                                        "modifiers": []
+                                    },
+                                    {
+                                        "key_code": "down_arrow",
+                                        "modifiers": []
+                                    },
+                                    {
+                                        "key_code": "down_arrow",
+                                        "modifiers": []
+                                    },
+                                    {
+                                        "key_code": "return_or_enter",
+                                        "modifiers": []
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "left_shift" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "name": "Default profile",
+            "selected": true,
+            "simple_modifications": [
+                {
+                    "from": { "key_code": "caps_lock" },
+                    "to": [{ "key_code": "escape" }]
+                }
+            ],
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+        }
+    ]
+}
