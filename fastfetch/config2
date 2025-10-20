@@ -1,0 +1,137 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "type": "auto",
+    "source": "~/.config/neofetch/face5.png",
+    "width": 200,
+    "padding": {
+      "top": 0,
+      "left": 0,
+      "right": 3
+    },
+    "printRemaining": true,
+    "preserveAspectRatio": false
+  },
+  "display": {
+    "separator": "->",
+    "color": {
+      "keys": "",
+      "title": "",
+      "output": "",
+      "separator": ""
+    },
+    "brightColor": true,
+    "duration": {
+      "abbreviation": true,
+      "spaceBeforeUnit": "none"
+    },
+    "size": {
+      "binaryPrefix": "iec",
+      "ndigits": 2,
+      "spaceBeforeUnit": "default"
+    },
+    "percent": {
+      "type": ["num", "num-color"],
+      "ndigits": 0,
+      "spaceBeforeUnit": "default"
+    },
+    "bar": {
+      "char": {
+        "elapsed": "-",
+        "total": "="
+      },
+      "border": {
+        "left": "[",
+        "right": "]"
+      },
+      "color": {
+        "elapsed": "auto",
+        "total": "auto"
+      },
+      "width": 15
+    }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "key": "",
+      "format": "┌───────────────────────────────┐"
+    },
+    {
+      "type": "os",
+      "key": "",
+      "keyIcon": "",
+      "format": "Arch"
+    },
+    {
+      "type": "uptime",
+      "key": "",
+      "keyIcon": ""
+    },
+    {
+      "type": "packages",
+      "key": "",
+      "keyIcon": "",
+      "combined": true
+    },
+    {
+      "type": "display",
+      "key": "󰹑",
+      "keyIcon": "",
+      "compactType": "none",
+      "preciseRefreshRate": true
+    },
+    {
+      "type": "wmtheme",
+      "key": "󱇜",
+      "keyIcon": ""
+    },
+    {
+      "type": "memory",
+      "key": "󰋊",
+      "keyIcon": "",
+      "percent": {
+        "type": ["num", "num-color"]
+      }
+    },
+    {
+      "type": "gpu",
+      "key": "✇",
+      "keyIcon": "",
+      "driverSpecific": true
+    },
+    {
+      "type": "gpu",
+      "key": "󰻠",
+      "keyIcon": "",
+      "driverSpecific": false
+    },
+    {
+      "type": "cpu",
+      "key": "󰻠",
+      "keyIcon": "",
+      "temp": false
+    },
+    {
+      "type": "cpu",
+      "key": "CPU Usage",
+      "keyIcon": "",
+      "percent": {
+        "type": ["bar"]
+      }
+    },
+    {
+      "type": "custom",
+      "key": "",
+      "format": "└───────────────────────────────┘"
+    },
+    {
+      "type": "localip",
+      "key": "Local IP",
+      "keyIcon": "",
+      "showIpv4": true,
+      "showIpv6": false,
+      "showMac": false
+    }
+  ]
+}
