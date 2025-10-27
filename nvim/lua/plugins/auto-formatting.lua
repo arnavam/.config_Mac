@@ -12,9 +12,9 @@ return {
 		-- Setup mason-null-ls for automatic installation
 		require('mason-null-ls').setup {
 			ensure_installed = {
-				'checkmake',
-				'prettier',
-				'shfmt',
+				-- 'checkmake',
+				-- 'prettier',
+				-- 'shfmt',
 				'ruff',
 			},
 			automatic_installation = true,
@@ -25,7 +25,9 @@ return {
 			sources = {
 				diagnostics.checkmake,
 				formatting.prettier.with {
-					filetypes = { 'jsonc', 'css', 'html', 'json', 'yaml', 'markdown' },
+					filetypes = {
+						-- 'jsonc', 'css', 'html', 'json', 'yaml', 'markdown'
+					},
 				},
 				formatting.shfmt.with { args = { '-i', '4' } },
 				formatting.terraform_fmt,
