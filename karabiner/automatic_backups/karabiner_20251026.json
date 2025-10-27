@@ -191,7 +191,7 @@
                         ]
                     },
                     {
-                        "description": "(Atom, CKII, EUIV, iTerm, muCommander, PyCharm, VSCode, VSCodium, WebStorm, AndroidStudio, Kitty) Function keys work as fn keys",
+                        "description": "(Atom, CKII, EUIV, iTerm, muCommander, PyCharm, VSCode, VSCodium, WebStorm, AndroidStudio) Function keys work as fn keys",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -204,8 +204,7 @@
                                             "com.microsoft.VSCode",
                                             "com.visualstudio.code.oss",
                                             "com.jetbrains.WebStorm",
-                                            "com.google.android.studio",
-                                            "net.kovidgoyal.kitty"
+                                            "com.google.android.studio"
                                         ],
                                         "file_paths": ["ck2\\.app", "eu4\\.app"],
                                         "type": "frontmost_application_if"
@@ -229,8 +228,7 @@
                                             "com.microsoft.VSCode",
                                             "com.visualstudio.code.oss",
                                             "com.jetbrains.WebStorm",
-                                            "com.google.android.studio",
-                                            "net.kovidgoyal.kitty"
+                                            "com.google.android.studio"
                                         ],
                                         "file_paths": ["ck2\\.app", "eu4\\.app"],
                                         "type": "frontmost_application_if"
@@ -254,8 +252,7 @@
                                             "com.microsoft.VSCode",
                                             "com.visualstudio.code.oss",
                                             "com.jetbrains.WebStorm",
-                                            "com.google.android.studio",
-                                            "net.kovidgoyal.kitty"
+                                            "com.google.android.studio"
                                         ],
                                         "file_paths": ["ck2\\.app", "eu4\\.app"],
                                         "type": "frontmost_application_if"
@@ -279,8 +276,7 @@
                                             "com.microsoft.VSCode",
                                             "com.visualstudio.code.oss",
                                             "com.jetbrains.WebStorm",
-                                            "com.google.android.studio",
-                                            "net.kovidgoyal.kitty"
+                                            "com.google.android.studio"
                                         ],
                                         "file_paths": ["ck2\\.app", "eu4\\.app"],
                                         "type": "frontmost_application_if"
@@ -304,8 +300,7 @@
                                             "com.microsoft.VSCode",
                                             "com.visualstudio.code.oss",
                                             "com.jetbrains.WebStorm",
-                                            "com.google.android.studio",
-                                            "net.kovidgoyal.kitty"
+                                            "com.google.android.studio"
                                         ],
                                         "file_paths": ["ck2\\.app", "eu4\\.app"],
                                         "type": "frontmost_application_if"
@@ -329,8 +324,7 @@
                                             "com.microsoft.VSCode",
                                             "com.visualstudio.code.oss",
                                             "com.jetbrains.WebStorm",
-                                            "com.google.android.studio",
-                                            "net.kovidgoyal.kitty"
+                                            "com.google.android.studio"
                                         ],
                                         "file_paths": ["ck2\\.app", "eu4\\.app"],
                                         "type": "frontmost_application_if"
@@ -354,8 +348,7 @@
                                             "com.microsoft.VSCode",
                                             "com.visualstudio.code.oss",
                                             "com.jetbrains.WebStorm",
-                                            "com.google.android.studio",
-                                            "net.kovidgoyal.kitty"
+                                            "com.google.android.studio"
                                         ],
                                         "file_paths": ["ck2\\.app", "eu4\\.app"],
                                         "type": "frontmost_application_if"
@@ -379,8 +372,7 @@
                                             "com.microsoft.VSCode",
                                             "com.visualstudio.code.oss",
                                             "com.jetbrains.WebStorm",
-                                            "com.google.android.studio",
-                                            "net.kovidgoyal.kitty"
+                                            "com.google.android.studio"
                                         ],
                                         "file_paths": ["ck2\\.app", "eu4\\.app"],
                                         "type": "frontmost_application_if"
@@ -404,8 +396,7 @@
                                             "com.microsoft.VSCode",
                                             "com.visualstudio.code.oss",
                                             "com.jetbrains.WebStorm",
-                                            "com.google.android.studio",
-                                            "net.kovidgoyal.kitty"
+                                            "com.google.android.studio"
                                         ],
                                         "file_paths": ["ck2\\.app", "eu4\\.app"],
                                         "type": "frontmost_application_if"
@@ -429,8 +420,7 @@
                                             "com.microsoft.VSCode",
                                             "com.visualstudio.code.oss",
                                             "com.jetbrains.WebStorm",
-                                            "com.google.android.studio",
-                                            "net.kovidgoyal.kitty"
+                                            "com.google.android.studio"
                                         ],
                                         "file_paths": ["ck2\\.app", "eu4\\.app"],
                                         "type": "frontmost_application_if"
@@ -454,8 +444,7 @@
                                             "com.microsoft.VSCode",
                                             "com.visualstudio.code.oss",
                                             "com.jetbrains.WebStorm",
-                                            "com.google.android.studio",
-                                            "net.kovidgoyal.kitty"
+                                            "com.google.android.studio"
                                         ],
                                         "file_paths": ["ck2\\.app", "eu4\\.app"],
                                         "type": "frontmost_application_if"
@@ -479,8 +468,7 @@
                                             "com.microsoft.VSCode",
                                             "com.visualstudio.code.oss",
                                             "com.jetbrains.WebStorm",
-                                            "com.google.android.studio",
-                                            "net.kovidgoyal.kitty"
+                                            "com.google.android.studio"
                                         ],
                                         "file_paths": ["ck2\\.app", "eu4\\.app"],
                                         "type": "frontmost_application_if"

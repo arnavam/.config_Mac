@@ -18,6 +18,11 @@ print(argb)
 END
 }
 
+# Create the config directory if it doesn't exist
+CONFIG_DIR="$HOME/.config/borders"
+mkdir -p "$CONFIG_DIR"
+
+
 # Select a random hue (0-360)
 HUE=$(( RANDOM % 360 ))
 # Saturation fixed at 0.8 for vivid colors
@@ -33,7 +38,7 @@ ACTIVE_COLOR=$(hsl_to_argb_hex $HUE $SAT $LIGHTNESS_ACTIVE)
 BACKGROUND_COLOR=$(hsl_to_argb_hex $HUE $SAT $LIGHTNESS_BACKGROUND)
 
 # Update your options array with these colors
-cat <<EOF > bordersrc
+cat <<EOF > "$CONFIG_DIR/bordersrc" 
 options=(
 	style=round
 	width=4.0

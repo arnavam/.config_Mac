@@ -85,5 +85,5 @@ yabai -m space 4 --label docs
 yabai -m space 5 --label social
 yabai -m rule --add app="^Safari$" space=^1
 yabai -m rule --add app="^Zen$" space=^1
-yabai -m rule --add app="^kitty$" space=^3
-yabai -m rule --add app="^Code$" space=code border=off
+yabai -m rule --add app="^kitty$" space=^2 border=off
+yabai -m rule --add app="^Code$" space=^3 

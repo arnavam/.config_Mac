@@ -318,7 +318,7 @@
 "outputColor":"blink_",
 // The 'text' property holds the command to execute
 
-"text": "cat macos.txt | lolcat --force > macos_logo.txt && rig | sed -n '1p;3p' | xargs"
+"text": " rig | sed -n '1p;3p' | xargs"
 
 } ,
 
