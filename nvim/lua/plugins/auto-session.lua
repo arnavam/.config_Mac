@@ -19,8 +19,8 @@ return {
       load_on_setup = true,
     },
     -- allowed_dirs = { "~/projects/*", "~/.config/nvim" },
-	    bypass_session_save_file_types = { "terminal" },
-   suppressed_dirs = { "/tmp", "~/.cache" ,"~/.config/nvim"}
+     bypass_session_save_file_types = { "terminal" },
+   suppressed_dirs = { "/tmp", "~/.cache" ,"~/.config/nvim","/Users/arnav/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/"}
   },
 }
 

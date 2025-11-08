@@ -99,3 +99,19 @@ vim.o.laststatus = 1
 --   end,
 -- })
 
+vim.opt.wrap = true
+vim.opt.linebreak = true
+
+
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*",
+  callback = function()
+    vim.cmd("normal! G")
+  end,
+})
+
+
+vim.opt_local.conceallevel = 2
+
+

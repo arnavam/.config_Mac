@@ -18,7 +18,17 @@
 
 --   end,
 -- })
-
+-- vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
+--   callback = function()
+--     local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
+--     if not normal.bg then return end
+--     io.write(string.format("\027]11;#%06x\027\\", normal.bg))
+--   end,
+-- })
+--
+-- vim.api.nvim_create_autocmd("UILeave", {
+--   callback = function() io.write("\027]111\027\\") end,
+-- })
 -- vim.cmd.colorscheme("catppuccin")
 -- vim.cmd.colorscheme 'tokyonight-night'
 -- vim.cmd.colorscheme("onedark")
@@ -48,12 +58,12 @@ local colors = require('monokai-pro')
 -- vim.api.nvim_set_hl(0, "NeoTreeGitDeleted", { link = "DiffDelete" })
 -- vim.api.nvim_set_hl(0, "NeoTreeIndentMarker", { link = "Comment" })
 colors._load('pro')
--- vim.api.nvim_set_hl(0, "WhichKeyBorder", {  bg = colors.bg, fg = "#FFFFFF" })
+--vim.api.nvim_set_hl(0, "WhichKeyBorder", {  bg = colors.bg, fg = "#FFFFFF" })
 vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", {  bg = colors.bg, fg = "#FFFFFF" })
 vim.api.nvim_set_hl(0, "NeoTreeFloatBorder", {  bg = colors.bg, fg = "#FFFFFF" })
 -- vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { bg = "#FFFFFF", fg = "#000000", bold = true})
 
-
+vim.api.nvim_set_hl(0, "FloatBorder", {  bg = colors.bg, fg = "#FFFFFF" })
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "neo-tree",
 --   callback = function()

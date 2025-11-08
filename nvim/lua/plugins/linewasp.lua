@@ -1,7 +1,8 @@
 return {
-  -- "nvim-zh/colorful-winsep.nvim",
-  -- config = function()
-  --   require("colorful-winsep").setup()
-  -- end,
+	Lazy = true,
+  "nvim-zh/colorful-winsep.nvim",
+  config = function()
+    require("colorful-winsep").setup()
+  end,
 }
 

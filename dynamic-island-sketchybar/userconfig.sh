@@ -8,7 +8,7 @@
 
 # Which display should the dynamic island be available?
 # Available options: all, main, id of display (e.g. 1, 2, 3)
-P_DYNAMIC_ISLAND_DISPLAY=main
+P_DYNAMIC_ISLAND_DISPLAY=ALL
 
 # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 # Font icons may not load properly if not SF Pro

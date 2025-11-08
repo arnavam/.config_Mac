@@ -1,8 +1,6 @@
 --NOTE: [[ Basic Keymaps ]]
-
 vim.keymap.set('n', 'J', '<C-d>')
 vim.keymap.set('n', 'K', '<C-u>', { noremap = true, silent = true })
-
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -56,18 +54,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 --   end,
 -- })
 
--- vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
 vim.keymap.set('n', 'g/', ':noh<CR>')
-vim.keymap.set("n", "<D-a>", "ggVG", { noremap = true, silent = true })
-vim.keymap.set('v', '<D-c>', '"y', { desc = 'Copy to system clipboard' })
+vim.keymap.set('v', '<M-c>', 'y', { desc = 'Copy to system clipboard' })
 
 local opts = { noremap = true, silent = true, desc = "Delete into d register" }
 
 vim.keymap.set('n', 'd', '"dd', opts)
 vim.keymap.set('n', 'd', '"dd', opts) -- delete into "d register
 vim.keymap.set('v', 'd', '"dd', opts)
-
+vim.keymap.set("n", "<M-a>", "ggVG", { noremap = true, silent = true })
 -- Normal mode
+
 vim.keymap.set('n', '<leader>r', '<C-r>', { noremap = true, silent = true })
 
 -- Insert mode (redo is a bit different, usually Ctrl+o u)
@@ -75,7 +72,7 @@ vim.keymap.set('i', '<leader>r', '<C-o><C-r>', { noremap = true, silent = true }
 
 -- Visual mode
 vim.keymap.set('v', '<leader>r', '<C-r>', { noremap = true, silent = true })
-vim.keymap.set('v', 'p', '"_dP', { noremap = true, silent = true })
+vim.keymap.set('v', 'p', '"_dp', { noremap = true, silent = true })
 
 vim.keymap.set ("n" , "<leader>+", "<C-a>",
 	{
@@ -88,4 +85,3 @@ vim.keymap.set("n",
 desc = "Decrement number" })
 
 
---vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})

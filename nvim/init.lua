@@ -14,10 +14,12 @@ LUA
 
 --]]
 
+require 'config.lazy'
 require 'config.options'
 require 'config.keymaps'
-require 'config.lazy'
 require 'config.colors'
+require 'config.health'
+require 'config.workflow'
 --require('lazy').setup {
   -- Detect tabstop and shiftwidth automatically
 

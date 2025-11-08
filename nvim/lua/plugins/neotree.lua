@@ -11,7 +11,7 @@ return {
 
 	keys = {
 		{ 's',         ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true, nowait = true },
-		{ '<leader>e', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true, nowait = true },
+		-- { '<leader>e', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true, nowait = true },
 		-- Ctrl + Enter to open Neo-tree in horizontal split
 	},
 
@@ -23,7 +23,7 @@ return {
 				layout = { filter_position = 'top' },
 				mappings = {
 					['s'] = 'close_window',
-					['<leader>e'] = 'close_window',
+					-- ['<leader>e'] = 'close_window',
 					['..'] = 'navigate_up',
 					['<leader>o'] = 'set_root', -- Set selected dir as root
 					['<C-CR>'] = 'open_vsplit',

@@ -62,10 +62,11 @@ return {
 
 
 		require("nvim-dap-virtual-text").setup({
-			commented = true,   -- Show virtual text alongside comment
+			commented = false,   -- Show virtual text alongside comment
 			all_frames = true,  -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
 			virt_lines = true,  -- show virtual lines instead of virtual text (will flicker!)
-			virt_text_win_col = nil
+			virt_text_win_col = 80, 
+			highlight_changed_variables = true
 		})
 		require('mason-nvim-dap').setup {
 			-- Makes a best effort to setup the various debuggers with
@@ -101,21 +102,10 @@ return {
 			element_mappings = {},
 			expand_lines = vim.fn.has("nvim-0.7") == 1,
 			layouts = {
-				-- {
-				--   elements = {
-				--     -- Stack vertically for narrow sidebar
-				--   --  { id = "scopes", size = 0.35 },      -- Variables and state
-				--     { id = "breakpoints", size = 0.25 }, -- Breakpoints list
-				--     { id = "stacks", size = 0.20 },      -- Call stack
-				--     { id = "watches", size = 0.20 },     -- Watch expressions
-				--   },
-				--   size = 5, -- Narrow but readable
-				--   position = "left",
-				-- },
 				{
 					elements = {
-						{ id = "repl",    size = 0.8 }, -- REPL gets most space
-						{ id = "console", size = 0.2 }, -- Console minimal
+						{ id = "console", size = 0.7 },
+						{ id = "stacks",    size = 0.3 },
 					},
 					size = 10,                        -- Short height
 					position = "bottom",
@@ -125,7 +115,7 @@ return {
 			controls = {
 				enabled = vim.fn.has("nvim-0.5") == 1,
 				-- Display controls in this element
-				element = "repl",
+				element = "console",
 				icons = {
 					pause = "",
 					play = "",
@@ -140,7 +130,7 @@ return {
 			floating = {
 				max_height = nil,
 				max_width = nil,
-				border = "single",
+				border = "rounded",
 				mappings = {
 					close = { "q", "<Esc>" },
 				},
@@ -182,7 +172,7 @@ return {
 			vim.notify("🟢 Debug session exited", vim.log.levels.INFO)
 		end
 
-		dap.listeners.after.event_initialized['dapui_config'] = nil
+		dap.listeners.after.event_initialized['dapui_config'] = dap.goto_(1)
 		dap.listeners.before.event_terminated['dapui_config'] = nil
 		dap.listeners.before.event_exited['dapui_config'] = nil
 
@@ -221,8 +211,6 @@ return {
 				enter = true
 				,
 				position = 'center',
-				border = 'rounded'
-				,
 				title = 'Stacks'
 			})
 		end, { desc = 'Float Call Stack' })
@@ -235,8 +223,6 @@ return {
 				enter = true
 				,
 				position = 'center',
-				border = 'rounded'
-				,
 				title = 'BreakPoints'
 			})
 		end, { desc = 'Float Breakpoints' })
@@ -248,21 +234,17 @@ return {
 				enter = true
 				,
 				position = 'center',
-				border = 'rounded'
-				,
 				title = 'Watches'
 			})
 		end, { desc = 'Float Watches' })
 
-		vim.keymap.set('n', '<leader>drp', function()
+		vim.keymap.set('n', '<leader>dre', function()
 			require('dapui').float_element('repl', {
 				width = 70,
 				height = 15,
 				enter = true
 				,
 				position = 'center',
-				border = 'rounded'
-				,
 				title = 'RepL'
 			})
 		end, { desc = 'Float REPL' })
@@ -274,20 +256,18 @@ return {
 				enter = true
 				,
 				position = 'center',
-				border = 'rounded'
-				,
 				title = 'Console'
 			})
 		end, { desc = 'Float Console' })
 
-		table.insert(dap.configurations.python, {
-			type = 'python',
-			request = 'launch',
-			name = 'Launch with ',
-			program = '${file}',
-			console = 'External Terminal',
-			justMyCode = false,
-		})
+		-- table.insert(dap.configurations.python, {
+		-- 	type = 'python',
+		-- 	request = 'launch',
+		-- 	name = 'External Terminal',
+		-- 	program = '${file}',
+		-- 	console = 'externalTerminal',
+		-- 	justMyCode = false,
+		-- })
 		table.insert(dap.configurations.python, {
 			type = 'python',
 			request = 'launch',
@@ -300,7 +280,6 @@ return {
     if dap.session() then
       dapui.close()
       dap.terminate()
-      vim.wait(150)
     end
   end,
 })

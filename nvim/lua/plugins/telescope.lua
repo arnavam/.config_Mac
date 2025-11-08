@@ -46,7 +46,11 @@ return { -- Fuzzy er (files, lsp, etc)
       --
       defaults = {
         mappings = {
-          i = { ["<C-CR>"] = "file_vsplit", },
+          i = {
+						["<C-CR>"] = "file_vsplit",
+						["<C-q>"] = require('telescope.actions').send_to_qflist,
+				},
+
         },
       },
 			-- pickers = {
@@ -89,6 +93,46 @@ return { -- Fuzzy er (files, lsp, etc)
         previewer = false,
       })
     end, { desc = '[/] Fuzzily search in current buffer' })
+
+	
+
+
+		vim.keymap.set('n', '<leader>dd', function()
+  local diagnostics = vim.diagnostic.get(0)
+  if #diagnostics == 0 then
+    vim.notify("No diagnostics in current buffer", vim.log.levels.INFO)
+  else
+    local messages = {}
+    local severity_counts = { error = 0, warn = 0, info = 0, hint = 0 }
+    
+    for _, diag in ipairs(diagnostics) do
+      local severity = diag.severity
+      if severity == vim.diagnostic.severity.ERROR then
+        severity_counts.error = severity_counts.error + 1
+      elseif severity == vim.diagnostic.severity.WARN then
+        severity_counts.warn = severity_counts.warn + 1
+      elseif severity == vim.diagnostic.severity.INFO then
+        severity_counts.info = severity_counts.info + 1
+      elseif severity == vim.diagnostic.severity.HINT then
+        severity_counts.hint = severity_counts.hint + 1
+      end
+
+      table.insert(messages, string.format("Line %d:%d - %s", diag.lnum + 1, diag.col + 1, diag.message))
+    end
+    
+    if #messages > 0 then
+      print("Detailed diagnostics:")
+      for i, msg in ipairs(messages) do
+        print(string.format("%d. %s", i, msg))
+      end
+    end
+  end
+end)
+
+vim.keymap.set('n', '<C-q>', function()
+  require('telescope.actions').send_to_qflist()
+  vim.cmd('copen')  -- Open quickfix list after sending
+end, { desc = "Send to quickfix and open" })
 
     -- It's also possible to pass additional configuration options.
     --  See `:help telescope.builtin.live_grep()` for information about particular keys
