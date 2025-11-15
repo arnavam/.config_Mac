@@ -1,7 +1,0 @@
-change accpet to tab in  cmd line tool
-change icon meaning in dashboard
-resolve session not saving in auto-session
-transparent homepage else a beutfull one
-if neded change telescope
-
-
