@@ -1,0 +1,343 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+
+//-----------------------------//
+  //                 LOGO SECTION             //
+  //-----------------------------//
+  "logo": { 
+  "type": "auto", 
+
+  "source": "/Users/arnav/.config/fastfetch/macos_logo.txt",  
+ 
+  "width": 5,
+  "height": null, 
+  "padding": {
+    "top": 0, "left": 0, "right": 4 
+  },
+  "printRemaining": true, 
+  "preserveAspectRatio": true, 
+  "recache": false, // Don't regenerate cached logos
+  "position": "left", // Logo on left side
+  "chafa": { // Settings for Chafa image backend
+    "fgOnly": false, // Use both foreground and background colors
+    "symbols": "block+border+space-wide-inverted" // Character set for image rendering
+  }
+
+  },
+
+//-----------------------------//
+//      DISPLAY SECTION          //
+//-------------------------//
+
+  "display": {
+  "stat": false, // Don't show performance statistics
+  "pipe": false, // Not in pipe mode (normal terminal output)
+  "showErrors": true, // Show error messages
+  "disableLinewrap": true, // Prevent text wrapping
+  "hideCursor": true, // Keep cursor invisible
+  "separator": " -> ", // Key-value separator like →
+  "color": { // Custom colors (empty = use defaults)
+    "keys": "", "title": "", "output": "", "separator": "red"
+  },
+  "brightColor": false, // Don't use bright/bold colors
+  // Duration formatting (for uptime, etc.)
+  "duration": {
+    "abbreviation": false, // Use short units (h, m, s)
+    "spaceBeforeUnit": "never" // Space before time units
+  },
+  // Size formatting (for memory, disk, etc.)
+  "size": {
+    "maxPrefix": "YB", // Largest unit to display (Yottabytes)
+    "binaryPrefix": "iec", // Use binary units (GiB, MiB)
+    "ndigits": 2, // Number of decimal digits
+    "spaceBeforeUnit": "default" // Space before size units
+  },
+  // Temperature display settings
+  "temp": {
+    "unit": "D", // Celsius (D = degree)
+    "ndigits": 1, // 1 decimal digit
+    "color": { // Color coding for temperatures
+      "green": "32", "yellow": "93", "red": "91"
+    },
+    "spaceBeforeUnit": "default"
+  },
+  // Percentage display settings
+  "percent": {
+    "type": ["num-color","num","bar"], // Show number with color coding
+    "ndigits": 0, // No decimal digits
+    "color": { // Color thresholds
+      "green": "32", "yellow": "93", "red": "91"
+    },
+    "spaceBeforeUnit": "default",
+    "width": 0 // Auto width
+  },
+  // Progress bar settings
+  "bar": {
+    "char": {
+      "elapsed": "■", // Filled portion character
+      "total": "-" // Empty portion character
+    },
+    "border": {
+      "left": "[ ", "right": " ]", // Bar borders
+      "leftElapsed": "", "rightElapsed": ""
+    },
+    "color": {
+      "elapsed": "auto", // Automatic color for filled part
+      "total": "97", // Color for empty part (white)
+      "border": "97" // Color for borders (white)
+    },
+    "width": 10 // Bar width in characters
+  },
+  "fraction": { "ndigits": 2 }, // Fraction display settings
+  "noBuffer": false, // Use output buffering
+  // Key (left side) display settings
+  "key": {
+    "width": 0, // Auto width
+    "type": "icon", // Display as string
+    "paddingLeft": 0 // No left padding
+  },
+  // Frequency display settings
+  "freq": {
+    "ndigits": 2, // 2 decimal digits
+    "spaceBeforeUnit": "default"
+  },
+  "constants": [] // Custom constants (empty)
+},
+"general": {
+  "thread": true, // Use multi-threading for faster execution
+  "processingTimeout": 5000, // 5-second timeout for operations
+  "detectVersion": true // Auto-detect software versions
+},
+//----------------modules
+  "modules": [
+
+    
+    {
+      "type": "title",
+      "key": " ",
+      "keyIcon": "",
+      "fqdn": true,
+      "color": {
+        "user": "",
+        "at": "",
+        "host": ""
+      },
+      "format": "{user-name-colored}@{host-name-colored}"
+    },
+    {
+      "type": "separator",
+      "string": "┌─────────────────────────────────────┐",
+      "outputColor": "blue",
+      "times": 1,
+      "condition": {}
+        },
+    {
+      "type": "os",
+      "keyIcon": "",
+      "format": "{codename} {version}",  
+      "outputColor":"cyan"
+    },
+    // {
+    //   "type": "host",
+    //   "keyIcon": "󰌢"
+    // },
+    // {
+    //   "type": "kernel",
+    //   "keyIcon": ""
+    // },
+    {
+      "type": "uptime",
+      "keyIcon": ""
+    },
+    // {
+    //   "type": "packages",
+    //   "keyIcon": "󰏖",
+    //   "disabled": [
+    //     "winget"
+    //   ],
+    //   "combined": false
+    // },
+    // {
+    //   "type": "shell",
+    //   "keyIcon": ""
+    // },
+    // {
+    //   "type": "display",
+    //   "keyIcon": "󰍹",
+    //   "compactType": "scaled-with-refresh-rate",
+    //   "preciseRefreshRate": true,
+    //   "order": "desc"
+    // },
+    {
+      "type": "de",
+      "keyIcon": "",
+      "slowVersionDetection": true
+    },
+    {
+      "type": "wm",
+      "keyIcon": "",
+      "detectPlugin": true
+    },
+    // {
+    //   "type": "wmtheme",
+    //   "keyIcon": "󰓸"
+    // },
+
+    // {
+    //   "type": "font",
+    //   "keyIcon": ""
+    // },
+    // {
+    //   "type": "cursor",
+    //   "keyIcon": "󰆿"
+    // },
+    // {
+    //   "type": "terminal",
+    //   "keyIcon": ""
+    // },
+    // {
+    //   "type": "terminalfont",
+    //   "keyIcon": ""
+    // },
+    {
+      "type": "cpu",
+      "keyIcon": "",
+      "temp": true,
+      "showPeCoreCount": true,
+      "format":"{temperature}"//@{freq-max}"
+
+    },
+    // {
+    //   "type": "gpu",
+    //   "keyIcon": "󰾲",
+    //   "driverSpecific": false,
+    //   "detectionMethod": "auto",
+    //   "temp": false,
+    //   "hideType": "none",
+    //   "percent": {
+    //     "green": 50,
+    //     "yellow": 80,
+    //     "type": 0
+    //   }
+    //   ,"format": "{shared-used}  {shared-total} {dedicated-total} {platform-api}"
+    // },
+    {
+      "type": "memory",
+      "keyIcon": "",
+      "percent": {
+        "green": 50,
+        "yellow": 80,
+        "type": 0
+      },"format": "RAM  {percentage-bar} ({percentage}) {used} used"
+    },
+
+
+    {
+      "type": "disk",
+      "keyIcon": "",
+      "showRegular": true,
+      "showExternal": true,
+      "showHidden": false,
+      "showSubvolumes": false,
+      "showReadOnly": true,
+      "showUnknown": false,
+      "folders": "",
+      "hideFolders": "",
+      "hideFS": "",
+      "useAvailable": true,
+      "percent": {
+        "green": 50,
+        "yellow": 80,
+        "type": 0
+      }   
+      ,"format": "DISK {size-percentage-bar} ({size-percentage}) {size-free} free "//{hours} {minutes}"
+      
+      ,"condition": {"system":"macOS"}
+    },
+        {
+      "type": "swap",
+      "percent": {
+        "green": 50,
+        "yellow": 80,
+        "type": 0
+      },
+      "keyIcon": "󰓡",
+      "separate": true,
+      "format": "SWAP {percentage-bar} ({percentage}) {used} / {total}"
+    },
+    {
+      "type": "localip",
+      "keyIcon": "󰩟",
+      "showIpv4": true,
+      "showIpv6": false,
+      "showMac": false,
+      "showLoop": false,
+      "showPrefixLen": true,
+      "showMtu": false,
+      "showSpeed": true,
+      "showFlags": false,
+      "compact": false,
+      "defaultRouteOnly": true,
+      "showAllIps": false,
+      "namePrefix": ""
+    },
+    {
+      "type": "battery",
+      "keyIcon": "",
+      "temp": false,
+      "percent": {
+        "green": 50,
+        "yellow": 20,
+        "type": 0
+      }
+      , "format": "cycle count  → {cycle-count} time-remaining: {time-seconds}"
+    },
+    {
+      "type": "poweradapter",
+      "keyIcon": "󰚥"
+
+    },
+    // {
+    //   "type": "locale",
+    //   "keyIcon": ""
+    // },
+      {
+      "type": "separator",
+      "string": "└─────────────────────────────────────┘",
+      "outputColor": "blue",
+      "times": 1,
+      "condition": {}
+        },
+{
+
+"type": "command",
+
+"key": "image-change",
+
+"keyIcon": "",
+"outputColor":"blink_",
+// The 'text' property holds the command to execute
+
+"text": " rig | sed -n '1p;3p' | xargs"
+
+} ,
+
+    "break",
+    {
+      "type": "colors",
+      "key": " ",
+      "keyIcon": "",
+      "symbol": "circle",
+      "paddingLeft": 8,
+      "block": {
+        "width": 20,
+        "range": [
+          0,
+          15
+        ]
+      }
+    }
+    
+  ]
+}
+

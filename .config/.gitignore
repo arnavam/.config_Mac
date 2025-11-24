@@ -1,0 +1,6 @@
+raycast
+.tmp.driveupload
+.tmp.drivedownload
+flutter
+**/.DS_Store*
+tmux/plugins

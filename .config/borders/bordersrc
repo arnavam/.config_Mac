@@ -1,0 +1,13 @@
+options=(
+	style=round
+	width=4.0
+	hidpi=on
+	ax_focus=on
+	inactive_color=0xffBAF7CD
+	active_color=0xff5EED8B
+	blur_radius=0.2
+	background_color=0xffBAF7CD
+)
+borders "${options[@]}"
+
+
