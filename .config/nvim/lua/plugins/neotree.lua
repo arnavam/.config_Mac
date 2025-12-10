@@ -26,7 +26,8 @@ return {
 					-- ['<leader>e'] = 'close_window',
 					['..'] = 'navigate_up',
 					['<leader>o'] = 'set_root', -- Set selected dir as root
-					['<C-CR>'] = 'open_vsplit',
+					['v'] = 'open_vsplit',
+					['h'] = 'open_split',
 				},
 			},
 			-- Custom trash commands inside filesystem.commands

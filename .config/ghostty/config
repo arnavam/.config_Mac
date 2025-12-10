@@ -1,25 +1,25 @@
 # font-family 
 
-font-family = "JetBrainsMono Nerd Font Mono Regular"
-font-family-bold = "JetBrainsMono NFM ExtraBold"
-font-family-italic = "JetBrainsMono NFM Italic"
-font-family-bold-italic = "JetBrainsMono NFM ExtraBold Italic"
+font-family = "Iosevka Term Extended"
+font-family-bold = "Iosevka Term Bold Extended"
+font-family-italic = "Iosevka Term Extended Italic"
+font-family-bold-italic = "Iosevka Term Bold Extended Italic"
 font-size = 14
 font-thicken = true
-# alpha-blending = linear
+alpha-blending = linear
 
 #background 
 
 background-image = ~/Pictures/wallpaper/0042.jpg
-background-image-fit = cover 
-# background-image-opacity =  0.5
-# background-blur = 0.2
-# background =  #000000
+background-image-fit = cover
+background-image-opacity =  1
+background-blur = false
+background = #000000
 
 #cursor
 
 mouse-hide-while-typing = true
-cursor-style = underline
+cursor-style = bar
 scrollback-limit = 10000000
 cursor-style-blink = true
 
@@ -31,18 +31,18 @@ custom-shader-animation = true
 wait-after-command = true
 
 bell-features = audio
-
+shell-integration-features = no-cursor
 # windows & tabs	
 window-vsync = true
 window-inherit-working-directory = true
 window-inherit-font-size =true
-# window-padding-balance = true  
+window-padding-balance = true  
+window-padding-x = 0
+window-padding-y = 0
 window-step-resize = true
-# window-decoration = none
-window-padding-color = extend
-# macos-titlebar-style = hidden
 unfocused-split-opacity = 0.9
-# window-padding-color = extend
+
+window-padding-color = extend
 macos-titlebar-style =hidden
 confirm-close-surface =false
 
@@ -59,12 +59,11 @@ quick-terminal-position = bottom
 keybind = cmd+c=copy_to_clipboard
 keybind = cmd+v=paste_from_clipboard
 
-keybind = ctrl+r=reload_config
 
 keybind = ctrl+tab=ignore
 keybind = ctrl+shift+tab=ignore
 
-keybind = ctrl+a>o=toggle_tab_overview
+keybind = ctrl+b>o=toggle_tab_overview
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 ### Scrolling/Clear
 ##keybind = cmd+k=scroll_line_up
@@ -84,5 +83,4 @@ keybind = global:cmd+grave_accent=toggle_quick_terminal
 ##keybind = ctrl+alt+-=change_font_size:all:-2.0  # Kitty ctrl+alt+minus
 ### Misc (fullscreen toggle, etc.)
 ##keybind = ctrl+cmd+f=toggle_fullscreen
-##keybind = cmd+,=edit_config_file  # Reload/config
-##keybind = cmd+r=load_config_file  # Kitty reload
+#:#keybind = cmd+,=edit_config_file  # Reload/config

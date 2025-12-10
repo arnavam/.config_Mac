@@ -29,11 +29,12 @@
 -- vim.api.nvim_create_autocmd("UILeave", {
 --   callback = function() io.write("\027]111\027\\") end,
 -- })
--- vim.cmd.colorscheme("catppuccin")
 -- vim.cmd.colorscheme 'tokyonight-night'
--- vim.cmd.colorscheme("onedark")
 vim.cmd.colorscheme 'monokai-pro'
 local colors = require('monokai-pro')
+-- vim.cmd.colorscheme("catppuccin")
+--
+-- vim.cmd.colorscheme("onedark")
 -- vim.api.nvim_set_hl(0, "NeoTreeFolderName", { link = "Directory" })
 -- vim.api.nvim_set_hl(0, "NeoTreeGitAdded", { link = "DiffAdd" })
 -- -- vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = colors.bg, fg = colors.fg })
@@ -57,13 +58,16 @@ local colors = require('monokai-pro')
 -- vim.api.nvim_set_hl(0, "NeoTreeGitModified", { link = "DiffChange" })
 -- vim.api.nvim_set_hl(0, "NeoTreeGitDeleted", { link = "DiffDelete" })
 -- vim.api.nvim_set_hl(0, "NeoTreeIndentMarker", { link = "Comment" })
-colors._load('pro')
+-- colors._load('pro')
 --vim.api.nvim_set_hl(0, "WhichKeyBorder", {  bg = colors.bg, fg = "#FFFFFF" })
 vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", {  bg = colors.bg, fg = "#FFFFFF" })
 vim.api.nvim_set_hl(0, "NeoTreeFloatBorder", {  bg = colors.bg, fg = "#FFFFFF" })
 -- vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { bg = "#FFFFFF", fg = "#000000", bold = true})
 
 vim.api.nvim_set_hl(0, "FloatBorder", {  bg = colors.bg, fg = "#FFFFFF" })
+
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#FFFFFF" })  -- Dark gray divider, transparent bg
+-- Or match your background: { fg = "#1A1B26", bg = "NONE" }
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "neo-tree",
 --   callback = function()

@@ -4,3 +4,9 @@ raycast
 flutter
 **/.DS_Store*
 tmux/plugins
+./github-copilot/
+./.copilot
+./simple-update-notifier/
+./gh/
+./amp
+./slicer.org/

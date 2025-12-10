@@ -1,0 +1,24 @@
+return {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+    config = function()
+        require("tiny-inline-diagnostic").setup({
+
+preset = "modern",
+    transparent_bg = false,
+
+    -- Make cursorline background transparent for diagnostics
+    transparent_cursorline = true,
+
+    options = {
+        -- Display the source of diagnostics (e.g., "lua_ls", "pyright")
+        show_source = {
+            if_many = true,           -- Only show source if multiple sources exist for the same diagnostic
+            enabled = true,           -- Enable showing source names
+        },
+			}
+				})
+        vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
+    end,
+}

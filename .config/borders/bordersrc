@@ -3,10 +3,10 @@ options=(
 	width=4.0
 	hidpi=on
 	ax_focus=on
-	inactive_color=0xffBAF7CD
-	active_color=0xff5EED8B
+	inactive_color=0xffF7BACA
+	active_color=0xffED5E84
 	blur_radius=0.2
-	background_color=0xffBAF7CD
+	background_color=0xffF7BACA
 )
 borders "${options[@]}"
 

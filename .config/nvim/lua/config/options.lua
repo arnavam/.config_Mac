@@ -74,13 +74,14 @@ vim.o.confirm = true
 
 
 vim.o.visualbell = true
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
--- vim.o.softtabstop = 2
--- vim.o.expandtab = true
---
 vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,terminal,localoptions"
-vim.o.laststatus = 1
+vim.o.laststatus = 0
+
+vim.opt.tabstop = 2       -- Display width of tabs
+vim.opt.shiftwidth = 2    -- Size of an indent
+vim.opt.softtabstop = 2   -- Edit width of tabs
+vim.opt.expandtab = true  -- Convert tabs to spaces
+vim.opt.autoindent = true -- Copy indent from current line
 -- Set cmdheight to 1 on entering command line,
 -- Set back to 0 shortly after leaving to reduce flicker and errors
 --
@@ -89,15 +90,14 @@ vim.o.laststatus = 1
 --     vim.cmd("setlocal cmdheight=1")
 --   end,
 -- })
---
--- vim.api.nvim_create_autocmd("CmdlineLeave", {
---   callback = function()
---     -- Delay needed to allow cmdline to disappear cleanly before resetting height
---     vim.defer_fn(function()
---       vim.cmd("setlocal cmdheight=0")
---     end, 100)
---   end,
--- })
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+  callback = function()
+    -- Delay needed to allow cmdline to disappear cleanly before resetting height
+    vim.defer_fn(function()
+      vim.cmd("setlocal cmdheight=0")
+    end, 100)
+  end,
+})
 
 vim.opt.wrap = true
 vim.opt.linebreak = true
@@ -113,5 +113,13 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 
 vim.opt_local.conceallevel = 2
-
-
+vim.o.winborder = 'rounded' 
+vim.opt.guicursor = table.concat({
+  "n-c:block-blinkwait700-blinkoff400-blinkon250",           -- Normal: blinking block
+  "i-ci-ve:ver25-blinkwait700-blinkoff400-blinkon250",       -- Insert: blinking beam
+  "v:hor20-blinkwait700-blinkoff400-blinkon250",             -- Visual: blinking underline
+  "r-cr-o:hor20-blinkwait700-blinkoff400-blinkon250",        -- Replace: blinking underline
+}, ",")
+-- vim.opt_local.spell = false
+-- vim.opt_local.spelllang = { "en_us" }
+-- s

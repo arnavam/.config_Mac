@@ -30,6 +30,12 @@ return { -- Autocompletion
       opts = {},
     },
     'folke/lazydev.nvim',
+    {
+      'saghen/blink.compat',
+      optional = true, -- make optional so it's only enabled if any extras need it
+      opts = {},
+      version = not vim.g.lazyvim_blink_main and '*',
+    },
   },
   -- @module 'blink.:cmp'
   -- @type blink.cmp.Config
@@ -68,16 +74,17 @@ return { -- Autocompletion
       -- By default, you may press `<c-space>` to show the documentation.
       menu = {
         auto_show = true,
-        border = 'rounded',auto_show_delay_ms	=500,
+        border = 'rounded',
+        auto_show_delay_ms = 500,
         -- nvim-cmp style menu
         draw = {
           columns = {
-            { 'label', 'label_description', gap = 1 },
-            { 'kind_icon', 'kind', gap = 1 },
+            { 'label',     'label_description', gap = 1 },
+            { 'kind_icon', 'kind',              gap = 1 },
           },
         },
       },
-      documentation = { auto_show = false, auto_show_delay_ms =1000, treesitter_highlighting = true, window = { border = 'rounded' } },
+      documentation = { auto_show = false, auto_show_delay_ms = 1000, treesitter_highlighting = true, window = { border = 'rounded' } },
     },
 
     sources = {

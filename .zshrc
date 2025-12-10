@@ -1,10 +1,9 @@
-
 #NOTE: fastfetch
 
 #  to run fastfetch only on first opned terminal or tab
 
 LIVE_COUNTER=$(ps a | awk '{print $2}' | grep -vi "tty*" | uniq | wc -l);
-if [ $LIVE_COUNTER -eq 2 ]; then
+if [ $LIVE_COUNTER -eq 3 ]; then
 	fastfetch
 fi
 echo Hello user 󱠢 | lolcat
@@ -22,11 +21,11 @@ fi
 
 
 
-if command -v tmux &> /dev/null; then
-    if [ -z "$TMUX" ]; then
-        tmux attach-session -t default || tmux new-session -s default
-    fi
-fi
+# if command -v tmux &> /dev/null; then
+#     if [ -z "$TMUX" ]; then
+#         tmux attach-session -t default || tmux new-session -s default
+#     fi
+# fi
 #NOTE: ZINIT
 
 # look if XDG_DATA_HOME exists else look .local/share for the zinit
@@ -42,13 +41,30 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-# Add in zsh plugins
+unalias zi 2>/dev/null
+
+function zvm_config() {
+  # Always start in insert mode
+  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+  
+  # Enable cursor style (make sure this is true, not false)
+  ZVM_CURSOR_STYLE_ENABLED=true
+  
+  # Set blinking cursors for each mode
+  ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BEAM
+  ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BLOCK
+  ZVM_VISUAL_MODE_CURSOR=$ZVM_CURSOR_BLINKING_UNDERLINE
+  ZVM_VISUAL_LINE_MODE_CURSOR=$ZVM_CURSOR_BLINKING_UNDERLINE
+  ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_BLINKING_UNDERLINE
+}
+
+# Load the plugin with zinit
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
-
-zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 zinit ice depth=1; zinit light romkatv/powerlevel10k # passing depth=1 to next cmd using zinit ice & light is a cmd use to load p10k lightly
 
 #NOTE: P10k
@@ -67,7 +83,6 @@ autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 #bindkey '^M' autosuggest-accept
-bindkey -v
 
 #bindkey -M viins '^M' autosuggest-accept
 
@@ -102,7 +117,9 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 #zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-eval "$(fzf --zsh)"
+function zvm_after_init() {
+  eval "$(fzf --zsh)"
+}
 
 #NOTE: fd
 #
@@ -141,23 +158,7 @@ alias oo='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/ML'
 alias cat="bat"
 alias conda="mamba"
 alias cd="z"
-#NOTE: >>> conda initialize >>>
-
-# !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
-# # . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"  # commented out by conda initialize
-#     else
-# # export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"  # commented out by conda initialize
-#     fi
-# fi
-# unset __conda_setup
-# <<< conda initialize <<<
-
-
+alias cdi="zi"
 #NOTE: >>> mamba initialize >>>
 
 # !! Contents within this block are managed by 'mamba shell init' !!
@@ -170,24 +171,55 @@ else
     alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
 fi
 unset __mamba_setup
+
+mamba activate base
 # <<< mamba initialize <<<
 
 
+#NOTE: zioxide & yazi
+
+eval "$(zoxide init zsh)"
+
+y() {
+  local query="${1:-.}"
+  zoxide add "$query" 2>/dev/null
+  
+  local target="."
+  if [[ "$query" != "." ]]; then
+    target=$(zoxide query "$query" 2>/dev/null || echo ".")
+  fi
+
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp" "$target"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+  trash "$tmp"
+}
+
+
+
+
 #NOTE: export
-# export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
-export PATH="$HOME:/TinyTeX/bin/universal-darwin:$PATH"
+export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/Users/arnav/.rd/bin:$PATH" # ranger
+
+export COLIMA_HOME=$HOME/.colima
 export NNN_PLUG='p:preview-tui;f:finder;d:fzcd;'
 export HOMEBREW_NO_AUTO_UPDATE=1
-
+export EDITOR="nvim"
 source ~/.zsh-defer/zsh-defer.plugin.zsh
 
 cat /Users/arnav/.config/fastfetch/macos.txt| lolcat --force > /Users/arnav/.config/fastfetch/macos_logo.txt 
 
-#zinit ice wait lucid atinit'Fpath+=~/.zsh/conda-zsh-completion' atload'compinit'
-#zinit light ~/.zsh/conda-zsh-completion
+# pnpm
+export PNPM_HOME="/Users/arnav/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
-# ZVM_CURSOR_STYLE_ENABLED=false
-export EDITOR="nvim"
-export VI_MODE_SET_CURSOR=true
-eval "$(zoxide init zsh)"
-
+# Added by Antigravity
+export PATH="/Users/arnav/.antigravity/antigravity/bin:$PATH"
+export DOCKER_BUILDKIT=1

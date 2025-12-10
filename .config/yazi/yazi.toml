@@ -3,10 +3,10 @@
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 [mgr]
-ratio          = [ 2, 4, 3 ]
-sort_by        = "alphabetical"
+ratio          = [ 2, 4, 5 ]
+sort_by        = "mtime"
 sort_sensitive = false
-sort_reverse 	 = false
+sort_reverse 	 = true
 sort_dir_first = true
 sort_translit  = false
 linemode       = "none"
@@ -15,12 +15,13 @@ show_symlink   = true
 scrolloff      = 5
 mouse_events   = [ "click", "scroll" ]
 title_format   = "Yazi: {cwd}"
-
+bg             = "#202020"
+fg             = "#ffffff"
 [preview]
 wrap            = "no"
 tab_size        = 2
-max_width       = 600
-max_height      = 900
+max_width       = 1200
+max_height      = 1000
 cache_dir       = ""
 image_delay     = 30
 image_filter    = "triangle"
@@ -146,12 +147,35 @@ previewers = [
 	{ mime = "application/ms-opentype", run = "font" },
 	# Empty file
 	{ mime = "inode/empty", run = "empty" },
+
+
+
+  { name = "*.csv", run = "duckdb" },
+  { name = "*.tsv", run = "duckdb" },
+  { name = "*.json", run = "duckdb" },
+  { name = "*.parquet", run = "duckdb" },
+  { name = "*.txt", run = "duckdb" },
+  { name = "*.xlsx", run = "duckdb" },
+  { name = "*.db", run = "duckdb" },
+  { name = "*.duckdb", run = "duckdb" },
+
 	# Fallback
 	{ name = "*", run = "file" },
 ]
 
+
+prepend_preloaders = [
+  { name = "*.csv", run = "duckdb", multi = false },
+  { name = "*.tsv", run = "duckdb", multi = false },
+  { name = "*.json", run = "duckdb", multi = false },
+  { name = "*.parquet", run = "duckdb", multi = false },
+  { name = "*.txt", run = "duckdb", multi = false },
+  { name = "*.xlsx", run = "duckdb", multi = false }
+]
+
+
 [input]
-cursor_blink = false
+cursor_blink = true 
 
 # cd
 cd_title  = "Change directory:"
@@ -221,3 +245,31 @@ sort_by      	 = "none"
 sort_sensitive = false
 sort_reverse 	 = false
 sort_translit  = false
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*"
+run  = "git"
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*/"
+run  = "git"
+[[plugin.prepend_previewers]]
+name = "*/"
+run  = 'mux eza_tree_1 eza_tree_2 eza_tree_3 eza_tree_4'
+
+[[plugin.prepend_previewers]]
+name = "*.csv"
+run = "mux duckdb code"
+
+prepend_previewers = [
+  { name = "*/", run = "mux eza_tree_1 eza_tree_2 eza_tree_3 eza_tree_4" },
+	{ name = "*.csv", run = "mux duckdb code" },
+  { name = "*.tsv", run = "mux duckdb code" },
+  { name = "*.json", run = "mux duckdb code" },
+  # ...
+]
+
+
+

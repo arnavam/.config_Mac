@@ -74,7 +74,7 @@ vim.keymap.set('i', '<leader>r', '<C-o><C-r>', { noremap = true, silent = true }
 vim.keymap.set('v', '<leader>r', '<C-r>', { noremap = true, silent = true })
 vim.keymap.set('v', 'p', '"_dP', { noremap = true, silent = true })
 
-vim.keymap.set ("n" , "<leader>+", "<C-a>",
+vim.keymap.set ("n" , "+", "<C-a>",
 	{
 desc = "Increment number" })
 
@@ -86,3 +86,27 @@ desc = "Decrement number" })
 
 
 vim.keymap.set("v", "f", 'y/<C-R>"<CR>N', { noremap = true })
+vim.keymap.set('n', '-', ':wq<CR>', { noremap = true, silent = true })
+
+vim.api.nvim_set_hl(0, "@NvimTreeWidgetWinSep", { fg = "#3E4451", bg = "NONE" })
+
+vim.keymap.set("n", "<C-p>", "<C-d>")
+vim.keymap.set("n", "<C-u>", "<C-u>")
+
+-- plugins
+vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Toggle Zen Mode" })
+
+vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select  all" })
+vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
+
+-- strike through, bold, and italic shortcuts
+vim.keymap.set('v', '<leader>,s', 'c~~<c-r>"~~')
+vim.keymap.set('v', '<leader>,b', 'c**<c-r>"**')
+vim.keymap.set('v', '<leader>,i', 'c_<c-r>"_')
+
+-- urls and titles
+vim.keymap.set('v', '<leader>,t', 'c[<c-r>"]()<left>')
+vim.keymap.set('v', '<leader>,u', 'c[](<c-r>")<c-o>F]')
+
+-- wrap in backticks
+vim.keymap.set('v', '<leader>,`', 'c`<c-r>"`')

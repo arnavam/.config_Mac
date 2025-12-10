@@ -1,6 +1,6 @@
 return {
 	'numToStr/FTerm.nvim',
-	lazy = false, -- Enable immediately
+	lazy = false,
 	config = function()
 		local fterm = require 'FTerm'
 
@@ -19,9 +19,14 @@ return {
 		-- Side terminal instance
 		local side_term = fterm:new({
 			ft = "fterm_side",
-			dimensions = { height = 1.0, width = 0.4 },
+			dimensions = { 
+				height = 1.0, 
+				width = 0.4,
+				x = 1.0,
+				y = 1.0
+			},
 			position = 'right',
-			border = 'single',
+			border = 'double',
 			cmd = vim.o.shell,
 		})
 
@@ -32,7 +37,7 @@ return {
 				--hf-repo ggml-org/Qwen2.5-Coder-1.5B-Q8_0-GGUF \
 				--hf-file qwen2.5-coder-1.5b-q8_0.gguf \
 				--port 8012 -ngl 99 --flash-attn on \
-				--ubatch-size 512 --batch-size 1024 --cache-reuse 256]],
+				--ubatch-size 512 --batch-size 1024 --cache-reuse 256 -standby-timeout 600]],
 		})
 
 		-- Keymaps
@@ -41,14 +46,16 @@ return {
 		vim.keymap.set('n', '<leader>ls', function() llama:toggle() end, { desc = 'Toggle llama server' })
 
 		-- Terminal mode escape to normal mode
-		vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
+		vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = false })
 
-		-- Close terminal in normal mode
+		-- Close terminal in normal mode for all FTerm filetypes
 		vim.api.nvim_create_autocmd('FileType', {
-			pattern = 'FTerm',
+			pattern = { 'FTerm', 'fterm_side', 'fterm_llama' },  -- Include all custom filetypes
 			callback = function()
 				local buf = vim.api.nvim_get_current_buf()
-				vim.keymap.set('n', 'q', '<cmd>close<CR>', { buffer = buf, silent = true })
+				vim.keymap.set('n', 'q', '<cmd>close<CR>', { buffer = buf, silent = false })
+				vim.keymap.set('n', '<Esc>', '<cmd>close<CR>', { buffer = buf, silent = false })
+
 			end,
 		})
 	end,

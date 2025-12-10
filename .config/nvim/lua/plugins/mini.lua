@@ -3,19 +3,39 @@ return { -- Collection of various small independent plugins/modules
   version = '*',
   config = function()
     require('mini.ai').setup { n_lines = 500 }
+    -- require('mini.diff').setup()
     require 'mini.pairs'
-		--   require('mini.misc').setup {
-		--   auto_root = { enabled = true },
-		-- 		restore_cursor = { enabled = true },
-		-- 	-- termbg_sync ={enabled =true}
-		-- }
+    --   require('mini.misc').setup {
+    --   auto_root = { enabled = true },
+    -- 		restore_cursor = { enabled = true },
+    -- 	-- termbg_sync ={enabled =true}
+    -- }
 
+    -- require('mini.indentscope').setup {
+    --   options = {
+    --     -- Type of scope's border: which line(s) with smaller indent to
+    --     -- categorize as border. Can be one of: 'both', 'top', 'bottom', 'none'.
+    --     border = 'both',
+    --
+    --     -- Whether to use cursor column when computing reference indent.
+    --     -- Useful to see incremental scopes with horizontal cursor movements.
+    --     indent_at_cursor = true,
+    --
+    --     -- Maximum number of lines above or below within which scope is computed
+    --     n_lines = 10000,
+    --
+    --     -- Whether to first check input line to be a border of adjacent scope.
+    --     -- Use it if you want to place cursor on function header to get scope of
+    --     -- its body.
+    --     try_as_border = true,
+    --   },
+    -- }
     require('mini.comment').setup {
       -- Module mappings. Use `''` (empty string) to disable one.
       mappings = {
         -- Toggle comment (like `gcip` - comment inner paragraph) for both
         -- Normal and Visual modes
-        -- comment = 'gc',
+        comment = 'gc',
 
         -- Toggle comment on current line
         comment_line = 'gcc',
@@ -41,10 +61,10 @@ return { -- Collection of various small independent plugins/modules
     hipatterns.setup {
       highlighters = {
         -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
-      	fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
-      	hack  = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
-				todo  = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
-      	note  = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
+        fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
+        hack = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
+        todo = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
+        note = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
 
         -- Highlight hex color strings (`#rrggbb`) using that color
         hex_color = hipatterns.gen_highlighter.hex_color(),
