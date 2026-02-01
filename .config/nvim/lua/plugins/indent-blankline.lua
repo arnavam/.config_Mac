@@ -23,7 +23,7 @@ return {
       debounce = 200,
     }
 
-    vim.keymap.set("n", "<leader>u", "<cmd>IBLToggle<cr>", { desc = "Toggle indent guides" })
+    vim.keymap.set("n", "<leader>ui", "<cmd>IBLToggle<cr>", { desc = "Toggle indent guides" })
   end,
 }
 

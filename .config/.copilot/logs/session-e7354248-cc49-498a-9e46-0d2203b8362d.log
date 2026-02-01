@@ -1,0 +1,50 @@
+2025-12-10T09:33:52.000Z [INFO] Starting Copilot CLI: 0.0.367
+Commit: 9b421b4
+2025-12-10T09:33:52.000Z [INFO] Node.js version: v25.2.1
+2025-12-10T09:33:52.247Z [INFO] Login status unknown
+2025-12-10T09:33:52.262Z [INFO] Remote session access disabled
+2025-12-10T09:33:52.263Z [ERROR] Error checking for updates: TypeError: Cannot read properties of undefined (reading 'paths')
+2025-12-10T09:33:52.270Z [INFO] Logged in as user: arnavam
+2025-12-10T09:33:52.722Z [LOG] Starting remote MCP client for github-mcp-server with url: https://api.individual.githubcopilot.com/mcp/readonly
+2025-12-10T09:33:52.722Z [LOG] Creating MCP client for github-mcp-server...
+2025-12-10T09:33:52.725Z [LOG] Connecting MCP client for github-mcp-server...
+2025-12-10T09:33:54.105Z [LOG] MCP client for github-mcp-server connected, took 1380ms
+2025-12-10T09:33:54.105Z [LOG] Started MCP client for remote server github-mcp-server
+2025-12-10T09:33:54.105Z [LOG] GitHub MCP server configured after authentication
+2025-12-10T09:34:44.833Z [LOG] Starting remote MCP client for github-mcp-server with url: https://api.individual.githubcopilot.com/mcp/readonly
+2025-12-10T09:34:44.833Z [LOG] Creating MCP client for github-mcp-server...
+2025-12-10T09:34:44.834Z [LOG] Connecting MCP client for github-mcp-server...
+2025-12-10T09:34:45.559Z [LOG] MCP client for github-mcp-server connected, took 725ms
+2025-12-10T09:34:45.559Z [LOG] Started MCP client for remote server github-mcp-server
+2025-12-10T09:34:46.786Z [INFO]  
+2025-12-10T09:34:50.874Z [INFO] [log_a5ac01, x-request-id: "00000-b89255db-585e-4092-a797-a6952c19344a"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3130ms
+
+2025-12-10T09:34:56.711Z [INFO] [log_883e43, x-request-id: "00000-992c591b-4845-42a0-bb21-22ccfb6f3bad"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4235ms
+
+2025-12-10T09:35:27.701Z [INFO] [log_bf3db9, x-request-id: "00000-8435ec00-ac4c-43d4-80df-25c8f398c473"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2022ms
+
+2025-12-10T09:35:29.722Z [INFO] [log_2baf52, x-request-id: "00000-44fcc7c8-07c4-4b6b-b0c9-f34fc0b6a84b"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 1320ms
+
+2025-12-10T09:37:52.479Z [INFO]  
+2025-12-10T09:37:58.216Z [INFO] [log_aa6e42, x-request-id: "00000-76110094-3203-4741-b360-e33948ee0b86"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4419ms
+
+2025-12-10T09:38:04.930Z [INFO] [log_669c6b, x-request-id: "00000-90ae77e0-6ad8-4ff3-a2d7-d8157027813d"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4472ms
+
+2025-12-10T09:38:09.839Z [INFO] [log_d0a6ae, x-request-id: "00000-a18d1b84-0197-4cfe-924b-282bd1326925"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3635ms
+
+2025-12-10T09:40:35.246Z [INFO] [log_810566, x-request-id: "00000-19b2e5b4-733e-41a2-b47d-082e1b033107"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 5546ms
+
+2025-12-10T10:00:52.286Z [INFO]  
+2025-12-10T10:01:09.794Z [INFO] [log_2520bc, x-request-id: "00000-e4f3a6b4-b289-49f0-8b30-affc9c4e9d8f"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 15944ms
+
+2025-12-10T10:01:14.297Z [INFO] [log_c5dfdc, x-request-id: "00000-b1bf2f86-7f0e-4ab8-b242-fb3f06fef403"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3621ms
+
+2025-12-10T10:02:02.930Z [INFO] [log_97cc3a, x-request-id: "00000-45352a2a-ddf1-4748-a5a3-1215c8a933e9"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3108ms
+
+2025-12-10T10:06:02.119Z [INFO]  
+2025-12-10T10:06:07.357Z [INFO] [log_264df6, x-request-id: "00000-b9e0c43a-9dd0-4224-a9c7-a73be304c512"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3952ms
+
+2025-12-10T10:06:11.657Z [INFO] [log_f9048a, x-request-id: "00000-109ab66a-ee0f-4033-a289-a0b487c47a93"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3594ms
+
+2025-12-10T10:06:28.508Z [INFO] [log_33ecdd, x-request-id: "00000-9c13044f-f09a-4b08-84d7-e6fec1b4c8a8"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4711ms
+

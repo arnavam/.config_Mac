@@ -1,12 +1,31 @@
 return {
-  'MeanderingProgrammer/render-markdown.nvim',
-  after = { 'nvim-treesitter' },
-  -- requires = { 'nvim-mini/mini.nvim', opt = true },            -- if you use the mini.nvim suite
-  -- requires = { 'nvim-mini/mini.icons', opt = true },        -- if you use standalone mini plugins
-  requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
-  config = function()
-    require('render-markdown').setup {
-      file_types = { 'markdown', 'copilot-chat' },
-    }
-  end,
+  -- 'MeanderingProgrammer/render-markdown.nvim',
+  -- -- after = { 'nvim-treesitter' },
+  -- -- dependencies = { 'nvim-mini/mini.nvim' },            -- if you use the mini.nvim suite
+  -- -- dependencies = { 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+  -- dependencies = { 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+  --
+  -- config = function()
+  --   require('render-markdown').setup({
+  --     file_types = { 'markdown', 'copilot-chat' },
+  --     completions = { lsp = { enabled = true } },
+  --     -- highlights = {
+  --     --   code = { link = "Normal" }, -- or use "MarkdownCode", "Comment", etc.
+  --     --   code_block = { link = "Normal" }, -- or another group you prefer
+  --     -- },
+  --   })
+  --   --
+  --   vim.api.nvim_set_hl(0, "@markup.strong.markdown_inline", { link = "Bold" }) -- or use {} to clear
+  --   vim.api.nvim_set_hl(0, "@markup.raw.delimiter.markdown", { link = "Comment" })
+  --   vim.api.nvim_set_hl(0, "@markup.italic.markdown_inline", { link = "Italic" })
+  --   vim.api.nvim_set_hl(0, "@text.literal.markdown_inline", { link = "String" })
+  --   vim.api.nvim_set_hl(0, "@punctuation.special.markdown", { link = "Special" })
+  --   vim.api.nvim_set_hl(0, "@text.strong.markdown_inline", { link = "Bold" })
+  --   vim.api.nvim_set_hl(0, "@text.literal.block.markdown", { link = "String" })
+  --   vim.api.nvim_set_hl(0, "@markup.raw.markdown_inline", { link = "String" })
+  --   vim.api.nvim_set_hl(0, "@markup.raw.block.markdown", { bg = "#ffffff",  bold = true })
+  --   vim.api.nvim_set_hl(0, "@text.quote.markdown", { link = "Comment" })
+  --   vim.api.nvim_set_hl(0, "@conceal.markdown", {})
+  --
+  -- end,
 }

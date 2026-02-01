@@ -61,7 +61,7 @@ return {
       default_integrations = true,
       auto_integrations = false,
       integrations = {
-        cmp = true,
+        -- cmp = true,
         gitsigns = true,
         nvimtree = true,
         notify = false,

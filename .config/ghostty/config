@@ -10,7 +10,7 @@ alpha-blending = linear
 
 #background 
 
-background-image = ~/Pictures/wallpaper/0042.jpg
+background-image = dark-image.jpg
 background-image-fit = cover
 background-image-opacity =  1
 background-blur = false
@@ -44,6 +44,7 @@ unfocused-split-opacity = 0.9
 
 window-padding-color = extend
 macos-titlebar-style =hidden
+#macos-titlebar-style = tabs
 confirm-close-surface =false
 
 # macos-quit-when-last-window-closed = true  

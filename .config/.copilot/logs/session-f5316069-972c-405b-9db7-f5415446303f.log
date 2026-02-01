@@ -1,0 +1,46 @@
+2025-12-18T12:29:39.227Z [INFO] Starting Copilot CLI: 0.0.367
+Commit: 9b421b4
+2025-12-18T12:29:39.227Z [INFO] Node.js version: v25.2.1
+2025-12-18T12:29:39.489Z [INFO] Login status unknown
+2025-12-18T12:29:39.518Z [INFO] Remote session access disabled
+2025-12-18T12:29:39.519Z [ERROR] Error checking for updates: TypeError: Cannot read properties of undefined (reading 'paths')
+2025-12-18T12:29:39.526Z [INFO] Logged in as user: arnavam
+2025-12-18T12:29:39.964Z [LOG] Starting remote MCP client for github-mcp-server with url: https://api.individual.githubcopilot.com/mcp/readonly
+2025-12-18T12:29:39.964Z [LOG] Creating MCP client for github-mcp-server...
+2025-12-18T12:29:39.969Z [LOG] Connecting MCP client for github-mcp-server...
+2025-12-18T12:29:42.144Z [LOG] MCP client for github-mcp-server connected, took 2175ms
+2025-12-18T12:29:42.144Z [LOG] Started MCP client for remote server github-mcp-server
+2025-12-18T12:29:42.144Z [LOG] GitHub MCP server configured after authentication
+2025-12-18T12:30:10.157Z [LOG] Starting remote MCP client for github-mcp-server with url: https://api.individual.githubcopilot.com/mcp/readonly
+2025-12-18T12:30:10.157Z [LOG] Creating MCP client for github-mcp-server...
+2025-12-18T12:30:10.158Z [LOG] Connecting MCP client for github-mcp-server...
+2025-12-18T12:30:10.814Z [LOG] MCP client for github-mcp-server connected, took 656ms
+2025-12-18T12:30:10.814Z [LOG] Started MCP client for remote server github-mcp-server
+2025-12-18T12:30:12.356Z [INFO]  
+2025-12-18T12:30:17.334Z [INFO] [log_638d7e, x-request-id: "00000-6304e2e7-7c87-41a1-8584-75d3d774f537"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4314ms
+
+2025-12-18T12:30:22.617Z [INFO] [log_e09f07, x-request-id: "00000-c16c3a26-f444-4d36-a922-893013d67359"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4479ms
+
+2025-12-18T12:30:37.128Z [INFO] [log_af7750, x-request-id: "00000-194ffa25-8947-4106-b4a6-2470e342e4f1"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 5294ms
+
+2025-12-18T12:30:49.009Z [INFO] [log_f0065b, x-request-id: "00000-59a325ea-8cec-46a4-8b94-ca87208194c3"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4374ms
+
+2025-12-18T12:30:59.760Z [INFO] [log_7c4b04, x-request-id: "00000-cfd20074-a15e-4dc3-8661-2abf9bda3374"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4164ms
+
+2025-12-18T12:32:02.553Z [INFO] [log_a79a32, x-request-id: "00000-2c94af39-c426-4ea0-a0b3-d757f1e04cfb"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 6310ms
+
+2025-12-18T12:32:07.498Z [INFO] [log_ddf9e2, x-request-id: "00000-57870c84-1e8c-4764-a601-f939446a327a"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4411ms
+
+2025-12-18T12:32:29.206Z [INFO]  
+2025-12-18T12:32:35.505Z [INFO] [log_1f4f54, x-request-id: "00000-bc491aa3-dcac-45cb-9f1e-1ece6be11f5e"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 5586ms
+
+2025-12-18T12:33:15.897Z [INFO]  
+2025-12-18T12:33:20.759Z [INFO] [log_30bf1b, x-request-id: "00000-c7d01e78-f447-4f50-a7e9-3987d6a74332"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4453ms
+
+2025-12-18T12:33:39.459Z [INFO] [log_417b78, x-request-id: "00000-8defcd6c-4746-4bca-aa05-4db701651adc"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4672ms
+
+2025-12-18T12:35:00.870Z [INFO]  
+2025-12-18T12:35:05.347Z [INFO] [log_4b8c6a, x-request-id: "00000-0b5ab471-8f0a-4c40-b4ff-4ece0230a074"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4073ms
+
+2025-12-18T12:35:26.679Z [INFO] [log_8c4ebb, x-request-id: "00000-12a5c3a7-5fbe-4404-8d05-fbbb3cebca7a"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4545ms
+

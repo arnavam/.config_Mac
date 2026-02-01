@@ -2,8 +2,15 @@ return { -- Autocompletion
   'saghen/blink.cmp',
   event = 'VimEnter',
   version = '1.*',
+  -- build = 'cargo build --release',
   dependencies = {
     -- Snippet Engine
+    --
+    'onsails/lspkind.nvim',
+    'folke/lazydev.nvim',
+    'mfussenegger/nvim-dap',
+
+    'rcarriga/cmp-dap',
     {
       'L3MON4D3/LuaSnip',
       version = '2.*',
@@ -29,58 +36,54 @@ return { -- Autocompletion
       },
       opts = {},
     },
-    'folke/lazydev.nvim',
     {
       'saghen/blink.compat',
-      optional = true, -- make optional so it's only enabled if any extras need it
+      -- optional = true, -- make optional so it's only enabled if any extras need it
+      -- 
       opts = {},
       version = not vim.g.lazyvim_blink_main and '*',
     },
   },
   -- @module 'blink.:cmp'
   -- @type blink.cmp.Config
-  --
 
   opts = {
 
     keymap = {
-      --
-      -- For an understanding of why the 'default' preset is recommended,
-      -- you will need to read `:help ins-completion`
-      --
-      -- No, but seriously. Please read `:help ins-completion`, it is really good!
-      --
-      -- All presets have the following mappings:
-      -- <tab>/<s-tab>: move to right/left of your snippet expansion
-      -- <c-space>: Open menu or open docs if already open
-      -- <c-n>/<c-p> or <up>/<down>: Select next/previous item
-      -- <c-e>: Hide menu
-      -- <c-k>: Toggle signature help
-      --
-      -- See :h blink-cmp-config-keymap for defining your own keymap
       preset = 'super-tab', -- 'default', 'super-tab', 'enter', 'none'
-
-      -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
-      --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
     },
 
     appearance = {
       use_nvim_cmp_as_default = false,
-      -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- Adjusts spacing to ensure icons are aligned
-      nerd_font_variant = 'normal',
+      nerd_font_variant = 'mono',
     },
     completion = {
-      -- By default, you may press `<c-space>` to show the documentation.
+
+      accept = { auto_brackets = { enabled = true } },
+
+      -- list = {
+      --     selection = function(ctx)
+      --         return ctx.mode == "cmdline" and "auto_insert" or "preselect"
+      --     end,
+      -- },
+
       menu = {
         auto_show = true,
         border = 'rounded',
         auto_show_delay_ms = 500,
-        -- nvim-cmp style menu
+
+        cmdline_position = function()
+          if vim.g.ui_cmdline_pos ~= nil then
+            local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
+            return { pos[1] - 1, pos[2] }
+          end
+          local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
+          return { vim.o.lines - height, 0 }
+        end,
         draw = {
           columns = {
-            { 'label',     'label_description', gap = 1 },
-            { 'kind_icon', 'kind',              gap = 1 },
+            { 'label', 'label_description', gap = 1 },
+            { 'kind_icon', 'kind', gap = 1 },
           },
         },
       },
@@ -91,6 +94,13 @@ return { -- Autocompletion
       default = { 'lsp', 'path', 'snippets', 'lazydev' },
       providers = {
         lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+        -- dap = {
+        --   name = 'dap',
+        --   module = 'blink.compat.source',
+        --   enabled = function()
+        --     return require('cmp_dap').is_dap_buffer()
+        --   end,
+        -- },
       },
     },
 
@@ -106,6 +116,6 @@ return { -- Autocompletion
     fuzzy = { implementation = 'lua' },
 
     -- Shows a signature help window while you type arguments for a function
-    signature = { enabled = true },
+    signature = { enabled = true, window = { border = 'rounded' } },
   },
 }

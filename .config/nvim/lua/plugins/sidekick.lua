@@ -3,6 +3,7 @@ return {
   opts = {
     -- add any options here
     cli = {
+      float = true,
       mux = {
         backend = "tmux",
         enabled = true,
@@ -69,9 +70,9 @@ return {
     },
     -- Example of a keybinding to open Claude directly
     {
-      "<leader>ac",
-      function() require("sidekick.cli").toggle({ name = "claude", focus = true }) end,
-      desc = "Sidekick Toggle Claude",
+      "<leader>as",
+      function() require("sidekick.cli").toggle({ name = "gemini", focus = true }) end,
+      desc = "Sidekick Toggle Gemini",
     },
   },
 }

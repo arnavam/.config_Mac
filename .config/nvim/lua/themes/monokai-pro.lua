@@ -15,16 +15,16 @@ return {
         annotation = { italic = true },
         tag_attribute = { italic = true }, -- attribute of tag in reactjs
       },
-      filter = 'pro', -- classic | octagon | pro | machine | ristretto | spectrum
+      -- filter = 'spectrum', -- classic | octagon | pro | machine | ristretto | spectrum
       -- Enable this will disable filter option
       day_night = {
-        enable = false, -- turn off by default
+        enable = true, -- turn off by default
         day_filter = 'pro', -- classic | octagon | pro | machine | ristretto | spectrum
         night_filter = 'spectrum', -- classic | octagon | pro | machine | ristretto | spectrum
       },
       inc_search = 'background', -- underline | background
       background_clear = {
-        -- "float_win",
+        "float_win",
         'toggleterm',
         'telescope',
         -- "which-key",
@@ -34,18 +34,18 @@ return {
         -- "neo-tree",
         'bufferline', -- better used if background of `neo-tree` or `nvim-tree` is cleared
       }, -- "float_win", "toggleterm", "telescope", "which-key", "renamer", "neo-tree", "nvim-tree", "bufferline"
-      -- dim_inactive = {
-      --         enabled = false,
-      --         shade = "dark",
-      --         percentage = 0.15,
-      --       },
+      dim_inactive = {
+              enabled = true,
+              shade = "dark",
+              percentage = 0.15,
+            },
       plugins = {
         bufferline = {
           underline_selected = false,
           underline_visible = false,
         },
         indent_blankline = {
-          context_highlight = 'default', -- default | pro
+          context_highlight = 'pro', -- default | pro
           context_start_underline = false,
         },
       },

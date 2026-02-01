@@ -1,0 +1,75 @@
+2026-01-31T19:54:17.042Z [INFO] Starting Copilot CLI: 0.0.367
+Commit: 9b421b4
+2026-01-31T19:54:17.043Z [INFO] Node.js version: v25.2.1
+2026-01-31T19:54:17.314Z [INFO] Login status unknown
+2026-01-31T19:54:17.335Z [INFO] Remote session access disabled
+2026-01-31T19:54:17.336Z [ERROR] Error checking for updates: TypeError: Cannot read properties of undefined (reading 'paths')
+2026-01-31T19:54:17.342Z [INFO] Logged in as user: arnavam
+2026-01-31T19:54:18.193Z [LOG] Starting remote MCP client for github-mcp-server with url: https://api.individual.githubcopilot.com/mcp/readonly
+2026-01-31T19:54:18.193Z [LOG] Creating MCP client for github-mcp-server...
+2026-01-31T19:54:18.196Z [LOG] Connecting MCP client for github-mcp-server...
+2026-01-31T19:54:22.713Z [LOG] MCP client for github-mcp-server connected, took 4517ms
+2026-01-31T19:54:22.713Z [LOG] Started MCP client for remote server github-mcp-server
+2026-01-31T19:54:22.713Z [LOG] GitHub MCP server configured after authentication
+2026-01-31T20:02:12.043Z [LOG] Starting remote MCP client for github-mcp-server with url: https://api.individual.githubcopilot.com/mcp/readonly
+2026-01-31T20:02:12.043Z [LOG] Creating MCP client for github-mcp-server...
+2026-01-31T20:02:12.044Z [LOG] Connecting MCP client for github-mcp-server...
+2026-01-31T20:02:13.961Z [LOG] MCP client for github-mcp-server connected, took 1916ms
+2026-01-31T20:02:13.961Z [LOG] Started MCP client for remote server github-mcp-server
+2026-01-31T20:02:16.003Z [INFO]  
+2026-01-31T20:02:21.115Z [INFO] [log_874e52, x-request-id: "00000-6035c015-9dfb-478f-8efc-3d3416549614"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3293ms
+
+2026-01-31T20:03:14.054Z [INFO] [log_6bee17, x-request-id: "00000-80de3e7e-5143-4bc4-a468-54a5abc6bd6f"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2939ms
+
+2026-01-31T20:03:49.762Z [INFO]  
+2026-01-31T20:03:53.168Z [INFO] [log_b1ebe8, x-request-id: "00000-9729b6be-9038-476c-9aa0-30995c6dde39"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2820ms
+
+2026-01-31T20:04:11.704Z [INFO] [log_2c34fd, x-request-id: "00000-47d31e38-fb12-42fe-9733-d0bdf3443b99"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3431ms
+
+2026-01-31T20:05:01.864Z [INFO]  
+2026-01-31T20:05:05.886Z [INFO] [log_96d05c, x-request-id: "00000-9731afda-7abb-44a9-8bbc-da0c5d7bc440"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2790ms
+
+2026-01-31T20:05:40.215Z [INFO] [log_bfd234, x-request-id: "00000-0f8de87a-92e7-47b5-94a5-89b02dfeedcc"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2448ms
+
+2026-01-31T21:04:21.375Z [INFO]  
+2026-01-31T21:04:25.874Z [INFO] [log_e61919, x-request-id: "00000-53e90126-2239-470c-aa7c-dab8a381f1b6"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2914ms
+
+2026-01-31T21:05:50.145Z [INFO]  
+2026-01-31T21:05:54.480Z [INFO] [log_aa1bdd, x-request-id: "00000-84b254c2-3bad-49e8-86cb-977743dcf368"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2722ms
+
+2026-01-31T21:06:01.135Z [INFO] [log_36e4f4, x-request-id: "00000-145ea7b6-432d-4c20-9c13-3b1b4db030e8"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2724ms
+
+2026-01-31T21:07:26.736Z [INFO]  
+2026-01-31T21:07:31.247Z [INFO] [log_6b5b6b, x-request-id: "00000-5ef6df5a-2bc5-4f5f-b193-37408bcbe906"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2634ms
+
+2026-01-31T21:07:43.025Z [INFO] [log_e98ff1, x-request-id: "00000-ed9764b9-2207-4075-9f3c-e58dcd561239"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2334ms
+
+2026-01-31T21:07:49.730Z [INFO] [log_87729c, x-request-id: "00000-7afb5e29-c7b4-46f4-b93f-bad5af4980a1"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2697ms
+
+2026-01-31T21:07:54.594Z [INFO] [log_8e11c1, x-request-id: "00000-3460e2bd-868c-4871-b4fb-f7cf956541a3"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2154ms
+
+2026-01-31T21:08:24.495Z [INFO] [log_be7bab, x-request-id: "00000-73b8da8f-2372-40ae-8b89-6d99c79b230c"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 1921ms
+
+2026-01-31T21:08:33.092Z [INFO]  
+2026-01-31T21:08:37.398Z [INFO] [log_904683, x-request-id: "00000-573f5f46-9801-4a4d-aafc-4a9450f8e26b"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2834ms
+
+2026-01-31T21:08:59.424Z [INFO] [log_ed4329, x-request-id: "00000-f816db6f-d09c-4653-8f1c-c6153a45deb3"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3057ms
+
+2026-01-31T21:09:13.490Z [ERROR] Each child in a list should have a unique "key" prop.
+
+Check the render method of `Box`. It was passed a child from Hzl. See https://react.dev/link/warning-keys for more information.
+
+2026-01-31T21:09:19.150Z [INFO] [log_8e94c9, x-request-id: "00000-96efc8a2-2bd8-4dd7-8f5b-26cd50c84cf6"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2346ms
+
+2026-01-31T21:09:22.249Z [INFO] [log_9e01a9, x-request-id: "00000-367eeeaa-5d52-4a1a-9e4d-aab9bb9aea60"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2475ms
+
+2026-01-31T21:12:40.777Z [INFO]  
+2026-01-31T21:12:45.411Z [INFO] [log_65a0a4, x-request-id: "00000-f8e10cb3-8ddc-41a5-8aae-cc4ab8ebea61"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3220ms
+
+2026-01-31T21:13:36.507Z [INFO] [log_bf1ee6, x-request-id: "00000-ac983b3c-bba4-405b-ba34-b9283fb6606d"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2162ms
+
+2026-01-31T21:17:06.081Z [INFO]  
+2026-01-31T21:17:10.840Z [INFO] [log_2607ed, x-request-id: "00000-6b8bd040-0cdd-476c-9e7c-ba7ec3570693"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3384ms
+
+2026-01-31T21:19:04.290Z [INFO] [log_442393, x-request-id: "00000-5ee6a424-08af-4e5e-a161-cd2a8d812554"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3381ms
+

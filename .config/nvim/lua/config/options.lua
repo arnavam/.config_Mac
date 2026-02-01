@@ -1,5 +1,6 @@
 -- NOTE:[[ Setting options ]]
 
+
 local o = vim.o
 -- See `:help vim.o`
 --  For more options, you can see `:help option-list`
@@ -120,6 +121,20 @@ vim.opt.guicursor = table.concat({
   "v:hor20-blinkwait700-blinkoff400-blinkon250",             -- Visual: blinking underline
   "r-cr-o:hor20-blinkwait700-blinkoff400-blinkon250",        -- Replace: blinking underline
 }, ",")
--- vim.opt_local.spell = false
--- vim.opt_local.spelllang = { "en_us" }
+vim.opt_local.spell = false
+vim.opt_local.spelllang = { "en_us" }
+
+vim.diagnostic.config({
+  virtual_text = false,
+})
 -- s
+-- Enable DAP completion ONLY in DAP buffers
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'dap-repl', 'dapui_watches', 'dapui_hover', 'dapui_scopes', 'dapui_breakpoints', 'dapui_stacks', 'dapui_frames' },
+  callback = function()
+    require('blink.cmp').sources.add('dap', { group = 1 })
+  end,
+  desc = 'Enable DAP completions in DAP buffers only',
+})
+
+--

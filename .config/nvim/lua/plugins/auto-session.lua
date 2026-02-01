@@ -1,5 +1,5 @@
 -- For lazy.nvim (in lua/plugins/auto-session.lua)
-return {
+session =  {
   "rmagatti/auto-session",
   lazy = false,
   keys = {
@@ -20,7 +20,10 @@ return {
     },
     -- allowed_dirs = { "~/projects/*", "~/.config/nvim" },
      bypass_session_save_file_types = { "terminal" },
-   suppressed_dirs = { "/tmp", "~/.cache" ,"~/.config/nvim","/Users/arnav/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/"}
+   suppressed_dirs = { "/tmp", "~/.cache" ,"/Users/arnav/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/"}
   },
 }
 
+
+-- print('hai')
+return session

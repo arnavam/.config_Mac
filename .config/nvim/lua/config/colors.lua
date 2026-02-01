@@ -59,7 +59,7 @@ local colors = require('monokai-pro')
 -- vim.api.nvim_set_hl(0, "NeoTreeGitDeleted", { link = "DiffDelete" })
 -- vim.api.nvim_set_hl(0, "NeoTreeIndentMarker", { link = "Comment" })
 -- colors._load('pro')
---vim.api.nvim_set_hl(0, "WhichKeyBorder", {  bg = colors.bg, fg = "#FFFFFF" })
+vim.api.nvim_set_hl(0, "WhichKeyBorder", {  bg = colors.bg, fg = "#FFFFFF" })
 vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", {  bg = colors.bg, fg = "#FFFFFF" })
 vim.api.nvim_set_hl(0, "NeoTreeFloatBorder", {  bg = colors.bg, fg = "#FFFFFF" })
 -- vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { bg = "#FFFFFF", fg = "#000000", bold = true})
@@ -67,21 +67,41 @@ vim.api.nvim_set_hl(0, "NeoTreeFloatBorder", {  bg = colors.bg, fg = "#FFFFFF" }
 vim.api.nvim_set_hl(0, "FloatBorder", {  bg = colors.bg, fg = "#FFFFFF" })
 
 vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#FFFFFF" })  -- Dark gray divider, transparent bg
+
+vim.api.nvim_set_hl(0, "VertSplit", { fg = "#FFFFFF" })  -- Dark gray divider, transparent bg
 -- Or match your background: { fg = "#1A1B26", bg = "NONE" }
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "neo-tree",
 --   callback = function()
 --       -- or any theme you want for neo-tree
+--
 --   end,
 -- })
 --
-vim.api.nvim_set_hl(0, 'AlphaHeader', { bg = '#ffd7d7' })
-vim.api.nvim_set_hl(0, 'AlphaButtons', { bg = '#ffd7d7' })
-vim.api.nvim_set_hl(0, 'AlphaFooter', { bg = '#ffd7d7' })
-
-vim.api.nvim_set_hl(0, "SnacksDashboardFile", { fg = "#000000",  bold = true })
-vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = "#000000",  bold = true })
-vim.api.nvim_set_hl(0, "SnacksDashboardTitle", { fg = "#000000",  bold = true })
-vim.api.nvim_set_hl(0, "SnacksDashboardFooter", { fg = "#000000",  bold = true })
-vim.api.nvim_set_hl(0, "SnacksDashboardKey", { fg = "#000000",  bold = true })
-vim.api.nvim_set_hl(0, "SnacksDashboardIcon", { fg = "#000000",  bold = true })
+--
+vim.api.nvim_set_hl(0, "Folded", {   link="@conceal.markdown"}) -- bg = "#4c494c"
+--
+-- vim.api.nvim_set_hl(0, 'AlphaHeader', { bg = '#ffd7d7' })
+-- vim.api.nvim_set_hl(0, 'AlphaButtons', { bg = '#ffd7d7' })
+-- vim.api.nvim_set_hl(0, 'AlphaFooter', { bg = '#ffd7d7' })
+--
+-- vi m.api.nvim_set_hl(0, "SnacksDashboardFile", { fg = "#000000",  bold = true })
+-- vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = "#000000",  bold = true })
+-- vim.api.nvim_set_hl(0, "SnacksDashboardTitle", { fg = "#000000",  bold = true })
+-- vim.api.nvim_set_hl(0, "SnacksDashboardFooter", { fg = "#000000",  bold = true })
+-- vim.api.nvim_set_hl(0, "SnacksDashboardKey", { fg = "#000000",  bold = true })
+-- vim.api.nvim_set_hl(0, "SnacksDashboardIcon", { fg = "#000000",  bold = true })
+--
+-- -- vim.api.nvim_set_hl(0, "@markup.raw.block.markdown", {})
+--
+--     vim.api.nvim_set_hl(0, "@markup.strong.markdown_inline", { bg = "#000000" }) -- or use {} to clear
+--     vim.api.nvim_set_hl(0, "@markup.raw.delimiter.markdown", {  bg = "#000000"})
+--     vim.api.nvim_set_hl(0, "@text.literal.markdown_inline", {  bg = "#000000"})
+--     vim.api.nvim_set_hl(0, "@text.strong.markdown_inline", {  bg = "#000000"})
+--     vim.api.nvim_set_hl(0, "@text.literal.block.markdown", {  bg = "#000000"})
+--     vim.api.nvim_set_hl(0, "@markup.raw.markdown_inline", {  bg = "#000000"})
+--     vim.api.nvim_set_hl(0, "@text.quote.markdown", {  bg = "#000000"})
+--     vim.api.nvim_set_hl(0, "@conceal.markdown", {bg = "#000000"})
+--     vim.api.nvim_set_hl(0, "rendermarkdowncode", {  bg = "#000000"})
+--
+--

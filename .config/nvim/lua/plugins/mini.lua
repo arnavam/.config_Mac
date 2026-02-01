@@ -4,6 +4,46 @@ return { -- Collection of various small independent plugins/modules
   config = function()
     require('mini.ai').setup { n_lines = 500 }
     -- require('mini.diff').setup()
+--     require 'mini.surround'.setup {
+--   -- Add custom surroundings to be used on top of builtin ones. For more
+--   -- information with examples, see `:h MiniSurround.config`.
+--   custom_surroundings = nil,
+--
+--   -- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
+--   highlight_duration = 500,
+--
+--   -- Module mappings. Use `''` (empty string) to disable one.
+--   mappings = {
+--     add = 'fa', -- Add surrounding in Normal and Visual modes
+--     delete = 'fd', -- Delete surrounding
+--     find = 'ff', -- Find surrounding (to the right)
+--     find_left = 'fF', -- Find surrounding (to the left)
+--     highlight = 'fh', -- Highlight surrounding
+--     replace = 'fr', -- Replace surrounding
+--
+--     suffix_last = 'l', -- Suffix to search with "prev" method
+--     suffix_next = 'n', -- Suffix to search with "next" method
+--   },
+--
+--   -- Number of lines within which surrounding is searched
+--   n_lines = 20,
+--
+--   -- Whether to respect selection type:
+--   -- - Place surroundings on separate lines in linewise mode.
+--   -- - Place surroundings on each line in blockwise mode.
+--   respect_selection_type = false,
+--
+--   -- How to search for surrounding (first inside current line, then inside
+--   -- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
+--   -- 'cover_or_nearest', 'next', 'prev', 'nearest'. For more details,
+--   -- see `:h MiniSurround.config`.
+--   search_method = 'cover',
+--
+--   -- Whether to disable showing non-error feedback
+--   -- This also affects (purely informational) helper messages shown after
+--   -- idle time if user input is required.
+--   silent = false,
+-- }
     require 'mini.pairs'
     --   require('mini.misc').setup {
     --   auto_root = { enabled = true },
@@ -13,7 +53,7 @@ return { -- Collection of various small independent plugins/modules
 
     -- require('mini.indentscope').setup {
     --   options = {
-    --     -- Type of scope's border: which line(s) with smaller indent to
+    --     -- Type of scope'f border: which line(s) with smaller indent to
     --     -- categorize as border. Can be one of: 'both', 'top', 'bottom', 'none'.
     --     border = 'both',
     --

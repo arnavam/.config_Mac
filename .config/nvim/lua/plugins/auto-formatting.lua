@@ -15,7 +15,7 @@ return {
         -- 'checkmake',
         -- 'prettier',
         -- 'shfmt',
-        'ruff',
+        -- 'ruff',
       },
       automatic_installation = true,
     }
@@ -26,7 +26,8 @@ return {
         diagnostics.checkmake,
         formatting.prettier.with {
           filetypes = {
-            -- 'jsonc', 'css', 'html', 'json', 'yaml', 'markdown'
+            -- 'jsonc', 'css', 'html', 'json', 'yaml',
+            'markdown'
           },
         },
         formatting.shfmt.with { args = { '-i', '4' } },

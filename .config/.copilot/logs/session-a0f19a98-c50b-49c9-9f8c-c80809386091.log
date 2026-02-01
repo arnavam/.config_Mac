@@ -1,0 +1,35 @@
+2025-12-15T16:58:45.345Z [INFO] Starting Copilot CLI: 0.0.367
+Commit: 9b421b4
+2025-12-15T16:58:45.345Z [INFO] Node.js version: v25.2.1
+2025-12-15T16:58:45.592Z [INFO] Login status unknown
+2025-12-15T16:58:45.609Z [INFO] Remote session access disabled
+2025-12-15T16:58:45.609Z [ERROR] Error checking for updates: TypeError: Cannot read properties of undefined (reading 'paths')
+2025-12-15T16:58:45.615Z [INFO] Logged in as user: arnavam
+2025-12-15T16:58:46.085Z [LOG] Starting remote MCP client for github-mcp-server with url: https://api.individual.githubcopilot.com/mcp/readonly
+2025-12-15T16:58:46.085Z [LOG] Creating MCP client for github-mcp-server...
+2025-12-15T16:58:46.088Z [LOG] Connecting MCP client for github-mcp-server...
+2025-12-15T16:58:48.008Z [LOG] MCP client for github-mcp-server connected, took 1920ms
+2025-12-15T16:58:48.009Z [LOG] Started MCP client for remote server github-mcp-server
+2025-12-15T16:58:48.009Z [LOG] GitHub MCP server configured after authentication
+2025-12-15T16:59:20.276Z [LOG] Starting remote MCP client for github-mcp-server with url: https://api.individual.githubcopilot.com/mcp/readonly
+2025-12-15T16:59:20.276Z [LOG] Creating MCP client for github-mcp-server...
+2025-12-15T16:59:20.277Z [LOG] Connecting MCP client for github-mcp-server...
+2025-12-15T16:59:20.974Z [LOG] MCP client for github-mcp-server connected, took 697ms
+2025-12-15T16:59:20.974Z [LOG] Started MCP client for remote server github-mcp-server
+2025-12-15T16:59:22.318Z [INFO]  
+2025-12-15T16:59:27.639Z [INFO] [log_fef873, x-request-id: "00000-cdf2b3bb-2d13-4375-99fa-473274de17fd"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4280ms
+
+2025-12-15T16:59:32.590Z [INFO] [log_01d56d, x-request-id: "00000-cf86c219-6056-4d9a-818b-c8417ef967f4"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4242ms
+
+2025-12-15T16:59:46.992Z [INFO] [log_cdee02, x-request-id: "00000-22eee2b4-1edd-42b5-8261-7f2b7261727e"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4116ms
+
+2025-12-15T16:59:59.375Z [INFO] [log_de8258, x-request-id: "00000-8f1c87b9-ab0d-49ea-8215-9e26d85c29f1"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3762ms
+
+2025-12-15T17:00:08.219Z [ERROR] Each child in a list should have a unique "key" prop.
+
+Check the render method of `Box`. It was passed a child from Hzl. See https://react.dev/link/warning-keys for more information.
+
+2025-12-15T17:00:40.927Z [INFO] [log_2ab35a, x-request-id: "00000-ba1fab36-b39c-4044-b3b1-96517f894ba0"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3882ms
+
+2025-12-15T17:00:45.544Z [INFO] [log_ac27da, x-request-id: "00000-261eb58e-2ea2-4e41-a378-90b97af824fa"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 3738ms
+

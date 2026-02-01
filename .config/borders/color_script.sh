@@ -47,7 +47,6 @@ options=(
 	inactive_color=$INACTIVE_COLOR
 	active_color=$ACTIVE_COLOR
 	blur_radius=0.2
-	background_color=$INACTIVE_COLOR
 )
 borders "\${options[@]}"
 
@@ -59,6 +58,8 @@ echo "Updated colors saved to bordersrc"
 echo "Inactive Color: $INACTIVE_COLOR"
 echo "Active Color: $ACTIVE_COLOR"
 echo "Background Color: $BACKGROUND_COLOR"
+
+## background_color=$INACTIVE_COLOR
 
 ##gradient(top_left=0xAARRGGBB,bottom_right=0xAARRGGBB)
 ##              gradient(top_right=0xAARRGGBB,bottom_left=0xAARRGGBB)

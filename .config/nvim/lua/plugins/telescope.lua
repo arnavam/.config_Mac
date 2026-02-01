@@ -13,23 +13,12 @@ return { -- Fuzzy er (files, lsp, etc)
       end,
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
-
+    'andrew-george/telescope-themes',
     -- Useful for getting pretty icons, but requires a Nerd Font.
-		--
+    --
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
   config = function()
-    -- Telescope is a fuzzy er that comes with a lot of different things that
-    -- it can fuzzy ! It's more than just a "file finder", it can search
-    -- many different aspects of Neovim, your workspace, LSP, and more!
-    --
-    -- The easiest way to use Telescope, is to start by doing something like:
-    --  :Telescope help_tags
-    --
-    -- After running this command, a window will open up and you're able to
-    -- type in the prompt window. You'll see a list of `help_tags` options and
-    -- a corresponding preview of the help.
-    --
     -- Two important keymaps to use while in Telescope are:
     --  - Insert mode: <c-/>
     --  - Normal mode: ?
@@ -45,23 +34,37 @@ return { -- Fuzzy er (files, lsp, etc)
       --  All the info you're looking for is in `:help telescope.setup()`
       --
       defaults = {
+        -- layout_strategy = "vertical",
+        --  layout_config = {
+        --    -- height = vim.o.lines, -- maximally available lines
+        --    -- width = vim.o.columns, -- maximally available columns
+        --    prompt_position = "top",
+        --    preview_height = 0.6, -- 60% of available lines
+        --  },
+        --
+        layout_config = {
+          horizontal = {
+            prompt_position = 'bottom',
+            preview_width = 0.6,
+          },
+        },
+
         mappings = {
           i = {
-						["<C-CR>"] = "file_vsplit",
-						["<C-q>"] = require('telescope.actions').send_to_qflist,
-				},
-
+            ['<C-CR>'] = 'file_vsplit',
+            ['<C-r>'] = require('telescope.actions').send_to_qflist,
+          },
         },
       },
-			-- pickers = {
-			--          help_tags = {
-			--              mappings = {
-			--                  i = {
-			--                      ["<CR>"] = "file_vsplit",
-			--                  },
-			--              },
-			--          },
-			--      },
+      -- pickers = {
+      --          help_tags = {
+      --              mappings = {
+      --                  i = {
+      --                      ["<CR>"] = "file_vsplit",
+      --                  },
+      --              },
+      --          },
+      --      },
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
@@ -72,9 +75,10 @@ return { -- Fuzzy er (files, lsp, etc)
     -- Enable Telescope extensions if they are installed
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
-
+    pcall(require('telescope').load_extension, 'themes')
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
+    vim.keymap.set('n', '<leader>ft', ':Telescope themes<CR>', { noremap = true, silent = true, desc = 'Theme Switcher' })
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
     vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]earch [K]eymaps' })
     vim.keymap.set('n', '<leader>s', builtin.find_files, { desc = '[F]iles [f]ind ' })
@@ -94,45 +98,37 @@ return { -- Fuzzy er (files, lsp, etc)
       })
     end, { desc = '[/] Fuzzily search in current buffer' })
 
-	
+    vim.keymap.set('n', '<leader>dd', function()
+      local diagnostics = vim.diagnostic.get(0)
+      if #diagnostics == 0 then
+        vim.notify('No diagnostics in current buffer', vim.log.levels.INFO)
+      else
+        local messages = {}
+        local severity_counts = { error = 0, warn = 0, info = 0, hint = 0 }
 
+        for _, diag in ipairs(diagnostics) do
+          local severity = diag.severity
+          if severity == vim.diagnostic.severity.ERROR then
+            severity_counts.error = severity_counts.error + 1
+          elseif severity == vim.diagnostic.severity.WARN then
+            severity_counts.warn = severity_counts.warn + 1
+          elseif severity == vim.diagnostic.severity.INFO then
+            severity_counts.info = severity_counts.info + 1
+          elseif severity == vim.diagnostic.severity.HINT then
+            severity_counts.hint = severity_counts.hint + 1
+          end
 
-		vim.keymap.set('n', '<leader>dd', function()
-  local diagnostics = vim.diagnostic.get(0)
-  if #diagnostics == 0 then
-    vim.notify("No diagnostics in current buffer", vim.log.levels.INFO)
-  else
-    local messages = {}
-    local severity_counts = { error = 0, warn = 0, info = 0, hint = 0 }
-    
-    for _, diag in ipairs(diagnostics) do
-      local severity = diag.severity
-      if severity == vim.diagnostic.severity.ERROR then
-        severity_counts.error = severity_counts.error + 1
-      elseif severity == vim.diagnostic.severity.WARN then
-        severity_counts.warn = severity_counts.warn + 1
-      elseif severity == vim.diagnostic.severity.INFO then
-        severity_counts.info = severity_counts.info + 1
-      elseif severity == vim.diagnostic.severity.HINT then
-        severity_counts.hint = severity_counts.hint + 1
+          table.insert(messages, string.format('Line %d:%d - %s', diag.lnum + 1, diag.col + 1, diag.message))
+        end
+
+        if #messages > 0 then
+          print 'Detailed diagnostics:'
+          for i, msg in ipairs(messages) do
+            print(string.format('%d. %s', i, msg))
+          end
+        end
       end
-
-      table.insert(messages, string.format("Line %d:%d - %s", diag.lnum + 1, diag.col + 1, diag.message))
-    end
-    
-    if #messages > 0 then
-      print("Detailed diagnostics:")
-      for i, msg in ipairs(messages) do
-        print(string.format("%d. %s", i, msg))
-      end
-    end
-  end
-end)
-
-vim.keymap.set('n', '<C-q>', function()
-  require('telescope.actions').send_to_qflist()
-  vim.cmd('copen')  -- Open quickfix list after sending
-end, { desc = "Send to quickfix and open" })
+    end)
 
     -- It's also possible to pass additional configuration options.
     --  See `:help telescope.builtin.live_grep()` for information about particular keys

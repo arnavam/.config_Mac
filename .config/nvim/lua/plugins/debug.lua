@@ -12,7 +12,7 @@ return {
   },
   keys = {
     {
-      "<A-r>",
+    "<F4>",
       function() require("dap").repl.toggle(nil, "tab split") end,
       desc = "Toggle DAP REPL",
     },
@@ -22,7 +22,6 @@ return {
     { '<F10>',      function() require('dap').step_over() end,                                           desc = 'Debug: Step Over' },
     { '<F11>',      function() require('dap').step_into() end,                                           desc = 'Debug: Step Into' },
     { '<F12>',      function() require('dap').step_out() end,                                            desc = 'Debug: Step Out' },
-    -- { '<leader>du', function() require('dapui').toggle() end, desc = 'Toggle Debug UI' },
     { '<F6>',       function() require('dapui').toggle() end,                                            desc = 'Debug: See last session result.' },
     -- Breakpoints
     { '<leader>db', function() require('dap').toggle_breakpoint() end,                                   desc = 'Toggle Breakpoint' },
@@ -47,7 +46,6 @@ return {
     { '<leader>dc', function() require('dap').close() end,                                               desc = 'Close Debug Session' },
     { '<leader>dC', function() require('dap').run_to_cursor() end,                                       desc = 'Run to Cursor' },
     { '<leader>dl', function() require('dap').run_last() end,                                            desc = 'Run Last Configuration' },
-    { '<leader>di', function() require('dap').repl.open() end,                                           desc = 'Open Interactive REPL' },
     { '<leader>dp', function() require('dap').pause() end,                                               desc = 'Pause Debug Session' },
     -- Navigation
     { '<leader>dn', function() require('dap').down() end,                                                desc = 'Down Stack Frame' },
@@ -85,6 +83,7 @@ return {
       },
     }
 
+
     ---@diagnostic disable-next-line: missing-fields
     require("dapui").setup({
       icons = { expanded = "", collapsed = "", current_frame = "" },
@@ -110,8 +109,7 @@ return {
           position = "bottom",
         },
       },
-
-      controls = {
+            controls = {
         enabled = vim.fn.has("nvim-0.5") == 1,
         -- Display controls in this element
         element = "console",
@@ -141,6 +139,14 @@ return {
         indent = 1,
       },
     })
+local function open_repl_side()
+        dap.repl.open({
+          width = 60,   -- 40% of screen width
+          window
+        }, 'botright vnew'
+      )
+
+      end
     dap_python.setup("python3")
 
     -- Change breakpoint icons
@@ -177,10 +183,10 @@ return {
     dap.listeners.before.event_terminated['dapui_config'] = nil
     dap.listeners.before.event_exited['dapui_config'] = nil
 
-    -- Simple F7 toggle - works regardless of debug session state
-    vim.keymap.set('n', '<F7>', function()
-      require('dapui').toggle()
-    end, { desc = 'Toggle Debug UI' })
+
+
+
+vim.keymap.set('n', '<leader>di', open_repl_side, { desc = 'Open Interactive REPL (side)' })
 
     vim.keymap.set({ 'n', 'v' }, '<leader>ds', function()
         -- First open the clean dapui version

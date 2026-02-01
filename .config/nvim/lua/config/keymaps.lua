@@ -1,4 +1,5 @@
 --NOTE: [[ Basic Keymaps ]]
+--
 vim.keymap.set('n', 'J', '<C-d>')
 vim.keymap.set('n', 'K', '<C-u>', { noremap = true, silent = true })
 -- Clear highlights on search when pressing <Esc> in normal mode
@@ -32,81 +33,89 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
 -- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
-
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.hl.on_yank()`
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.hl.on_yank()
-  end,
-})
-
--- vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
---   callback = function()
---     local dir = vim.fn.expand '%:p:h'
---     if vim.fn.isdirectory(dir) == 1 then
---       vim.cmd('cd ' .. dir)
---     end
---   end,
--- })
-
-vim.keymap.set('n', 'g/', ':noh<CR>')
-vim.keymap.set('v', '<M-c>', 'y', { desc = 'Copy to system clipboard' })
-
-local opts = { noremap = true, silent = true, desc = "Delete into d register" }
-
-vim.keymap.set('n', 'd', '"dd', opts)
-vim.keymap.set('n', 'd', '"dd', opts) -- delete into "d register
-vim.keymap.set('v', 'd', '"dd', opts)
-vim.keymap.set("n", "<M-a>", "ggVG", { noremap = true, silent = true })
--- Normal mode
-
-vim.keymap.set('n', '<leader>r', '<C-r>', { noremap = true, silent = true })
-
--- Insert mode (redo is a bit different, usually Ctrl+o u)
-vim.keymap.set('i', '<leader>r', '<C-o><C-r>', { noremap = true, silent = true })
-
--- Visual mode
-vim.keymap.set('v', '<leader>r', '<C-r>', { noremap = true, silent = true })
-vim.keymap.set('v', 'p', '"_dP', { noremap = true, silent = true })
-
-vim.keymap.set ("n" , "+", "<C-a>",
-	{
-desc = "Increment number" })
-
-vim.keymap.set("n",
-"< leader>-",
-"<C-X>" ,
-{
-desc = "Decrement number" })
-
-
-vim.keymap.set("v", "f", 'y/<C-R>"<CR>N', { noremap = true })
-vim.keymap.set('n', '-', ':wq<CR>', { noremap = true, silent = true })
-
-vim.api.nvim_set_hl(0, "@NvimTreeWidgetWinSep", { fg = "#3E4451", bg = "NONE" })
-
-vim.keymap.set("n", "<C-p>", "<C-d>")
-vim.keymap.set("n", "<C-u>", "<C-u>")
-
--- plugins
-vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Toggle Zen Mode" })
 
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select  all" })
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
 
 -- strike through, bold, and italic shortcuts
-vim.keymap.set('v', '<leader>,s', 'c~~<c-r>"~~')
-vim.keymap.set('v', '<leader>,b', 'c**<c-r>"**')
-vim.keymap.set('v', '<leader>,i', 'c_<c-r>"_')
+vim.keymap.set('v', 'ms', 'c~~<c-r>"~~', { desc = 'Surround with ~~ (strikethrough)' })
+vim.keymap.set('v', 'mb', 'c**<c-r>"**', { desc = 'Surround with ** (bold)' })
+vim.keymap.set('v', 'mi', 'c_<c-r>"_', { desc = 'Surround with _ (italic)' })
+vim.keymap.set('v', 'mt', 'c[<c-r>"]()<left>', { desc = 'Markdown link [text]()' })
+vim.keymap.set('v', 'mu', 'c<c-o>F]', { desc = 'Jump to previous ] (URL nav)' })
+vim.keymap.set('v', 'm,', 'c`<c-r>"`', { desc = 'Surround with ` (code)' })
 
--- urls and titles
-vim.keymap.set('v', '<leader>,t', 'c[<c-r>"]()<left>')
-vim.keymap.set('v', '<leader>,u', 'c[](<c-r>")<c-o>F]')
 
--- wrap in backticks
-vim.keymap.set('v', '<leader>,`', 'c`<c-r>"`')
+vim.keymap.set('n', '<C-P>', function()
+  vim.opt_local.spell = not vim.opt_local.spell:get()
+end, { desc = 'Toggle spell check' })
+
+
+vim.keymap.set('n', '<C-j>', '<C-w>w', { desc = 'Next window' })
+vim.keymap.set('n', '<C-k>', '<C-w>W', { desc = 'Previous window' })
+
+local ref_list = {}
+local ref_idx = 0
+
+vim.keymap.set('n', 'gro', function()
+  vim.lsp.buf.references(nil, function(_, result, ctx)
+    ref_list = result
+    ref_idx = 0
+    if #result > 0 then
+      ref_idx = 1
+      vim.lsp.util.jump_to_location(result[ref_idx], 0)
+    end
+  end)
+end, {desc='Next reference'})
+
+vim.keymap.set('n', 'grO', function()
+  if ref_idx > 1 then 
+    ref_idx = ref_idx - 1 
+    vim.lsp.util.jump_to_location(ref_list[ref_idx], 0)
+  end
+end, {desc='Prev reference'})
+local ref_idx = 0
+
+vim.keymap.set("v", "<leader>re", "<cmd>Refactor extract <cr>")
+vim.keymap.set("v", "<leader>rf", "<cmd>Refactor extract_to_file <cr>")
+
+vim.keymap.set("v", "<leader>rv", "<cmd>Refactor extract_var <cr>")
+
+vim.keymap.set({ "n", "x" }, "<leader>ri", "<cmd>Refactor inline_var<cr>")
+
+vim.keymap.set( "n", "<leader>rI", "<cmd>Refactor inline_func<cr>")
+
+vim.keymap.set("n", "<leader>rb", "<cmd>Refactor extract_block<cr>")
+vim.keymap.set("n", "<leader>rbf", "<cmd>Refactor extract_block_to_file<cr>")
+
+vim.g.last_leader_cmd = nil
+
+local function wrap_leader_ex_cmds()
+  local maps = vim.api.nvim_get_keymap('n')  -- all normal-mode maps
+  for _, m in ipairs(maps) do
+    if m.lhs:match('^<leader>') and m.rhs and m.rhs:match('^:%w') then
+      -- m.rhs is like ":write<CR>" or ":Ex<CR>"
+      local cmd = m.rhs:gsub('^:', ''):gsub('<CR>$', '')
+      vim.keymap.set('n', m.lhs, function()
+        vim.g.last_leader_cmd = cmd
+        vim.cmd(cmd)
+      end, { desc = m.desc })
+    end
+  end
+end
+
+wrap_leader_ex_cmds()
+
+vim.keymap.set('n', '<leader>.', function()
+  if vim.g.last_leader_cmd then
+    vim.cmd(vim.g.last_leader_cmd)
+  end
+end, { desc = 'Repeat last leader cmd' })
+
+vim.keymap.set('n', '<leader>rr', function()
+  local old_word = vim.fn.expand('<cword>')  -- Word under cursor
+  local new_word = vim.fn.input('Replace ' .. old_word .. ' with? ', old_word)
+  if new_word ~= old_word and new_word ~= '' then
+    vim.cmd('%s/\\<' .. old_word .. '\\>/' .. new_word .. '/g')
+  end
+end, { desc = 'Replace word globally' })

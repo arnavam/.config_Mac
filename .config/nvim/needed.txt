@@ -4,4 +4,4 @@ resolve session not saving in auto-session
 transparent homepage else a beutfull one
 if neded change telescope
 
-
+'hide the

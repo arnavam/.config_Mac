@@ -11,7 +11,7 @@ return {
 --   opts = { -- this can be an empty lua table - just showing below for clarity.
 --       search = {
 -- 			    my_venvs = {
---       command = "fd python$ /opt/homebrew/Caskroom/miniforge/base/envs",
+--       command = "fd python$ /opt/homebrew/Caskroom/miniforge/base",
 -- 			type = 'anaconda'
 --   },
 -- }, -- if you add your own searches, they go here.

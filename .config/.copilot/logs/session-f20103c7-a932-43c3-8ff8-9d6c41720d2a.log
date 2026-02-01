@@ -1,0 +1,31 @@
+2025-12-10T08:25:50.460Z [INFO] Starting Copilot CLI: 0.0.367
+Commit: 9b421b4
+2025-12-10T08:25:50.460Z [INFO] Node.js version: v25.2.1
+2025-12-10T08:25:50.496Z [INFO] Login status unknown
+2025-12-10T08:25:50.516Z [INFO] Remote session access disabled
+2025-12-10T08:25:50.518Z [ERROR] Error checking for updates: TypeError: Cannot read properties of undefined (reading 'paths')
+2025-12-10T08:25:50.525Z [INFO] Logged in as user: arnavam
+2025-12-10T08:25:50.996Z [LOG] Starting remote MCP client for github-mcp-server with url: https://api.individual.githubcopilot.com/mcp/readonly
+2025-12-10T08:25:50.996Z [LOG] Creating MCP client for github-mcp-server...
+2025-12-10T08:25:51.001Z [LOG] Connecting MCP client for github-mcp-server...
+2025-12-10T08:25:53.242Z [LOG] MCP client for github-mcp-server connected, took 2241ms
+2025-12-10T08:25:53.242Z [LOG] Started MCP client for remote server github-mcp-server
+2025-12-10T08:25:53.242Z [LOG] GitHub MCP server configured after authentication
+2025-12-10T08:29:59.207Z [LOG] Starting remote MCP client for github-mcp-server with url: https://api.individual.githubcopilot.com/mcp/readonly
+2025-12-10T08:29:59.207Z [LOG] Creating MCP client for github-mcp-server...
+2025-12-10T08:29:59.208Z [LOG] Connecting MCP client for github-mcp-server...
+2025-12-10T08:30:01.318Z [LOG] MCP client for github-mcp-server connected, took 2110ms
+2025-12-10T08:30:01.318Z [LOG] Started MCP client for remote server github-mcp-server
+2025-12-10T08:30:02.856Z [INFO]  
+2025-12-10T08:30:10.863Z [INFO] [log_333032, x-request-id: "00000-aa7c90b0-4d5c-473b-97fe-a1348a12d5e5"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 6937ms
+
+2025-12-10T08:30:17.487Z [INFO] [log_2e14dc, x-request-id: "00000-12ef1ae9-e1f1-436a-8142-08c95e3308d4"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 4946ms
+
+2025-12-10T08:30:27.316Z [INFO] [log_9add75, x-request-id: "00000-6abf8050-af9b-462a-a9e6-bd936e4e46bf"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 6273ms
+
+2025-12-10T08:30:37.466Z [INFO] [log_db6390, x-request-id: "00000-84372839-0694-480c-849b-91f15cc07643"] post https://api.individual.githubcopilot.com/chat/completions failed with status 503 in 6687ms - retrying, 5 attempts remaining
+
+2025-12-10T08:30:45.138Z [INFO] [log_661edc, retryOf: log_db6390, x-request-id: "00000-cb151ba4-ae01-4f58-b7a2-593a8639b833"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 7259ms
+
+2025-12-10T08:30:56.298Z [INFO] [log_c842f4, x-request-id: "00000-3e37dfa1-d23c-4cbe-988b-861602d08175"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 9436ms
+

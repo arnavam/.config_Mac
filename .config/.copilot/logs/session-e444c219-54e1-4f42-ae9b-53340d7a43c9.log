@@ -1,0 +1,9 @@
+2025-12-09T03:14:57.962Z [INFO] Starting Copilot CLI: 0.0.367
+Commit: 9b421b4
+2025-12-09T03:14:57.962Z [INFO] Node.js version: v25.2.1
+2025-12-09T03:14:57.988Z [INFO] Login status unknown
+2025-12-09T03:14:58.003Z [ERROR] Error checking for updates: TypeError: Cannot read properties of undefined (reading 'paths')
+2025-12-09T03:15:08.727Z [ERROR] Failed to fetch GitHub CLI user login
+2025-12-09T03:15:08.728Z [ERROR] Failed to fetch GitHub CLI user login
+2025-12-09T03:15:08.728Z [ERROR] Failed to fetch GitHub CLI user login
+2025-12-09T03:15:08.744Z [INFO] Logged out

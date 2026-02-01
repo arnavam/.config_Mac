@@ -1,0 +1,35 @@
+
+{
+  "amp.notifications.enabled": true,
+  "amp.notifications.system.enabled": true,
+  "amp.mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "@modelcontextprotocol/server-filesystem",
+        "/path/to/allowed/dir"
+      ]
+    }
+  },
+  "amp.tools.disable": [
+    "browser_navigate",
+    "builtin:edit_file"
+  ],
+  "amp.permissions": [
+    {
+      "tool": "Bash",
+      "action": "ask",
+      "matches": {
+        "cmd": [
+          "git commit*"
+        ]
+      }
+    }
+  ],
+  "amp.guardedFiles.allowlist": [],
+  "amp.dangerouslyAllowAll": false,
+  "amp.git.commit.coauthor.enabled": true,
+  "amp.git.commit.ampThread.enabled": true,
+  "amp.updates.mode": "auto"
+}
+

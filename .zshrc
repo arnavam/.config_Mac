@@ -6,6 +6,8 @@ LIVE_COUNTER=$(ps a | awk '{print $2}' | grep -vi "tty*" | uniq | wc -l);
 if [ $LIVE_COUNTER -eq 3 ]; then
 	fastfetch
 fi
+
+	# fastfetch
 echo Hello user 󱠢 | lolcat
 
 #NOTE:  powerlevel10k instant
@@ -58,6 +60,7 @@ function zvm_config() {
   ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_BLINKING_UNDERLINE
 }
 
+
 # Load the plugin with zinit
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
@@ -67,11 +70,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 zinit ice depth=1; zinit light romkatv/powerlevel10k # passing depth=1 to next cmd using zinit ice & light is a cmd use to load p10k lightly
 
-#NOTE: P10k
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-#NOTE: bindkey
 
 # Add in snippets
 zinit snippet OMZL::git.zsh
@@ -82,18 +80,28 @@ autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
-#bindkey '^M' autosuggest-accept
 
+#NOTE: P10k
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+#NOTE: bindkey
+
+
+bindkey -M viins '^H' vi-backward-char
+bindkey -M viins '^L' vi-forward-char
+
+# bindkey '^[[1;5C' forward-word      # Ctrl+Right
+# bindkey '^[[1;5D' backward-word     # Ctrl+Left
+
+bindkey '^D' forward-word  # Moves forward one word, accepting suggestion up to there
 #bindkey -M viins '^M' autosuggest-accept
 
 bindkey -M vicmd 'k' history-search-backward
 bindkey -M vicmd 'j' history-search-forward
-#bindkey '^I' autosuggest-accept
-
-
-# Use Ctrl+Space for fzf-tab completion
+bindkey '^I' fzf-tab-complete       # Tab
 bindkey '^ ' fzf-tab-complete
-
+# Use Ctrl+Space for fzf-tab completion
 #NOTE: history
 
 HISTSIZE=5000
@@ -159,6 +167,7 @@ alias cat="bat"
 alias conda="mamba"
 alias cd="z"
 alias cdi="zi"
+alias agy="open -a \"Antigravity.app\""
 #NOTE: >>> mamba initialize >>>
 
 # !! Contents within this block are managed by 'mamba shell init' !!
@@ -198,7 +207,6 @@ y() {
 
 
 
-
 #NOTE: export
 export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
@@ -221,5 +229,5 @@ esac
 # pnpm end
 
 # Added by Antigravity
-export PATH="/Users/arnav/.antigravity/antigravity/bin:$PATH"
+
 export DOCKER_BUILDKIT=1

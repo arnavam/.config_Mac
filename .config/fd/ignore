@@ -1,0 +1,8 @@
+/nix/
+/System/
+/Library/
+/private/
+/usr/
+/Users/arnav/Library/*
+/Users/arnav/!/Library/CloudStorage/
+/Users/arnav/**/*.photoslibrary/

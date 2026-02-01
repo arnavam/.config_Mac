@@ -29,7 +29,8 @@ require("eza-preview"):setup()
 require("no-status"):setup()
 
 require("duckdb"):setup()
-
+-- ~/.config/yazi/init.lua
+require("relative-motions"):setup({ show_numbers="relative", show_motion = true, enter_mode ="cache" })
 require("mux"):setup({
 	aliases = {
 		eza_tree_1 = {

@@ -25,8 +25,6 @@ My personal macOS configuration files, managed with [GNU Stow](https://www.gnu.o
 ### CLI Tools
 - **yazi** - Terminal file manager
 - **fastfetch** - System info display
-- **bat** - Better `cat`
-- **fd** - Better `find`
 
 ### Other
 - **Karabiner** - Keyboard customization

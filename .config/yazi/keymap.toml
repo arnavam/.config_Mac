@@ -136,15 +136,15 @@ keymap = [
 	# Tabs
 	{ on = "t", run = "tab_create --current", desc = "Create a new tab with CWD" },
 
-	{ on = "1", run = "tab_switch 0", desc = "Switch to first tab" },
-	{ on = "2", run = "tab_switch 1", desc = "Switch to second tab" },
-	{ on = "3", run = "tab_switch 2", desc = "Switch to third tab" },
-	{ on = "4", run = "tab_switch 3", desc = "Switch to fourth tab" },
-	{ on = "5", run = "tab_switch 4", desc = "Switch to fifth tab" },
-	{ on = "6", run = "tab_switch 5", desc = "Switch to sixth tab" },
-	{ on = "7", run = "tab_switch 6", desc = "Switch to seventh tab" },
-	{ on = "8", run = "tab_switch 7", desc = "Switch to eighth tab" },
-	{ on = "9", run = "tab_switch 8", desc = "Switch to ninth tab" },
+{ on = "1", run = "plugin relative-motions 1", desc = "Move in relative steps" },
+{ on = "2", run = "plugin relative-motions 2", desc = "Move in relative steps" },
+{ on = "3", run = "plugin relative-motions 3", desc = "Move in relative steps" },
+{ on = "4", run = "plugin relative-motions 4", desc = "Move in relative steps" },
+{ on = "5", run = "plugin relative-motions 5", desc = "Move in relative steps" },
+{ on = "6", run = "plugin relative-motions 6", desc = "Move in relative steps" },
+{ on = "7", run = "plugin relative-motions 7", desc = "Move in relative steps" },
+{ on = "8", run = "plugin relative-motions 8", desc = "Move in relative steps" },
+{ on = "9", run = "plugin relative-motions 9", desc = "Move in relative steps" },
 
 	{ on = "<C-h>", run = "tab_switch -1 --relative", desc = "Switch to previous tab" },
 	{ on = "<C-l>", run = "tab_switch 1 --relative",  desc = "Switch to next tab" },
@@ -405,12 +405,12 @@ run  = "plugin duckdb +1"
 desc = "Scroll one column to the right"
 
 [[mgr.prepend_keymap]]
-on   = ["b", "o"]
+on   = ["g", "o"]
 run  = "plugin duckdb -open"
 desc = "open with duckdb"
 
 [[mrg.prepend_keymap]]
-on   = ["b", "u"]
+on   = ["g", "u"]
 run  = "plugin duckdb -ui"
 desc = "open with duckdb ui"
 
@@ -431,8 +431,9 @@ on   = [ "<C-w>" ]
 run  = "plugin close-and-restore-tab close_to_right"
 desc = "Close the current tab and turn to right tab, or quit if it is last tab"
 
+#git-root
 [[mgr.prepend_keymap]]
-on   = ")"
+on   = ["g","r"]
 run  = "plugin cd-git-root"
 desc = "Go to git repo root"
 
@@ -452,3 +453,8 @@ desc = "Enter the child directory, or open the file"
 # on = "/"
 # run = ["plugin fzf", "plugin smart-enter"]
 # desc = "FZF then smart-enter"
+
+[[mgr.prepend_keymap]]
+on = ["g", "z"]  # Triggers with 'zo' sequence, or choose any key like 'Ctrl+z'
+run = "shell 'zoxide add .'"
+desc = "Add current dir to zoxide"

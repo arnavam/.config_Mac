@@ -1,0 +1,48 @@
+2025-12-09T14:13:27.031Z [INFO] Starting Copilot CLI: 0.0.367
+Commit: 9b421b4
+2025-12-09T14:13:27.031Z [INFO] Node.js version: v25.2.1
+2025-12-09T14:13:27.274Z [INFO] Login status unknown
+2025-12-09T14:13:27.293Z [INFO] Remote session access disabled
+2025-12-09T14:13:27.294Z [ERROR] Error checking for updates: TypeError: Cannot read properties of undefined (reading 'paths')
+2025-12-09T14:13:27.303Z [INFO] Logged in as user: arnavam
+2025-12-09T14:13:27.815Z [LOG] Starting remote MCP client for github-mcp-server with url: https://api.individual.githubcopilot.com/mcp/readonly
+2025-12-09T14:13:27.816Z [LOG] Creating MCP client for github-mcp-server...
+2025-12-09T14:13:27.819Z [LOG] Connecting MCP client for github-mcp-server...
+2025-12-09T14:13:30.008Z [LOG] MCP client for github-mcp-server connected, took 2189ms
+2025-12-09T14:13:30.008Z [LOG] Started MCP client for remote server github-mcp-server
+2025-12-09T14:13:30.008Z [LOG] GitHub MCP server configured after authentication
+2025-12-09T14:13:53.951Z [LOG] Starting remote MCP client for github-mcp-server with url: https://api.individual.githubcopilot.com/mcp/readonly
+2025-12-09T14:13:53.952Z [LOG] Creating MCP client for github-mcp-server...
+2025-12-09T14:13:53.953Z [LOG] Connecting MCP client for github-mcp-server...
+2025-12-09T14:13:54.760Z [LOG] MCP client for github-mcp-server connected, took 807ms
+2025-12-09T14:13:54.760Z [LOG] Started MCP client for remote server github-mcp-server
+2025-12-09T14:13:56.510Z [INFO]  
+2025-12-09T14:14:01.408Z [INFO] [log_51f794, x-request-id: "00000-5eba8480-b315-459a-baf2-77016fbf4c07"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 1875ms
+
+2025-12-09T14:14:33.706Z [INFO]  
+2025-12-09T14:14:35.816Z [INFO] [log_6ef5a6, x-request-id: "00000-36a1d04c-8114-4a25-87b3-28742f7cd200"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 1615ms
+
+2025-12-09T14:14:37.023Z [INFO] [log_c59f53, x-request-id: "00000-8a2c31dd-c6e8-4ad1-be94-c097842973d5"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 1073ms
+
+2025-12-09T14:14:52.249Z [INFO]  
+2025-12-09T14:14:53.817Z [INFO] [log_30a2a3, x-request-id: "00000-03ce1b61-e4bb-4328-a628-eda4be457a03"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 1074ms
+
+2025-12-09T14:15:00.479Z [INFO] [log_59c277, x-request-id: "00000-7fe29370-231d-46eb-b4a7-35b9dea57dd2"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 1072ms
+
+2025-12-09T14:15:13.104Z [INFO] [log_2f1be2, x-request-id: "00000-e41acc29-046f-4922-a0dd-ff0806c957f8"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 1636ms
+
+2025-12-09T14:15:22.746Z [INFO] [log_e281c1, x-request-id: "00000-24f001ac-57a4-464b-8677-7f82cc2357a3"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 1331ms
+
+2025-12-09T14:15:29.950Z [INFO] [log_a06bc4, x-request-id: "00000-860b3772-a1e3-4006-bab0-ad5a7fc8ae6b"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 928ms
+
+2025-12-09T14:20:52.396Z [INFO]  
+2025-12-09T14:20:56.516Z [INFO] [log_9b5119, x-request-id: "00000-d47eda84-5140-41ec-ad25-a125a93ed908"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2298ms
+
+2025-12-09T14:20:59.283Z [INFO] [log_e632eb, x-request-id: "00000-4e429530-883e-4750-861a-a47c0978b266"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 2219ms
+
+2025-12-09T14:21:07.577Z [ERROR] Each child in a list should have a unique "key" prop.
+
+Check the render method of `Box`. It was passed a child from Hzl. See https://react.dev/link/warning-keys for more information.
+
+2025-12-09T14:21:16.385Z [INFO] [log_9dd067, x-request-id: "00000-47d49fac-b11f-4de4-ba02-3495929a5835"] post https://api.individual.githubcopilot.com/chat/completions succeeded with status 200 in 989ms
+
