@@ -5,3 +5,4 @@ raycast
 **/.DS_Store*
 .config/tmux/plugins
 .aider*
+.config/github-copilot/
