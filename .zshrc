@@ -211,7 +211,9 @@ y() {
 export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/Users/arnav/.rd/bin:$PATH" # ranger
+export PATH="/Users/arnav//flutter/bin:$PATH"
 
+export CHROME_EXECUTABLE="/Users/arnav/Applications/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
 export COLIMA_HOME=$HOME/.colima
 export NNN_PLUG='p:preview-tui;f:finder;d:fzcd;'
 export HOMEBREW_NO_AUTO_UPDATE=1
@@ -231,3 +233,9 @@ esac
 # Added by Antigravity
 
 export DOCKER_BUILDKIT=1
+
+# Added by Antigravity
+export PATH="/Users/arnav/.antigravity/antigravity/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/arnav/.antigravity/antigravity/bin:$PATH"

@@ -1,5 +1,4 @@
-return {
-  'nvim-neo-tree/neo-tree.nvim',
+return { 'nvim-neo-tree/neo-tree.nvim',
   version = '*',
   dependencies = {
     'nvim-lua/plenary.nvim',

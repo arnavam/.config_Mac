@@ -10,3 +10,9 @@ tmux/plugins
 ./gh/
 ./amp
 ./slicer.org/
+.copilot/
+gcloud/
+jgit/
+kitty/kitty.conf.bak
+swiftpm/
+tool_state

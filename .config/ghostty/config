@@ -7,7 +7,7 @@ font-family-bold-italic = "Iosevka Term Bold Extended Italic"
 font-size = 14
 font-thicken = true
 alpha-blending = linear
-
+split-divider-color = #999999
 #background 
 
 background-image = dark-image.jpg
@@ -43,8 +43,10 @@ window-step-resize = true
 unfocused-split-opacity = 0.9
 
 window-padding-color = extend
-macos-titlebar-style =hidden
+# macos-titlebar-style =hidden
 #macos-titlebar-style = tabs
+macos-titlebar-style = transparent
+macos-titlebar-proxy-icon = hidden
 confirm-close-surface =false
 
 # macos-quit-when-last-window-closed = true  
@@ -66,6 +68,7 @@ keybind = ctrl+shift+tab=ignore
 
 keybind = ctrl+b>o=toggle_tab_overview
 keybind = global:cmd+grave_accent=toggle_quick_terminal
+#quick-terminal-position = right
 ### Scrolling/Clear
 ##keybind = cmd+k=scroll_line_up
 ##keybind = cmd+j=scroll_line_down  # Approx down

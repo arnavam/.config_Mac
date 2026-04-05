@@ -17,7 +17,7 @@ sudo yabai --load-sa
 yabai -m config                                 \
     external_bar                 off:40:0       \
     menubar_opacity              1.0            \
-    mouse_follows_focus          off             \
+    mouse_follows_focus          on             \
     focus_follows_mouse          on             \
     display_arrangement_order    default        \
     window_origin_display        default        \
@@ -66,7 +66,6 @@ yabai -m rule --add app="^Finder$"           manage=off
 yabai -m rule --add app="^PDFgear$"           size=200:250 float=on
 yabai -m rule --add app="^TextEdit$"          size=200:250 pos=900:100 float=on
 yabai -m rule --add app="^Terminal$"          size=200:250 pos=900:100 float=on
-
 
 yabai -m rule --add app="^Arc$" title="^[arnav|General|Profiles|Max|Links|Shortcuts|Icon|Advanced]$" manage=off
 yabai -m rule --add app="^Arc$" title="^Space.*$" manage=off layer=below
