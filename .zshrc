@@ -9,6 +9,7 @@ fi
 
 	# fastfetch
 echo Hello user 󱠢 | lolcat
+cat ~/.config/fastfetch/macos.txt| lolcat --force > /Users/arnav/.config/fastfetch/macos_logo.txt 
 
 #NOTE:  powerlevel10k instant
 
@@ -151,7 +152,7 @@ _fzf_compgen_dir() {
 
 #NOTE: alias
 
-alias ll='ls -l --color'
+alias ll='ls -la --color'
 alias la='ls -a --color'
 alias ls='ls --color'
 alias zshconfig="mate ~/.zshrc"
@@ -220,7 +221,6 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export EDITOR="nvim"
 source ~/.zsh-defer/zsh-defer.plugin.zsh
 
-cat /Users/arnav/.config/fastfetch/macos.txt| lolcat --force > /Users/arnav/.config/fastfetch/macos_logo.txt 
 
 # pnpm
 export PNPM_HOME="/Users/arnav/.local/share/pnpm"
@@ -231,11 +231,9 @@ esac
 # pnpm end
 
 # Added by Antigravity
-
 export DOCKER_BUILDKIT=1
 
 # Added by Antigravity
 export PATH="/Users/arnav/.antigravity/antigravity/bin:$PATH"
 
-# Added by Antigravity
-export PATH="/Users/arnav/.antigravity/antigravity/bin:$PATH"
+export UV_LINK_MODE=symlink
