@@ -68,6 +68,9 @@ keybind = ctrl+shift+tab=ignore
 
 keybind = ctrl+b>o=toggle_tab_overview
 keybind = global:cmd+grave_accent=toggle_quick_terminal
+keybind = ctrl+k=previous_tab
+keybind = ctrl+j=next_tab
+
 #quick-terminal-position = right
 ### Scrolling/Clear
 ##keybind = cmd+k=scroll_line_up
@@ -87,4 +90,3 @@ keybind = global:cmd+grave_accent=toggle_quick_terminal
 ##keybind = ctrl+alt+-=change_font_size:all:-2.0  # Kitty ctrl+alt+minus
 ### Misc (fullscreen toggle, etc.)
 ##keybind = ctrl+cmd+f=toggle_fullscreen
-#:#keybind = cmd+,=edit_config_file  # Reload/config

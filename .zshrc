@@ -9,7 +9,7 @@ fi
 
 	# fastfetch
 echo Hello user 󱠢 | lolcat
-cat ~/.config/fastfetch/macos.txt| lolcat --force > /Users/arnav/.config/fastfetch/macos_logo.txt 
+cat ~/.config/fastfetch/macos.txt| lolcat --force > ~/.config/fastfetch/macos_logo.txt 
 
 #NOTE:  powerlevel10k instant
 
@@ -26,7 +26,7 @@ fi
 
 # if command -v tmux &> /dev/null; then
 #     if [ -z "$TMUX" ]; then
-#         tmux attach-session -t default || tmux new-session -s default
+#         tmux attach-session -t default || tmux new-session -s default.zshrc
 #     fi
 # fi
 #NOTE: ZINIT
@@ -95,7 +95,7 @@ bindkey -M viins '^L' vi-forward-char
 # bindkey '^[[1;5C' forward-word      # Ctrl+Right
 # bindkey '^[[1;5D' backward-word     # Ctrl+Left
 
-bindkey '^D' forward-word  # Moves forward one word, accepting suggestion up to there
+bindkey '^K' forward-word  # Moves forward one word, accepting suggestion up to there
 #bindkey -M viins '^M' autosuggest-accept
 
 bindkey -M vicmd 'k' history-search-backward
@@ -155,8 +155,7 @@ _fzf_compgen_dir() {
 alias ll='ls -la --color'
 alias la='ls -a --color'
 alias ls='ls --color'
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="${EDITOR:-nvim} ~/.zshrc"
 alias rmdir="rmdir -v"
 alias rm='~/.move-to-dust-bin.sh'
 alias g++='g++-13'
@@ -164,24 +163,25 @@ alias python=python3
 alias pip=pip3
 alias vim="nvim"
 alias oo='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/ML'
-alias cat="bat"
-alias conda="mamba"
+(( $+commands[bat] )) && alias cat="bat"
+(( $+commands[mamba] )) && alias conda="mamba"
 alias cd="z"
 alias cdi="zi"
-alias agy="open -a \"Antigravity.app\""
+
 #NOTE: >>> mamba initialize >>>
+if [ "$OS_TYPE" != "Linux" ]; then
+  # !! Contents within this block are managed by 'mamba shell init' !!
+  export MAMBA_EXE='/opt/homebrew/bin/mamba';
+  export MAMBA_ROOT_PREFIX='/opt/homebrew/Caskroom/miniforge/base';
+  __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__mamba_setup"
+  else
+      alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+  fi
+  unset __mamba_setup
 
-# !! Contents within this block are managed by 'mamba shell init' !!
-export MAMBA_EXE='/opt/homebrew/bin/mamba';
-export MAMBA_ROOT_PREFIX='/opt/homebrew/Caskroom/miniforge/base';
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
-else
-    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
 fi
-unset __mamba_setup
-
 mamba activate base
 # <<< mamba initialize <<<
 
@@ -211,10 +211,8 @@ y() {
 #NOTE: export
 export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="/Users/arnav/.rd/bin:$PATH" # ranger
-export PATH="/Users/arnav//flutter/bin:$PATH"
 
-export CHROME_EXECUTABLE="/Users/arnav/Applications/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+export CHROME_EXECUTABLE="$HOME/Applications/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
 export COLIMA_HOME=$HOME/.colima
 export NNN_PLUG='p:preview-tui;f:finder;d:fzcd;'
 export HOMEBREW_NO_AUTO_UPDATE=1
@@ -237,3 +235,4 @@ export DOCKER_BUILDKIT=1
 export PATH="/Users/arnav/.antigravity/antigravity/bin:$PATH"
 
 export UV_LINK_MODE=symlink
+
