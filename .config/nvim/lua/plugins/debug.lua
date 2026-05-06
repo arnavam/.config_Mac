@@ -1,5 +1,63 @@
 -- debug.lua
 
+local function get_python_executable()
+  local env = vim.env.VIRTUAL_ENV or vim.env.CONDA_PREFIX
+  if env and env ~= "" then
+    local python = env .. "/bin/python"
+    if vim.fn.executable(python) == 1 then
+      return python
+    end
+  end
+
+  if vim.g.python3_host_prog and vim.g.python3_host_prog ~= "" and vim.fn.executable(vim.g.python3_host_prog) == 1 then
+    return vim.g.python3_host_prog
+  end
+
+  local python3 = vim.fn.exepath("python3")
+  if python3 ~= "" then
+    return python3
+  end
+
+  local python = vim.fn.exepath("python")
+  if python ~= "" then
+    return python
+  end
+end
+
+local function has_python_module(python, module)
+  vim.fn.system({
+    python,
+    "-c",
+    string.format("import importlib.util, sys; sys.exit(0 if importlib.util.find_spec(%q) else 1)", module),
+  })
+
+  return vim.v.shell_error == 0
+end
+
+local function continue_with_debugpy_check()
+  if vim.bo.filetype == "python" then
+    local python = get_python_executable()
+
+    if not python then
+      vim.notify("Python executable not found; cannot start Python debug session", vim.log.levels.WARN)
+      return
+    end
+
+    if not has_python_module(python, "debugpy") then
+      vim.notify(
+        ("debugpy is not installed in this Python environment: %s\nInstall it with: %s -m pip install debugpy"):format(
+          python,
+          python
+        ),
+        vim.log.levels.WARN
+      )
+      return
+    end
+  end
+
+  require("dap").continue()
+end
+
 return {
   'mfussenegger/nvim-dap',
   dependencies = {
@@ -17,6 +75,7 @@ return {
       desc = "Toggle DAP REPL",
     },
 
+    -- { '<F5>',       continue_with_debugpy_check,                                                         desc = 'Debug: Start/Continue' },
     -- Basic debugging keymaps, feel free to change to your liking!
     { '<F5>',       function() require('dap').continue() end,                                            desc = 'Debug: Start/Continue' },
     { '<F10>',      function() require('dap').step_over() end,                                           desc = 'Debug: Step Over' },

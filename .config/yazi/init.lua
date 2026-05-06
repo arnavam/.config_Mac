@@ -1,4 +1,8 @@
-require("git"):setup()
+
+require("git"):setup {
+	-- Order of status signs showing in the linemode
+	-- order = 1500,
+}
 
 -- require("full-border"):setup {
 -- 	-- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
@@ -25,8 +29,8 @@ require("mactag"):setup {
 		Purple = "#cb88f8",
 	},
 }
-require("eza-preview"):setup()
-require("no-status"):setup()
+-- require("eza-preview"):setup()
+-- require("no-status"):setup()
 
 require("duckdb"):setup()
 -- ~/.config/yazi/init.lua

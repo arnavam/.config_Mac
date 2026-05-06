@@ -167,7 +167,7 @@ alias oo='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/ML'
 (( $+commands[mamba] )) && alias conda="mamba"
 alias cd="z"
 alias cdi="zi"
-
+alias du="dua"
 #NOTE: >>> mamba initialize >>>
 if [ "$OS_TYPE" != "Linux" ]; then
   # !! Contents within this block are managed by 'mamba shell init' !!
@@ -233,6 +233,6 @@ export DOCKER_BUILDKIT=1
 
 # Added by Antigravity
 export PATH="/Users/arnav/.antigravity/antigravity/bin:$PATH"
+export PATH="$PATH:$HOME/flutter/bin"
 
 export UV_LINK_MODE=symlink
-

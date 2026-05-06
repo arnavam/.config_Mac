@@ -76,7 +76,7 @@ vim.o.confirm = true
 
 vim.o.visualbell = true
 vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,terminal,localoptions"
-vim.o.laststatus = 0
+vim.o.laststatus = 1
 
 vim.opt.tabstop = 2       -- Display width of tabs
 vim.opt.shiftwidth = 2    -- Size of an indent
@@ -125,14 +125,46 @@ vim.opt_local.spell = false
 vim.opt_local.spelllang = { "en_us" }
 
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_text = true,
 })
--- s
+
 -- Enable DAP completion ONLY in DAP buffers
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'dap-repl', 'dapui_watches', 'dapui_hover', 'dapui_scopes', 'dapui_breakpoints', 'dapui_stacks', 'dapui_frames' },
   callback = function()
-    require('blink.cmp').sources.add('dap', { group = 1 })
+    local function try_add()
+      local ok, blink = pcall(require, 'blink.cmp')
+      if not ok or type(blink) ~= 'table' or type(blink.sources) ~= 'table' or type(blink.sources.add) ~= 'function' then
+        return false
+      end
+      pcall(blink.sources.add, 'dap', { group = 1 })
+      return true
+    end
+
+    if try_add() then return end
+
+    -- attempt to force-load via lazy.nvim
+    pcall(function()
+      if pcall(require, 'lazy') then
+        require('lazy').load({ plugins = { 'saghen/blink.cmp' } })
+      end
+    end)
+    -- fallback to packadd in case plugin is opt
+    pcall(vim.cmd, 'packadd blink.cmp')
+
+    -- Retry a few times with increasing delay (ms)
+    local tries, delay = 5, 100
+    local attempt = 0
+    local function schedule_try()
+      attempt = attempt + 1
+      vim.defer_fn(function()
+        if try_add() then return end
+        if attempt < tries then
+          schedule_try()
+        end
+      end, delay * attempt)
+    end
+    schedule_try()
   end,
   desc = 'Enable DAP completions in DAP buffers only',
 })

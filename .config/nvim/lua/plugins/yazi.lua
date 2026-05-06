@@ -27,13 +27,17 @@ return {
   },
   opts = {
     -- if you want to open yazi instead of netrw, see below for more info
+    change_neovim_cwd_on_close = true,
     open_for_directories = false,
     keymaps = {
       show_help = "<f1>",
     },
-    floating_window_scaling_factor = 1,
+    -- floating_window_scaling_factor = 0.9,
+        floating_window_scaling_factor = 1,
+
 -- yazi_floating_window_winblend = 30,
 yazi_floating_window_border = "none",
+    -- yazi_floating_window_border = "rounded",
   },
 
   -- 👇 if you use `open_for_directories=true`, this is recommended

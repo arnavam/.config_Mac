@@ -7,7 +7,8 @@
 #
 # see this wiki page for information:
 #  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
-#
+ echo "arnav ALL=(root) NOPASSWD: sha256:$(shasum -a 256 /opt/homebrew/bin/yabai | awk '{print $1}') /opt/homebrew/bin/yabai --load-sa" | sudo tee /private/etc/sudoers.d/yabai 
+
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
@@ -18,16 +19,16 @@ yabai -m config                                 \
     external_bar                 off:40:0       \
     menubar_opacity              1.0            \
     mouse_follows_focus          on             \
-    focus_follows_mouse          on             \
+    focus_follows_mouse          autofocus             \
     display_arrangement_order    default        \
     window_origin_display        default        \
     window_placement             second_child   \
     window_insertion_point       focused        \
     window_zoom_persist          on             \
     window_shadow                on             \
-    window_animation_duration    0            \
+    window_animation_duration    0.0              \
     window_animation_easing      ease_out_circ  \
-    window_opacity_duration      0            \
+    window_opacity_duration      0.0            \
     active_window_opacity        1.0            \
     normal_window_opacity        0.9            \
     window_opacity               on            \
@@ -49,28 +50,27 @@ yabai -m config                                 \
 echo "yabai configuration loaded.."
 
 # Disable specific apps
+yabai -m rule --add app="^Preview$"           manage=off
 
-yabai -m rule --add app="^Preview$"           size=200:250 pos=900:100 float=on
+yabai -m rule --add app="^System Settings$"   manage=off
 
-yabai -m rule --add app="^System Settings$"   size=200:250 pos=900:100 float=on
+yabai -m rule --add app="^Notes$"             manage=off
 
-yabai -m rule --add app="^Notes$"   size=300:250 pos=100:100 float=on
-
-yabai -m rule --add app="^Calculator$"        size=200:250 pos=900:100 float=on
-yabai -m rule --add app="^Karabiner-Element$" size=200:250 pos=900:100 float=on
-yabai -m rule --add app="^App Store$"         size=200:250 pos=900:100 float=on
-yabai -m rule --add app="^Calendar$"          size=200:250 pos=900:100 float=on
-yabai -m rule --add app="^DBeaver$"           size=200:250 pos=900:100 float=on
-yabai -m rule --add app="^Discord$"           size=200:250 pos=900:100 float=on
-yabai -m rule --add app="^Finder$"           manage=off
-yabai -m rule --add app="^PDFgear$"           size=200:250 float=on
-yabai -m rule --add app="^TextEdit$"          size=200:250 pos=900:100 float=on
-yabai -m rule --add app="^Terminal$"          size=200:250 pos=900:100 float=on
-yabai -m rule --add app="^Ghostty$"             opacity=1 manage=on
+yabai -m rule --add app="^Calculator$"        manage=off
+yabai -m rule --add app="^Karabiner-Element$" manage=off
+yabai -m rule --add app="^App Store$"         manage=off
+yabai -m rule --add app="^Calendar$"          manage=off
+yabai -m rule --add app="^DBeaver$"           manage=off
+yabai -m rule --add app="^Discord$"           manage=off
+yabai -m rule --add app="^Finder$"            manage=off
+yabai -m rule --add app="^PDFgear$"           manage=off
+yabai -m rule --add app="^TextEdit$"          manage=off
+yabai -m rule --add app="^Terminal$"          manage=off
+yabai -m rule --add app="^Ghostty$"           opacity=1 sub-layer=normal
 
 yabai -m rule --add app="^Arc$" title="^[arnav|General|Profiles|Max|Links|Shortcuts|Icon|Advanced]$" manage=off
-yabai -m rule --add app="^Arc$" title="^Space.*$" manage=off layer=below
-yabai -m rule --add app="^Arc$" title="^$" manage=off layer=below
+yabai -m rule --add app="^Arc$" title="^Space.*$" manage=off sub-layer=below
+yabai -m rule --add app="^Arc$" title="^$" manage=off sub-layer=below
 
 
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
@@ -87,6 +87,6 @@ yabai -m space 4 --label docs
 yabai -m space 5 --label social
 yabai -m rule --add app="^Safari$" space=^1
 yabai -m rule --add app="^Zen$" space=^1
-yabai -m rule --add app="^kitty$" space=^2 border=off
-yabai -m rule --add app="^Ghostty$" space=^2 border=off
+yabai -m rule --add app="^kitty$" space=^2
+yabai -m rule --add app="^Ghostty$" space=^2
 yabai -m rule --add app="^Code$" space=^3
