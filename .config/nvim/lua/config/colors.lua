@@ -62,6 +62,8 @@ local colors = require('monokai-pro')
 vim.api.nvim_set_hl(0, "WhichKeyBorder", {  bg = colors.bg, fg = "#FFFFFF" })
 vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", {  bg = colors.bg, fg = "#FFFFFF" })
 vim.api.nvim_set_hl(0, "NeoTreeFloatBorder", {  bg = colors.bg, fg = "#FFFFFF" })
+vim.api.nvim_set_hl(0, "NeoTreeGitAdded", { fg = "#A6E22E", bold = true })
+vim.api.nvim_set_hl(0, "NeoTreeGitUntracked", { fg = "#A6E22E", bold = true })
 -- vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { bg = "#FFFFFF", fg = "#000000", bold = true})
 
 vim.api.nvim_set_hl(0, "FloatBorder", {  bg = colors.bg, fg = "#FFFFFF" })

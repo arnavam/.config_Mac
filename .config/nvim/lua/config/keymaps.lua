@@ -123,3 +123,5 @@ vim.keymap.set('n', '<leader>rr', function()
     vim.cmd('%s/\\<' .. old_word .. '\\>/' .. new_word .. '/g')
   end
 end, { desc = 'Replace word globally' })
+
+-- vim.keymap.set("n", "=", "<cmd>wa | qa<CR>")

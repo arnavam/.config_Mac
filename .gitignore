@@ -6,3 +6,9 @@ raycast
 .config/tmux/plugins
 .aider*
 .config/github-copilot/
+
+.config/.semgrep/
+.config/homebrew/
+.config/lazygit/
+.config/mlflow/
+.config/pypoetry/

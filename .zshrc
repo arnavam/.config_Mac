@@ -69,6 +69,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit light g-plane/pnpm-shell-completion
 zinit ice depth=1; zinit light romkatv/powerlevel10k # passing depth=1 to next cmd using zinit ice & light is a cmd use to load p10k lightly
 
 
@@ -186,6 +187,31 @@ mamba activate base
 # <<< mamba initialize <<<
 
 
+
+#NOTE: export
+export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+export CHROME_EXECUTABLE="$HOME/Applications/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+export COLIMA_HOME=$HOME/.colima
+export NNN_PLUG='p:preview-tui;f:finder;d:fzcd;'
+export HOMEBREW_NO_AUTO_UPDATE=1
+export EDITOR="nvim"
+source ~/.zsh-defer/zsh-defer.plugin.zsh
+
+
+
+# Added by Antigravity
+export DOCKER_BUILDKIT=1
+
+# Added by Antigravity
+export PATH="/Users/arnav/.antigravity/antigravity/bin:$PATH"
+export PATH="$PATH:$HOME/flutter/bin"
+
+export UV_LINK_MODE=symlink
+
+
+
 #NOTE: zioxide & yazi
 
 eval "$(zoxide init zsh)"
@@ -207,32 +233,16 @@ y() {
 }
 
 
+alias chrome="/Users/arnav/Applications/Google\ Chrome\ for\ Testing.app/Contents/MacOS/Google\ Chrome\ for\ Testing"
 
-#NOTE: export
-export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-
-export CHROME_EXECUTABLE="$HOME/Applications/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
-export COLIMA_HOME=$HOME/.colima
-export NNN_PLUG='p:preview-tui;f:finder;d:fzcd;'
-export HOMEBREW_NO_AUTO_UPDATE=1
-export EDITOR="nvim"
-source ~/.zsh-defer/zsh-defer.plugin.zsh
-
+# Added by Antigravity IDE
+export PATH="/Users/arnav/.antigravity-ide/antigravity-ide/bin:$PATH"
 
 # pnpm
 export PNPM_HOME="/Users/arnav/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
-
-# Added by Antigravity
-export DOCKER_BUILDKIT=1
-
-# Added by Antigravity
-export PATH="/Users/arnav/.antigravity/antigravity/bin:$PATH"
-export PATH="$PATH:$HOME/flutter/bin"
-
-export UV_LINK_MODE=symlink
+eval "$(fnm env --use-on-cd)"

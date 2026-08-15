@@ -1,0 +1,3 @@
+[submodule ".config/yazi/plugins/eza-preview.yazi"]
+	path = .config/yazi/plugins/eza-preview.yazi
+	url = git@github.com:user/eza-preview.yazi.git

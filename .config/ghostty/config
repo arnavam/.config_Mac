@@ -67,9 +67,9 @@ keybind = ctrl+tab=ignore
 keybind = ctrl+shift+tab=ignore
 
 keybind = ctrl+b>o=toggle_tab_overview
-keybind = global:cmd+grave_accent=toggle_quick_terminal
-keybind = ctrl+k=previous_tab
-keybind = ctrl+j=next_tab
+keybind = global:ctrl+n=toggle_quick_terminal
+keybind = ctrl+h=previous_tab
+keybind = ctrl+l=next_tab
 keybind = cmd+shift+t=toggle_window_float_on_top
 #quick-terminal-position = right
 ### Scrolling/Clear

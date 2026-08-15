@@ -10,6 +10,9 @@ return { -- Highlight, edit, and navigate code
 			'latex',
 			'markdown',
 			'markdown_inline',
+			'javascript',
+			'typescript',
+			'tsx',
 			-- 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'vim', 'vimdoc'
 		},
       -- Autoinstall languages that are not installed

@@ -103,6 +103,11 @@ image_bound      = [ 10000, 10000 ]
 suppress_preload = false
 
 [plugin]
+prepend_fetchers = [
+	{ id = "git", url = "*", run = "git" },
+	{ id = "git", url = "*/", run = "git" }
+]
+
 fetchers = [
 	# Mimetype
 	{ id = "mime", url = "*/",         run = "mime.dir", prio = "high" },
@@ -250,15 +255,7 @@ sort_translit  = false
 
 
 
-[[plugin.prepend_fetchers]]
-id   = "git"
-name = "*"
-run  = "git"
 
-[[plugin.prepend_fetchers]]
-id   = "git"
-name = "*/"
-run  = "git"
 
 [[plugin.prepend_previewers]]
 name = "*/"
@@ -306,3 +303,5 @@ name = "*.xlsx"
 run = "duckdb"
 multi = false
 
+[manager]
+linemode = "git"

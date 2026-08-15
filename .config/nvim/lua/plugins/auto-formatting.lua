@@ -13,7 +13,7 @@ return {
     require('mason-null-ls').setup {
       ensure_installed = {
         -- 'checkmake',
-        -- 'prettier',
+        'prettier',
         -- 'shfmt',
         -- 'ruff',
       },
@@ -26,8 +26,8 @@ return {
         diagnostics.checkmake,
         formatting.prettier.with {
           filetypes = {
-            -- 'jsonc', 'css', 'html', 'json', 'yaml',
-            'markdown'
+            'jsonc', 'css', 'html', 'json', 'yaml', 'markdown',
+            'javascript', 'javascriptreact', 'typescript', 'typescriptreact'
           },
         },
         formatting.shfmt.with { args = { '-i', '4' } },

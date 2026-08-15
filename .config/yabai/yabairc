@@ -68,10 +68,10 @@ yabai -m rule --add app="^TextEdit$"          manage=off
 yabai -m rule --add app="^Terminal$"          manage=off
 yabai -m rule --add app="^Ghostty$"           opacity=1 sub-layer=normal
 
-yabai -m rule --add app="^Arc$" title="^[arnav|General|Profiles|Max|Links|Shortcuts|Icon|Advanced]$" manage=off
-yabai -m rule --add app="^Arc$" title="^Space.*$" manage=off sub-layer=below
-yabai -m rule --add app="^Arc$" title="^$" manage=off sub-layer=below
-
+# yabai -m rule --add app="^Arc$" title="^[arnav|General|Profiles|Max|Links|Shortcuts|Icon|Advanced]$" manage=off
+# yabai -m rule --add app="^Arc$" title="^Space.*$" manage=off sub-layer=below
+# yabai -m rule --add app="^Arc$" title="^$" manage=off sub-layer=below
+#
 
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
 yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
@@ -79,6 +79,12 @@ yabai -m signal --add event=window_destroyed action="sketchybar --trigger window
 
 yabai -m signal --add app='^Ghostty$' event=window_created action='yabai -m space --layout bsp'
 yabai -m signal --add app='^Ghostty$' event=window_destroyed action='yabai -m space --layout bsp'
+
+
+yabai -m signal --add app='^Antigravity IDE$' event=window_created action='yabai -m space --layout bsp'
+yabai -m signal --add app='^Antigravity IDE$' event=window_destroyed action='yabai -m space --layout bsp'
+
+yabai -m rule --add app="^Antigravity IDE$"           opacity=1 sub-layer=normal
 
 yabai -m space 1 --label web
 yabai -m space 2 --label code

@@ -143,8 +143,8 @@ keymap = [
 	{ on = "8", run = "tab_switch 7", desc = "Switch to eighth tab" },
 	{ on = "9", run = "tab_switch 8", desc = "Switch to ninth tab" },
 
-	{ on = "<C-h>", run = "tab_switch -1 --relative", desc = "Switch to previous tab" },
-	{ on = "<C-l>", run = "tab_switch 1 --relative",  desc = "Switch to next tab" },
+	{ on = "<C-j>", run = "tab_switch -1 --relative", desc = "Switch to previous tab" },
+	{ on = "<C-k>", run = "tab_switch 1 --relative",  desc = "Switch to next tab" },
 
 	{ on = "{", run = "tab_swap -1", desc = "Swap current tab with previous tab" },
 	{ on = "}", run = "tab_swap 1",  desc = "Swap current tab with next tab" },
@@ -378,10 +378,10 @@ keymap = [
 on  = "y"
 run = [ "yank", 'plugin clipboard -- --action=copy' ]
 
-[[mgr.prepend_keymap]]
-on   = "f"
-run  = "plugin smart-filter"
-desc = "smart filter"
+# [[mgr.prepend_keymap]]
+# on   = "f"
+# run  = "plugin smart-filter"
+# desc = "smart filter"
 
 #mactag
 [[mgr.prepend_keymap]]
@@ -518,4 +518,14 @@ desc = "Move in relative steps"
 on = [ "9" ]
 run = "plugin relative-motions 9"
 desc = "Move in relative steps"
+
+
+# undo yazi
+
+[[mgr.prepend_keymap]]
+  # Undo
+on = ["u"]
+run = "plugin undo"
+desc = "Undo last changes" 
+
 

@@ -78,6 +78,11 @@ use = "dedukun/relative-motions"
 rev = "a603d9e"
 hash = "e02a788e5b8ae0fb47fd0193dda589cc"
 
+[[plugin.deps]]
+use = "0xHouss/undo"
+rev = "44f0c6b"
+hash = "99ed04b1d81d55ffcd07a6e2d734f5aa"
+
 [[flavor.deps]]
 use = "AdmiralBarbarossa/thinkpad-red-oled"
 rev = "d7d482d"

@@ -137,8 +137,8 @@ return {
       -- online, please don't ask me how to install them :)
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
-        'python'
-
+        'python',
+        'js'
       },
     }
 
@@ -221,7 +221,37 @@ local function open_repl_side()
     end
 
     if vim.fn.filereadable('.vscode/launch.json') == 1 then
-      require('dap.ext.vscode').load_launchjs()
+      require('dap.ext.vscode').load_launchjs(nil, {
+        ['pwa-node'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
+        ['pwa-chrome'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
+        ['node'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
+      })
+    end
+
+    -- Next.js specific debug configurations
+    local js_based_languages = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' }
+    for _, language in ipairs(js_based_languages) do
+      dap.configurations[language] = dap.configurations[language] or {}
+      
+      -- Next.js Server-Side Debugging
+      table.insert(dap.configurations[language], {
+        type = "pwa-node",
+        request = "launch",
+        name = "Next.js: Debug Server-Side",
+        cwd = "${workspaceFolder}",
+        program = "${workspaceFolder}/node_modules/.bin/next",
+        args = { "dev" },
+      })
+      
+      -- Next.js Client-Side Debugging
+      table.insert(dap.configurations[language], {
+        type = "pwa-chrome",
+        request = "launch",
+        name = "Next.js: Debug Client-Side",
+        url = "http://localhost:3000",
+        webRoot = "${workspaceFolder}",
+        sourceMaps = true,
+      })
     end
 
     -- Modified listeners with messages
