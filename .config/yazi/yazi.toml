@@ -1,6 +1,6 @@
 # A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
-"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+# "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 [mgr]
 ratio          = [ 2, 3, 5 ]
@@ -102,84 +102,6 @@ image_alloc      = 536870912  # 512MB
 image_bound      = [ 10000, 10000 ]
 suppress_preload = false
 
-[plugin]
-prepend_fetchers = [
-	{ id = "git", url = "*", run = "git" },
-	{ id = "git", url = "*/", run = "git" }
-]
-
-fetchers = [
-	# Mimetype
-	{ id = "mime", url = "*/",         run = "mime.dir", prio = "high" },
-	{ id = "mime", url = "local://*",  run = "mime.local", prio = "high" },
-	{ id = "mime", url = "remote://*", run = "mime.remote", prio = "high" },
-]
-spotters = [
-	{ url = "*/", run = "folder" },
-	# Code
-	{ mime = "text/*", run = "code" },
-	{ mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
-	# Image
-	{ mime = "image/{avif,hei?,jxl}", run = "magick" },
-	{ mime = "image/svg+xml", run = "svg" },
-	{ mime = "image/*", run = "image" },
-	# Video
-	{ mime = "video/*", run = "video" },
-	# Virtual file system
-	{ mime = "vfs/*", run = "vfs" },
-	# Error
-	{ mime = "null/*", run = "null" },
-	# Fallback
-	{ url = "*", run = "file" },
-]
-preloaders = [
-	# Image
-	{ mime = "image/{avif,hei?,jxl}", run = "magick" },
-	{ mime = "image/svg+xml", run = "svg" },
-	{ mime = "image/*", run = "image" },
-	# Video
-	{ mime = "video/*", run = "video" },
-	# PDF
-	{ mime = "application/pdf", run = "pdf" },
-	# Font
-	{ mime = "font/*", run = "font" },
-	{ mime = "application/ms-opentype", run = "font" },
-]
-previewers = [
-	{ url = "*/", run = "folder" },
-	# Code
-	{ mime = "text/*", run = "code" },
-	{ mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
-	# JSON
-	{ mime = "application/{json,ndjson}", run = "json" },
-	# Image
-	{ mime = "image/{avif,hei?,jxl}", run = "magick" },
-	{ mime = "image/svg+xml", run = "svg" },
-	{ mime = "image/*", run = "image" },
-	# Video
-	{ mime = "video/*", run = "video" },
-	# PDF
-	{ mime = "application/pdf", run = "pdf" },
-	# Archive
-	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", run = "archive" },
-	{ mime = "application/{debian*-package,redhat-package-manager,rpm,android.package-archive}", run = "archive" },
-	{ url = "*.{AppImage,appimage}", run = "archive" },
-	# Virtual Disk / Disk Image
-	{ mime = "application/{iso9660-image,qemu-disk,ms-wim,apple-diskimage}", run = "archive" },
-	{ mime = "application/virtualbox-{vhd,vhdx}", run = "archive" },
-	{ url = "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}", run = "archive" },
-	# Font
-	{ mime = "font/*", run = "font" },
-	{ mime = "application/ms-opentype", run = "font" },
-	# Empty file
-	{ mime = "inode/empty", run = "empty" },
-	# Virtual file system
-	{ mime = "vfs/*", run = "vfs" },
-	# Error
-	{ mime = "null/*", run = "null" },
-	# Fallback
-	{ url = "*", run = "file" },
-]
 
 [input]
 cursor_blink = true
@@ -258,48 +180,48 @@ sort_translit  = false
 
 
 [[plugin.prepend_previewers]]
-name = "*/"
+url = "*/"
 run  = 'mux eza_tree_1 eza_tree_2 eza_tree_3 eza_tree_4'
 
 [[plugin.prepend_previewers]]
-name = "*.csv"
+url = "*.csv"
 run = "mux duckdb code"
 
 [[plugin.prepend_previewers]]
-name = "*.tsv"
+url = "*.tsv"
 run = "mux duckdb code"
 
 [[plugin.prepend_previewers]]
-name = "*.json"
+url = "*.json"
 run = "mux duckdb code"
 
 [[plugin.prepend_preloaders]]
-name = "*.csv"
+url = "*.csv"
 run = "duckdb"
 multi = false
 
 [[plugin.prepend_preloaders]]
-name = "*.tsv"
+url = "*.tsv"
 run = "duckdb"
 multi = false
 
 [[plugin.prepend_preloaders]]
-name = "*.json"
+url = "*.json"
 run = "duckdb"
 multi = false
 
 [[plugin.prepend_preloaders]]
-name = "*.parquet"
+url = "*.parquet"
 run = "duckdb"
 multi = false
 
 [[plugin.prepend_preloaders]]
-name = "*.txt"
+url = "*.txt"
 run = "duckdb"
 multi = false
 
 [[plugin.prepend_preloaders]]
-name = "*.xlsx"
+url = "*.xlsx"
 run = "duckdb"
 multi = false
 

@@ -183,7 +183,7 @@ if [ "$OS_TYPE" != "Linux" ]; then
   unset __mamba_setup
 
 fi
-mamba activate base
+(( $+commands[mamba] )) && mamba activate base
 # <<< mamba initialize <<<
 
 
@@ -239,10 +239,11 @@ alias chrome="/Users/arnav/Applications/Google\ Chrome\ for\ Testing.app/Content
 export PATH="/Users/arnav/.antigravity-ide/antigravity-ide/bin:$PATH"
 
 # pnpm
-export PNPM_HOME="/Users/arnav/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME/bin:"*) ;;
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
-eval "$(fnm env --use-on-cd)"
+export PATH="$HOME/.local/share/fnm:$PATH"
+(( $+commands[fnm] )) && eval "$(fnm env --use-on-cd)"
