@@ -1,9 +1,8 @@
 {
     "global": {
-        "check_for_updates": false,
+        "check_for_updates_on_startup": false,
         "show_in_menu_bar": false
     },
-    "machine_specific": { "krbn-ffa0d529-83f4-4b22-9596-564c18d67949": { "enable_multitouch_extension": true } },
     "profiles": [
         {
             "complex_modifications": {
