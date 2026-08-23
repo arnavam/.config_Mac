@@ -4,12 +4,10 @@
 
 LIVE_COUNTER=$(ps a | awk '{print $2}' | grep -vi "tty*" | uniq | wc -l);
 if [ $LIVE_COUNTER -eq 3 ]; then
+	echo Hello user 󱠢 | lolcat
+	cat ~/.config/fastfetch/macos.txt| lolcat --force > ~/.config/fastfetch/macos_logo.txt
 	fastfetch
 fi
-
-	# fastfetch
-echo Hello user 󱠢 | lolcat
-cat ~/.config/fastfetch/macos.txt| lolcat --force > ~/.config/fastfetch/macos_logo.txt 
 
 #NOTE:  powerlevel10k instant
 
@@ -78,7 +76,14 @@ zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
 zinit snippet OMZP::command-not-found
 
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+zcompdump="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
+mkdir -p "${zcompdump:h}"
+if [[ -n "${zcompdump}"(#qN.mh+24) ]]; then
+  compinit -d "$zcompdump"
+else
+  compinit -C -d "$zcompdump"
+fi
 
 zinit cdreplay -q
 
@@ -197,7 +202,6 @@ export COLIMA_HOME=$HOME/.colima
 export NNN_PLUG='p:preview-tui;f:finder;d:fzcd;'
 export HOMEBREW_NO_AUTO_UPDATE=1
 export EDITOR="nvim"
-source ~/.zsh-defer/zsh-defer.plugin.zsh
 
 
 
@@ -247,3 +251,44 @@ esac
 # pnpm end
 export PATH="$HOME/.local/share/fnm:$PATH"
 (( $+commands[fnm] )) && eval "$(fnm env --use-on-cd)"
+
+get_ghostty_path() {
+  local dir="$PWD"
+
+  while [[ "$dir" != "/" ]]; do
+    if [[ -d "$dir/.git" ]]; then
+      echo "${dir##*/}"
+      return
+    fi
+    dir="${dir:h}"
+  done
+
+  # Not in a git repo — show path with ~ for home
+  if [[ "$PWD" == "$HOME"* ]]; then
+    echo "~${PWD#$HOME}"
+  else
+    echo "$PWD" | awk -F/ '{
+      n=NF;
+      if(n>=3) print $(n-2)"/"$(n-1)"/"$n;
+      else if(n==2) print $(n-1)"/"$n;
+      else print $n
+    }'
+  fi
+}
+
+set_ghostty_title() {
+  echo -ne "\e]0;$(get_ghostty_path)\a"
+}
+
+set_ghostty_exec_title() {
+  local cmd="${1%% *}"  # First word of command
+  echo -ne "\e]0;${cmd}: $(get_ghostty_path)\a"
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec set_ghostty_exec_title
+add-zsh-hook precmd set_ghostty_title   # Reset to directory name when command finishes
+add-zsh-hook chpwd set_ghostty_title
+
+set_ghostty_title
+

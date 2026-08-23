@@ -4,6 +4,7 @@ require("full-border"):setup {
 	type = ui.Border.ROUNDED,
 }
 
+require("undo"):setup {}
 require("mactag"):setup({
 	-- Keys used to add or remove tags
 	keys = {
@@ -69,24 +70,7 @@ require("mux"):setup({
 	},
 })
 
-th.git = th.git or {}
-th.git.modified = ui.Style():fg("#E2C08D")
-th.git.added = ui.Style():fg("#81B88B")
-th.git.untracked = ui.Style():fg("#73C991")
-th.git.deleted = ui.Style():fg("#C74E39")
-th.git.updated = ui.Style():fg("#E4676B")
-th.git.ignored = ui.Style():fg("#8C8C8C")
-th.git.clean = ui.Style()
-th.git.unknown = ui.Style():fg("#8C8C8C")
 
-th.git.modified_sign = "M "
-th.git.added_sign = "A "
-th.git.untracked_sign = "U "
-th.git.deleted_sign = "D "
-th.git.updated_sign = "M "
-th.git.ignored_sign = "I "
-th.git.clean_sign = ""
-th.git.unknown_sign = ""
 
 require("git"):setup {
 	-- Order of status signs showing in the linemode

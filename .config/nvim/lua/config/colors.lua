@@ -107,3 +107,23 @@ vim.api.nvim_set_hl(0, "Folded", {   link="@conceal.markdown"}) -- bg = "#4c494c
 --     vim.api.nvim_set_hl(0, "rendermarkdowncode", {  bg = "#000000"})
 --
 --
+
+-- Automatically change Ghostty's background/title to match Neovim's theme
+vim.api.nvim_create_autocmd({"ColorScheme", "VimEnter"}, {
+  callback = function()
+    -- Get the background color of the current Neovim theme
+    local normal_hl = vim.api.nvim_get_hl(0, { name = "Normal" })
+    if normal_hl and normal_hl.bg then
+      local bg_hex = string.format("#%06x", normal_hl.bg)
+      -- Send the OSC 11 signal directly to the terminal bypassing Neovim's UI
+      vim.fn.chansend(vim.v.stderr, "\27]11;" .. bg_hex .. "\27\\")
+    end
+  end,
+})
+
+-- Reset the terminal background back to Ghostty's default when you quit Neovim
+vim.api.nvim_create_autocmd("VimLeave", {
+  callback = function()
+    vim.fn.chansend(vim.v.stderr, "\27]111\27\\")
+  end,
+})

@@ -106,21 +106,14 @@ cmd + alt - x : yabai -m space --focus recent
 # shift + ctrl - s : yabai -m window --move rel:0:20
 
 # resize window
-# hold cmd+alt-r to enter resize mode, then hjkl to resize, escape to leave
-:: resize @
-resize < cmd + alt - r ; default
-resize < escape ; default
-
-resize < h : yabai -m window --resize left:-10:0; \
-             yabai -m window --resize right:-10:0
-resize < j : yabai -m window --resize bottom:0:10; \
-             yabai -m window --resize top:0:10
-resize < k : yabai -m window --resize top:0:-10; \
-             yabai -m window --resize bottom:0:-10
-resize < l : yabai -m window --resize right:10:0; \
-             yabai -m window --resize left:10:0
-
-cmd + alt - r ; resize
+alt + shift - h : yabai -m window --resize left:-10:0; \
+                  yabai -m window --resize right:-10:0
+alt + shift - j : yabai -m window --resize bottom:0:10; \
+                  yabai -m window --resize top:0:10
+alt + shift - k : yabai -m window --resize top:0:-10; \
+                  yabai -m window --resize bottom:0:-10
+alt + shift - l : yabai -m window --resize right:10:0; \
+                  yabai -m window --resize left:10:0
 # toggle window zoom
 # alt - d : yabai -m window --toggle zoom-parent
 # alt - f : yabai -m window --toggle zoom-fullscreen
@@ -142,7 +135,10 @@ alt - p : yabai -m window --toggle sticky
 
 # window and space moving action
 
-alt - n : ~/.config/skhd/scripts/focus-new-space.sh
+alt - n : yabai -m space --create && \
+                  index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
+                  yabai -m window --space "${index}" && \
+                  yabai -m space --focus "${index}"
 
 
 alt - u :yabai -m space --mirror y-axis
@@ -175,12 +171,14 @@ ctrl + alt - k : yabai -m window --display next
 # Focus previous display (left/counter-clockwise)
 ctrl + alt - j : yabai -m window --display prev
 
-ctrl + alt - n : ~/.config/skhd/scripts/focus-display-warp-mouse.sh
+ctrl + alt - n : \
+  yabai -m display --focus next && \
+  eval $(yabai -m query --displays --display | jq -r '"yabai -m mouse --warp \(.frame.x + .frame.w/2) \(.frame.y + .frame.h/2)"')
 # window and space focus action
 
-ctrl + cmd  - j : ~/.config/skhd/scripts/focus-window-forward.sh
+ctrl + cmd  - j : yabai -m window --focus "$(yabai -m query --windows | jq -re "sort_by(.display, .space, .frame.x, .frame.y, .id) | map(select(.\"is-visible\" == true and .role != \"AXUnknown\")) | reverse | nth(index(map(select(.\"has-focus\" == true))) - 1).id")"
 
-ctrl + cmd  - k : ~/.config/skhd/scripts/focus-window-backward.sh
+ctrl + cmd  - k : yabai -m window --focus "$(yabai -m query --windows | jq -re "sort_by(.display, .frame.x, .frame.y, .id) | map(select(.\"is-visible\" == true and .role != \"AXUnknown\")) | nth(index(map(select(.\"has-focus\" == true))) - 1).id")"
 
 ctrl + cmd  - l : yabai -m space --focus next;
 ctrl + cmd  - h : yabai -m space --focus prev;
@@ -204,9 +202,6 @@ ctrl + alt - r : yabai --restart-service
 ctrl + alt - w : brew services restart sketchybar
 ctrl + alt - e : pkill dynamic-island && /opt/homebrew/Cellar/dynamicislandsketchybar/04/bin/dynamic-island &
 
-# reload skhd's own config
-ctrl + alt - x : skhd --reload
-
 
 #custom 
 
@@ -216,7 +211,4 @@ alt - t : /opt/homebrew/Caskroom/miniconda/base/envs/aspira/bin/latexocr
 #T:
 #yabai -m window --ratio 0.6
 #set current window's split ratio to 2/3rds of the tree.
-
-# Pass cmd+, through to the app, wait a split second, then force the focused window to float
-cmd - 0x2B -> : osascript -e 'delay 0.1' && yabai -m window --toggle float
 

@@ -372,12 +372,6 @@ keymap = [
 	{ on = "f", run = "filter", desc = "Filter help items" },
 ]
 
-
-#clipboard
-[[mgr.prepend_keymap]]
-on  = "y"
-run = [ "yank", 'plugin clipboard -- --action=copy' ]
-
 # [[mgr.prepend_keymap]]
 # on   = "f"
 # run  = "plugin smart-filter"
@@ -529,3 +523,8 @@ run = "plugin undo"
 desc = "Undo last changes" 
 
 
+# clipboard using clipboard
+[[mgr.prepend_keymap]]
+on  = "y"
+run = [ "yank", "plugin system-clipboard" ]
+desc = "Yank and copy to system clipboard"

@@ -1,4 +1,4 @@
---- @since 25.5.31
+--- @since 26.5.6
 
 local PackageName = "pref-by-location"
 
@@ -36,8 +36,10 @@ local STATE_KEY = {
 	tasks_write_prefs_running = "tasks_write_prefs_running",
 	tasks_write_prefs = "tasks_write_prefs",
 	current_show_hidden_state = "current_show_hidden_state",
+	current_show_sort_state = "current_show_sort_state",
 	-- Use this to fix flickering when toggle hidden
 	tmp_disable_ind_hidden = "tmp_disable_ind_hidden",
+	tmp_disable_ind_sort = "tmp_disable_ind_sort",
 }
 
 local ACTION = {
@@ -204,7 +206,8 @@ local read_prefs_from_saved_file = function(pref_path)
 end
 
 local current_dir = ya.sync(function()
-	local is_virtual = Url(cx.active.current.cwd).scheme and Url(cx.active.current.cwd).scheme.is_virtual
+	local is_virtual = (Url(cx.active.current.cwd).spec and Url(cx.active.current.cwd).spec.is_virtual)
+		or (not Url(cx.active.current.cwd).spec and Url(cx.active.current.cwd).scheme.is_virtual)
 
 	return tostring((is_virtual and cx.active.current.cwd or cx.active.current.cwd.path) or cx.active.current.cwd)
 end)
@@ -212,6 +215,7 @@ end)
 -- NOTE: can't use rt.mgr here because the value is not always the latest, unless set entry function as sync
 local current_pref = ya.sync(function()
 	local show_hidden = get_state(STATE_KEY.current_show_hidden_state)
+	local cur_sort = get_state(STATE_KEY.current_show_sort_state)
 	local pref = {
 		sort = {
 			cx.active.pref.sort_by,
@@ -225,6 +229,23 @@ local current_pref = ya.sync(function()
 	}
 	if show_hidden ~= nil then
 		pref.show_hidden = show_hidden
+	end
+	if cur_sort then
+		if cur_sort[1] ~= nil then
+			pref.sort[1] = cur_sort[1]
+		end
+		if cur_sort.reverse ~= nil then
+			pref.sort.reverse = cur_sort.reverse
+		end
+		if cur_sort.dir_first ~= nil then
+			pref.sort.dir_first = cur_sort.dir_first
+		end
+		if cur_sort.translit ~= nil then
+			pref.sort.translit = cur_sort.translit
+		end
+		if cur_sort.sensitive ~= nil then
+			pref.sort.sensitive = cur_sort.sensitive
+		end
 	end
 
 	return pref
@@ -253,6 +274,7 @@ local function save_prefs()
 	if get_state(STATE_KEY.tasks_write_prefs_running) or #get_state(STATE_KEY.tasks_write_prefs) == 0 then
 		-- Use this to fix flickering when toggle hidden
 		set_state(STATE_KEY.tmp_disable_ind_hidden, false)
+		set_state(STATE_KEY.tmp_disable_ind_sort, false)
 		return
 	end
 	set_state(STATE_KEY.tasks_write_prefs_running, true)
@@ -367,7 +389,8 @@ end)
 
 local get_ind_sort_pref = ya.sync(function()
 	local prefs = get_state(STATE_KEY.prefs)
-	local is_virtual = Url(cx.active.current.cwd).scheme and Url(cx.active.current.cwd).scheme.is_virtual
+	local is_virtual = (Url(cx.active.current.cwd).spec and Url(cx.active.current.cwd).spec.is_virtual)
+		or (not Url(cx.active.current.cwd).spec and Url(cx.active.current.cwd).scheme.is_virtual)
 	local cwd = tostring((is_virtual and cx.active.current.cwd or cx.active.current.cwd.path) or cx.active.current.cwd)
 	-- return sort pref based on location
 	for _, pref in ipairs(prefs) do
@@ -379,7 +402,8 @@ end)
 
 local get_ind_hidden_pref = ya.sync(function()
 	local prefs = get_state(STATE_KEY.prefs)
-	local is_virtual = Url(cx.active.current.cwd).scheme and Url(cx.active.current.cwd).scheme.is_virtual
+	local is_virtual = (Url(cx.active.current.cwd).spec and Url(cx.active.current.cwd).spec.is_virtual)
+		or (not Url(cx.active.current.cwd).spec and Url(cx.active.current.cwd).scheme.is_virtual)
 	local cwd = tostring((is_virtual and cx.active.current.cwd or cx.active.current.cwd.path) or cx.active.current.cwd)
 	-- return hidden pref based on location
 	for _, pref in ipairs(prefs) do
@@ -392,7 +416,8 @@ end)
 -- This function trigger everytime user change cwd
 local change_pref = ya.sync(function(_)
 	local prefs = get_state(STATE_KEY.prefs)
-	local is_virtual = Url(cx.active.current.cwd).scheme and Url(cx.active.current.cwd).scheme.is_virtual
+	local is_virtual = (Url(cx.active.current.cwd).spec and Url(cx.active.current.cwd).spec.is_virtual)
+		or (not Url(cx.active.current.cwd).spec and Url(cx.active.current.cwd).scheme.is_virtual)
 	local cwd = tostring((is_virtual and cx.active.current.cwd or cx.active.current.cwd.path) or cx.active.current.cwd)
 	-- change pref based on location
 	for _, pref in ipairs(prefs) do
@@ -590,8 +615,10 @@ function M:setup(opts)
 	set_state(STATE_KEY.loaded, true)
 
 	-- dds subscribe on changed directory
+	set_state(STATE_KEY.tmp_disable_ind_sort, false)
 	ps.sub("ind-sort", function(opt)
 		if not get_state(STATE_KEY.disabled) then
+			set_state(STATE_KEY.tmp_disable_ind_sort, true)
 			local new_sort_pref = get_ind_sort_pref()
 			if new_sort_pref then
 				opt.by, opt.reverse, opt.dir_first, opt.translit, opt.sensitive =
@@ -602,7 +629,24 @@ function M:setup(opts)
 					new_sort_pref.sensitive
 			end
 		end
+		return opt
+	end)
 
+	ps.sub("key-sort", function(opt)
+		if not get_state(STATE_KEY.disabled) then
+			set_state(STATE_KEY.tmp_disable_ind_sort, true)
+			local new_show_sort_state
+			if opt then
+				new_show_sort_state = {
+					opt.by,
+					reverse = opt.reverse,
+					dir_first = opt.dir_first,
+					translit = opt.translit,
+					sensitive = opt.sensitive,
+				}
+			end
+			set_state(STATE_KEY.current_show_sort_state, new_show_sort_state)
+		end
 		return opt
 	end)
 
@@ -656,8 +700,12 @@ function M:setup(opts)
 
 	ps.sub("hover", function(_)
 		if cx.active.current.hovered then
-			local is_virtual = Url(cx.active.current.hovered.url).scheme
-				and Url(cx.active.current.hovered.url).scheme.is_virtual
+			local is_virtual = (
+				Url(cx.active.current.hovered.url).spec and Url(cx.active.current.hovered.url).spec.is_virtual
+			)
+				or (
+					not Url(cx.active.current.hovered.url).spec and Url(cx.active.current.hovered.url).scheme.is_virtual
+				)
 			local hovered_url = (is_virtual and cx.active.current.hovered.url or cx.active.current.hovered.url.path)
 				or cx.active.current.hovered.url
 			local tab_id = tostring(

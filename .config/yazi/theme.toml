@@ -13,7 +13,25 @@
 # dark  = "thinkpad-red-oled"
 # dark  = "vscode-dark-modern"
 # dark = "nord"
-# dark = "monokai"
+dark = "monokai"
 # dark = "tokyo-night"
-dark = "bluloco-dark"
+# dark = "bluloco-dark"
 # : }}}
+	
+[git]
+modified  = { fg = "#E2C08D" }
+added     = { fg = "#81B88B" }
+untracked = { fg = "#73C991" }
+deleted   = { fg = "#C74E39" }
+updated   = { fg = "#E4676B" }
+ignored   = { fg = "#8C8C8C" }
+unknown   = { fg = "#8C8C8C" }
+
+modified_sign  = "M "
+added_sign     = "A "
+untracked_sign = "U "
+deleted_sign   = "D "
+updated_sign   = "M "
+ignored_sign   = "I "
+clean_sign     = ""
+unknown_sign   = ""

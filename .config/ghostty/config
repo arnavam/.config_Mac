@@ -13,7 +13,7 @@ split-divider-color = #999999
 background-image = dark-image.jpg
 background-image-fit = cover
 background-image-opacity =  1
-background-blur = false
+background-blur = true
 background = #000000
 
 #cursor
@@ -25,13 +25,12 @@ cursor-style-blink = true
 
 cursor-color = "#FFD700"
 custom-shader =  ghostty-shaders/cursor-warp.glsl
-cursor-style-blink = true
 custom-shader-animation = true
 # terminal
 wait-after-command = true
 
 bell-features = audio
-shell-integration-features = no-cursor
+shell-integration-features = no-title
 # windows & tabs	
 window-vsync = true
 window-inherit-working-directory = true
@@ -43,17 +42,17 @@ window-step-resize = true
 unfocused-split-opacity = 0.8
 
 window-padding-color = extend
-# macos-titlebar-style =hidden
-#macos-titlebar-style = tabs
-macos-titlebar-style = transparent
+macos-titlebar-style =hidden
+# macos-titlebar-style = tabs
+# macos-titlebar-style = transparent
 macos-titlebar-proxy-icon = hidden
 confirm-close-surface =false
 
 # macos-quit-when-last-window-closed = true  
 #
 
-focus-follows-mouse = true 
-
+focus-follows-mouse = false 
+keybind = super+enter=text:\r
 clipboard-trim-trailing-spaces =true 
 
 quick-terminal-position = bottom
@@ -67,7 +66,7 @@ keybind = ctrl+tab=ignore
 keybind = ctrl+shift+tab=ignore
 
 keybind = ctrl+b>o=toggle_tab_overview
-keybind = global:ctrl+n=toggle_quick_terminal
+keybind = global:ctrl+cmd+shift+alt+n=toggle_quick_terminal
 keybind = ctrl+h=previous_tab
 keybind = ctrl+l=next_tab
 keybind = cmd+shift+t=toggle_window_float_on_top
