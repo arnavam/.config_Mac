@@ -30,7 +30,6 @@ return {
       },
     },
     completion = {
-      blink = true,
       min_chars = 2,
     },
     notes_subdir = 'inbox',

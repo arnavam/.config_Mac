@@ -65,7 +65,7 @@ keybind = cmd+v=paste_from_clipboard
 keybind = ctrl+tab=ignore
 keybind = ctrl+shift+tab=ignore
 
-keybind = ctrl+b>o=toggle_tab_overview
+keybind = ctrl+o=toggle_tab_overview
 keybind = global:ctrl+cmd+shift+alt+n=toggle_quick_terminal
 keybind = ctrl+h=previous_tab
 keybind = ctrl+l=next_tab

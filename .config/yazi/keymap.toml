@@ -523,8 +523,19 @@ run = "plugin undo"
 desc = "Undo last changes" 
 
 
-# clipboard using clipboard
+# System clipboard (macOS pasteboard)
 [[mgr.prepend_keymap]]
 on  = "y"
-run = [ "yank", "plugin system-clipboard" ]
+run = [ "yank", 'plugin clipboard -- --action=copy' ]
 desc = "Yank and copy to system clipboard"
+
+[[mgr.prepend_keymap]]
+on  = "x"
+run = [ "yank --cut", 'plugin clipboard -- --action=copy' ]
+desc = "Cut and copy to system clipboard"
+
+# CLI cb copy via system-clipboard plugin
+[[mgr.prepend_keymap]]
+on  = "<C-y>"
+run = [ "yank", "plugin system-clipboard" ]
+desc = "Yank and copy to cb clipboard"
