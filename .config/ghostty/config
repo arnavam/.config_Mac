@@ -58,7 +58,7 @@ clipboard-trim-trailing-spaces =true
 quick-terminal-position = bottom
 # keybind = shift+cmd+c=copy_to_primary_selection
 # keybind = shift+cmd+v=paste_from_primary_selection
-keybind = cmd+c=copy_to_clipboard
+keybind = performable:cmd+c=copy_to_clipboard
 keybind = cmd+v=paste_from_clipboard
 
 

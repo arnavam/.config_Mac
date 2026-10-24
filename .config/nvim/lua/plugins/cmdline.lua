@@ -15,13 +15,13 @@ return {
       },
     },
     messages = {
-      enabled = false,
+      enabled = true,
       view = "mini",
       view_error = "notify",
       view_warn = "notify",
     },
 		   notify = {
-      enabled = false, -- Disable notifications
+      enabled = true,
     },
     popupmenu = {
       enabled = true,
@@ -78,12 +78,6 @@ return {
           event = "msg_show",
           kind = "",
           find = "written",
-        },
-        opts = { skip = true },
-      },
-			      {
-        filter = {
-          event = "notify",
         },
         opts = { skip = true },
       },

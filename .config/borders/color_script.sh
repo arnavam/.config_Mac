@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # Function to convert HSL to ARGB hex (alpha included)
+# Optional 4th argument: alpha as two hex digits (default ff)
 hsl_to_argb_hex() {
   H=$1
   S=$2
   L=$3
+  A=${4:-ff}
 
   # Use Python for accurate HSL to RGB conversion
   python3 - <<END
@@ -13,7 +15,7 @@ h = $H / 360.0
 s = $S
 l = $L
 r, g, b = colorsys.hls_to_rgb(h, l, s)
-argb = "0xff{:02X}{:02X}{:02X}".format(int(r * 255), int(g * 255), int(b * 255))
+argb = "0x$A{:02X}{:02X}{:02X}".format(int(r * 255), int(g * 255), int(b * 255))
 print(argb)
 END
 }
@@ -37,6 +39,11 @@ INACTIVE_COLOR=$(hsl_to_argb_hex $HUE $SAT $LIGHTNESS_INACTIVE)
 ACTIVE_COLOR=$(hsl_to_argb_hex $HUE $SAT $LIGHTNESS_ACTIVE)
 BACKGROUND_COLOR=$(hsl_to_argb_hex $HUE $SAT $LIGHTNESS_BACKGROUND)
 
+# Near-neutral dark shades of the same hue for bar surfaces
+BAR_BG_COLOR=$(hsl_to_argb_hex $HUE 0.12 0.10 e6)
+BAR_BG_ALT_COLOR=$(hsl_to_argb_hex $HUE 0.10 0.20 ff)
+BAR_BORDER_COLOR=$(hsl_to_argb_hex $HUE 0.35 0.35 ff)
+
 # Update your options array with these colors
 cat <<EOF > "$CONFIG_DIR/bordersrc" 
 options=(
@@ -53,6 +60,18 @@ borders "\${options[@]}"
 
 EOF
 brew services restart borders
+
+# Shared theme for sketchybar (read by sketchybar/theme.lua)
+THEME_DIR="$HOME/.cache/theme"
+mkdir -p "$THEME_DIR"
+cat <<THEME > "$THEME_DIR/colors"
+accent=$ACTIVE_COLOR
+accent_soft=$INACTIVE_COLOR
+bg=$BAR_BG_COLOR
+bg_alt=$BAR_BG_ALT_COLOR
+border=$BAR_BORDER_COLOR
+THEME
+sketchybar --trigger theme_changed 2>/dev/null
 
 echo "Updated colors saved to bordersrc"
 echo "Inactive Color: $INACTIVE_COLOR"

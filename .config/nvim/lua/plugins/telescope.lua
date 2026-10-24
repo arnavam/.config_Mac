@@ -1,5 +1,6 @@
-return { -- Fuzzy er (files, lsp, etc)
+return {
   'nvim-telescope/telescope.nvim',
+  branch = 'master',
   event = 'VimEnter',
   dependencies = {
     'nvim-lua/plenary.nvim',

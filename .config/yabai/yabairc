@@ -37,9 +37,9 @@ yabai -m config                                 \
     split_type                   auto           \
     auto_balance                 off            \
     top_padding                  12             \
-    bottom_padding               3             \
-    left_padding                 3             \
-    right_padding                2             \
+    bottom_padding               10             \
+    left_padding                 10             \
+    right_padding                10             \
     window_gap                   06             \
     layout                       bsp            \
     mouse_modifier               alt             \
@@ -74,8 +74,8 @@ yabai -m rule --add app="^Ghostty$"           opacity=1 sub-layer=normal
 #
 
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
-yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
-yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
+yabai -m signal --add event=space_created action="sketchybar --trigger spaces_refresh"
+yabai -m signal --add event=space_destroyed action="sketchybar --trigger spaces_refresh"
 
 yabai -m signal --add app='^Ghostty$' event=window_created action='yabai -m space --layout bsp'
 yabai -m signal --add app='^Ghostty$' event=window_destroyed action='yabai -m space --layout bsp'

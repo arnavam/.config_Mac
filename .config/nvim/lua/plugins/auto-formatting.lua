@@ -32,15 +32,22 @@ return {
         },
         formatting.shfmt.with { args = { '-i', '4' } },
         formatting.terraform_fmt,
-        require('none-ls.formatting.ruff').with {
-          extra_args = { '--extend-select', 'I' },
-        },
-        require 'none-ls.formatting.ruff_format',
       },
     }
 
     -- Format keymaps for whole buffer and visual selection
     vim.keymap.set('n', '<leader>p', function()
+      -- 1. Apply all auto-fixable lint/code issues (e.g., deprecated syntax, safe fixes)
+      vim.lsp.buf.code_action {
+        context = { only = { 'source.fixAll' } },
+        apply = true,
+      }
+      -- 2. Organize and sort imports (e.g., I001)
+      vim.lsp.buf.code_action {
+        context = { only = { 'source.organizeImports' } },
+        apply = true,
+      }
+      -- 3. Format the code (indentation, line breaks, quotes)
       vim.lsp.buf.format { async = true }
     end, { desc = 'Format buffer' })
 

@@ -220,3 +220,6 @@ alt - t : /opt/homebrew/Caskroom/miniconda/base/envs/aspira/bin/latexocr
 # Pass cmd+, through to the app, wait a split second, then force the focused window to float
 cmd - 0x2B -> : osascript -e 'delay 0.1' && yabai -m window --toggle float
 
+
+# toggle gaps/padding 0 <-> configured
+shift + alt - g : ~/.config/skhd/scripts/toggle-gaps.sh

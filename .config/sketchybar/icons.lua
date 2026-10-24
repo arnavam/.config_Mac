@@ -1,0 +1,50 @@
+return {
+  loading = "􀖇",
+  apple = "􀣺",
+  preferences = "􀺽",
+  activity = "􀒓",
+  lock = "􀒳",
+  separator = "􀆊",
+
+  spotify = {
+    anchor = "􁁒",
+    back = "􀊎",
+    play = "􀊄",
+    pause = "􀊆",
+    next = "􀊐",
+    shuffle = "􀊝",
+    ["repeat"] = "􀊞",
+  },
+
+  yabai = {
+    stack = "􀏭",
+    fullscreen_zoom = "􀏜",
+    parent_zoom = "􀥃",
+    float = "􀢌",
+    grid = "􀧍",
+  },
+
+  battery = {
+    _100 = "􀛨",
+    _75 = "􀺸",
+    _50 = "􀺶",
+    _25 = "􀛩",
+    _0 = "􀛪",
+    charging = "􀢋",
+  },
+
+  wifi = { on = "󰖩", off = "󰖪", hotspot = "󰀂" },
+  bluetooth = { on = "󰂯", connected = "󰂱", off = "󰂲" },
+  stats = { collapsed = "􀆉", expanded = "􀆊" },
+  cpu = "󰻠",
+  ram = "󰍛",
+  disk = "󰋊",
+  network = "󰛳",
+  calendar = "󰃭",
+  clock = "󰥔",
+  music = "󰝚",
+  volume = { _100 = "󰕾", _66 = "󰖀", _33 = "󰕿", _0 = "󰖁" },
+  speaker = "󰓃",
+  check = "󰄬",
+  plus = "+",
+}

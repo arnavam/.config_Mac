@@ -3,6 +3,9 @@
 local M = {}
 
 local update_state = ya.sync(function(state, action, category, key, value)
+	if not key then
+		return nil
+	end
 	-- Ensure the subtable for the category exists.
 	state[category] = state[category] or {}
 
@@ -81,7 +84,10 @@ local function get_extension(filename)
 end
 
 local function check_file_type(path)
-	local name = path.name or ""
+	if not path then
+		return nil
+	end
+	local name = path.name or tostring(path)
 	local ext = get_extension(name)
 	if ext then
 		local filetype = extension_map[ext:lower()]
@@ -276,7 +282,7 @@ local function run_query(job, query, target, file_type)
 	local width = math.max((job.area and job.area.w * 3 or 80), 80)
 	local height = math.max((job.area and job.area.h or 25), 25)
 
-	local args = {}
+	local args = { "-no-init", "-dark-mode" }
 
 	if file_type == "duckdb" then
 		table.insert(args, "-readonly")
@@ -305,8 +311,9 @@ local function run_query(job, query, target, file_type)
 	end
 
 	local output, err = child:wait_with_output()
-	if err or not output.status.success then
-		ya.err("DuckDB error: " .. (err or output.stderr or "[unknown error]"))
+	if not output or err or (output.status and not output.status.success) then
+		local msg = err or (output and output.stderr) or "[unknown error]"
+		ya.err("DuckDB error: " .. msg)
 		return nil
 	end
 
@@ -567,7 +574,10 @@ local function generate_peek_query(target, job, limit, offset, file_type, cache_
 end
 
 local function render_output(output, job)
-	local cleaned = output.stdout and output.stdout:gsub("\r", "") or "[no output]"
+	if not output or not output.stdout then
+		return require("code"):peek(job)
+	end
+	local cleaned = output.stdout:gsub("\r", "")
 	ya.preview_widget(job, {
 		ui.Text.parse(cleaned):area(job.area),
 	})
@@ -579,7 +589,7 @@ local function output_is_valid(output, mode, job)
 			ya.err("DuckDB returned an error or:\n" .. output.stderr)
 			return false
 		elseif not output.stdout or output.stdout == "" then
-			ya.err(string.format("Peek - No stdout/stderr from %s cache for %s", mode, job.file.url))
+			ya.err(string.format("Peek - No stdout/stderr from %s cache for %s", mode, tostring(job.file.url)))
 			return false
 		else
 			return true
@@ -672,8 +682,8 @@ local function create_cache(job, mode, file_type, limit)
 	local base_query = generate_preload_query(job, mode, file_type, limit)
 	local query = string.format("COPY (%s) TO '%s' (FORMAT 'parquet');", base_query, target)
 	local output = run_query(job, query, nil, file_type)
-	ya.dbg("stdout: " .. tostring(output.stdout))
-	ya.dbg("stderr: " .. tostring(output.stderr))
+	ya.dbg("stdout: " .. tostring(output and output.stdout))
+	ya.dbg("stderr: " .. tostring(output and output.stderr))
 
 	if not output or (output.stderr and output.stderr ~= "") then
 		ya.err(
@@ -682,7 +692,7 @@ local function create_cache(job, mode, file_type, limit)
 						"[duckdb] error creating %s cache for %s: %s",
 						mode,
 						tostring(job.file.url),
-						output.stderr
+						output.stderr or ""
 					)
 				or string.format(
 					"[duckdb] no output returned while creating %s cache for %s",
@@ -716,7 +726,7 @@ local function is_plain_text(job, file_type)
 		string.format("select count(column_name) from (describe from read_csv('%s'));", tostring(job.file.url)),
 	}
 	local output = run_query(job, query, nil, file_type)
-	local result = (output and output.stdout == "1\r\n")
+	local result = (output and output.stdout and output.stdout == "1\r\n")
 
 	if result then
 		add_to_list("is_plain_text", file_hash)
@@ -758,14 +768,15 @@ function M:peek(job)
 	local query = generate_peek_query(args.target, job, args.limit, args.offset, args.file_type, args.cache_str)
 	ya.dbg("query: " .. tostring(query))
 	local output = run_query(job, query, args.target, args.file_type)
-	ya.dbg("stdout: " .. tostring(output.stdout))
-	ya.dbg("stderr: " .. tostring(output.stderr))
+	ya.dbg("stdout: " .. tostring(output and output.stdout))
+	ya.dbg("stderr: " .. tostring(output and output.stderr))
 	if not output_is_valid(output, args.mode, job) then
 		if args.target == args.cache_url and args.scrolled_collumns == 0 then
 			add_to_list("bad_cache", args.cache_str)
 			remove_file(args.cache_url)
 			return require("duckdb"):peek(job)
-		elseif is_on_list("bad_cache", args.cache_str) then
+		else
+			add_to_list("bad_cache", args.cache_str)
 			return require("code"):peek(job)
 		end
 	end

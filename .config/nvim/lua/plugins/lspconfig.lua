@@ -184,22 +184,23 @@ return {
         },
       },
 
-      pylsp = {
+      pyright = {
         settings = {
-          pylsp = {
-            plugins = {
-              pyflakes = { enabled = false},
-              pycodestyle = { enabled = false },
-              autopep8 = { enabled = false },
-              yapf = { enabled = false },
-              mccabe = { enabled = false },
-              pylsp_mypy = { enabled = true },
-              pylsp_black = { enabled = false },
-              pylsp_isort = { enabled = false },
+          pyright = {
+            -- Using Ruff's import organizer
+            disableOrganizeImports = true,
+          },
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+              diagnosticMode = 'openFilesOnly',
             },
           },
         },
       },
+
+      ruff = {},
     }
     -- Ensure the servers and tools above are installed
     -- You can press `g?` for help in this menu.

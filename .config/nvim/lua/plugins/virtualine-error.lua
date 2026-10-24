@@ -6,19 +6,6 @@ return {
 -- Disable Neovim's built-in diagnostic virtual text
 vim.diagnostic.config({ virtual_text = false })
 
--- Filter out specific diagnostics from being published at all
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  function(_, result, ctx, config)
-    if result.diagnostics then
-      result.diagnostics = vim.tbl_filter(function(d)
-        local msg = d.message
-        return not (msg:match("W191") or msg:match("indentation contains tabs") or msg:match("E501") or msg:match("line too long") or msg:match("imported but unused"))
-      end, result.diagnostics)
-    end
-    vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
-  end, {}
-)
-
 require("tiny-inline-diagnostic").setup({
     -- Choose a preset style for diagnostic appearance
     -- Available: "modern", "classic", "minimal", "powerline", "ghost", "simple", "nonerdfont", "amongus"
